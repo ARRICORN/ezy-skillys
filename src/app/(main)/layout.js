@@ -4,10 +4,10 @@ import { Fragment } from "react";
 
 export default function MainLayout({ children }) {
   return (
-    <Fragment>
+    <main className="bg-white">
       <Navbar />
       {children}
       <Footer />
-    </Fragment>
+    </main>
   );
 }
