@@ -43,46 +43,7 @@ export async function GET(req) {
     }
   }
 
-export async function DELETE(req) {
-  try {
-    mongoose.connect(process.env.DATABASE_URL);
-    const url = new URL(req.url);
-    const email = url.searchParams.get('email');
 
-    if (await isAdmin(demo)) {
-      // Check if the admin is trying to delete their own account
-      if (email === demo) {
-        console.log("first")
-        return Response.json({
-          success: false,
-          message: 'Admin cannot delete their own account',
-        });
-      }
-      
-        
-        const deleteUser = await User.deleteOne({ email });
-      const deleteUserInfo = await UserInfo.deleteOne({ email });
-
-      if (deleteUser.deletedCount === 1 && deleteUserInfo.deletedCount === 1) {
-        return Response.json({
-          success: true,
-          message: 'User deleted successfully',
-        });
-      } else {
-        return Response.json({
-          success: false,
-          message: 'User not found or already deleted',
-        });
-      }
-
-      
-    }
-
-    return Response.json({ message: 'Only Admin can delete' });
-  } catch (error) {
-    console.log(error);
-  }
-}
 
 export async function PUT(req) {
   try {

@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import mongoose from "mongoose";
 import jwt from 'jsonwebtoken';
 import { User } from "@/Models/User";
+import { cookies } from "next/headers";
 
 export async function POST(req) {
   try {
@@ -32,14 +33,30 @@ export async function POST(req) {
           });
       }
       console.log(isPasswordMatch, "isPasswordMatch ")
-      
-    const token = jwt.sign({ name,email}, process.env.JWT_SECRET_KEY);
-
-    return Response.json({
-        message: "User logged in successfully",
-        token
-    });
-      
+        // Set expiration time to 7 days (7 days * 24 hours * 60 mins * 60 secs)
+        const expiresIn = 7 * 24 * 60 * 60;
+    const token = jwt.sign({name, email,password}, process.env.JWT_SECRET_KEY);
+    
+    const cookieOptions = {
+      httpOnly: true,
+      maxAge: expiresIn,
+      path: '/',
+      sameSite: 'lax',
+      secure: process.env.NODE_ENV === 'production',
+    };
+  console.log(cookieOptions, "cookies")
+  
+  const cookie = cookies().set('token', token, cookieOptions);
+  console.log(cookie, "cookie")
+  
+  return Response.json(
+    {message: "User logged in successfully"},
+    {
+      headers: {
+        'Set-Cookie': cookie,
+      },
+    }
+  );
   } catch (error) {
     console.error("Error during user creation:", error);
    
