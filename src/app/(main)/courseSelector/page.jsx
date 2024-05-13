@@ -49,22 +49,23 @@ const Course = () => {
                                 {/* icons */}
                                 <div className='flex justify-center gap-7 ml-24 pt-5 '>
                                     <div>
-                                        <div className="border-2 border-white bg-white p-5 rounded-3xl">
-                                            <Image src={men} alt="job" />
-                                        </div>
+
+                                        <button className="border-2 border-white bg-white p-5 rounded-3xl">
+                                            <Image src={men} alt="job" /></button>
+
                                         <p className='text-white mt-1 text-center'>Looking for <br /> job</p>
                                     </div>
                                     <div>
-                                        <div className="border-2 border-white p-5 rounded-3xl">
-                                            <Image src={it} alt="job" />
-                                        </div>
+
+                                        <button className="border-2 border-white p-5 rounded-3xl"><Image src={it} alt="job" /></button>
+
                                         <p className='text-white mt-1 text-center'>IT to Non IT<br />
                                             Job Shift</p>
                                     </div>
                                     <div>
-                                        <div className="border-2 border-white p-5 rounded-3xl">
+                                        <button className="border-2 border-white p-5 rounded-3xl">
                                             <Image src={job} alt="job" />
-                                        </div>
+                                        </button>
                                         <p className='text-white mt-1 text-center'>Upskill It</p>
                                     </div>
 
@@ -128,15 +129,15 @@ const Course = () => {
                                 <div className='flex justify-items-start ml-32 gap-8 py-10'>
 
                                     <div>
-                                        <div className="border-2 bg-white border-white p-5 rounded-3xl">
+                                        <button className="border-2 bg-white border-white p-5 rounded-3xl">
                                             <Image src={it2} alt="job" />
-                                        </div>
+                                        </button>
                                         <p className='text-white mt-1 text-center'>Coding</p>
                                     </div>
                                     <div>
-                                        <div className="border-2 border-white p-5 rounded-3xl">
+                                        <button className="border-2 border-white p-5 rounded-3xl">
                                             <Image src={notCoding} alt="job" />
-                                        </div>
+                                        </button>
                                         <p className='text-white mt-1 text-center'>Not Coding</p>
                                     </div>
 
@@ -162,21 +163,21 @@ const Course = () => {
                                 {/* icons */}
                                 <div className='flex justify-center ml-24 gap-11 pt-5 '>
                                     <div>
-                                        <div className="border-2 border-white bg-white p-5 rounded-3xl">
+                                        <button className="border-2 border-white bg-white p-5 rounded-3xl">
                                             <Image src={frontEnd} alt="job" />
-                                        </div>
+                                        </button>
                                         <p className='text-white mt-1 text-center'>Front-End</p>
                                     </div>
                                     <div>
-                                        <div className="border-2 border-white p-5 rounded-3xl">
+                                        <button className="border-2 border-white p-5 rounded-3xl">
                                             <Image src={backend} alt="job" />
-                                        </div>
+                                        </button>
                                         <p className='text-white mt-1 text-center'>Backend</p>
                                     </div>
                                     <div>
-                                        <div className="border-2 border-white p-5 rounded-3xl">
+                                        <button className="border-2 border-white p-5 rounded-3xl">
                                             <Image src={fullstack} alt="job" />
-                                        </div>
+                                        </button>
                                         <p className='text-white mt-1 text-center'>Full Stack</p>
                                     </div>
 
