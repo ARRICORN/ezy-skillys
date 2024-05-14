@@ -9,6 +9,7 @@ const CourseSchema = new Schema(
     tag: { type: String, required: true, default: "opened" },
     categories: { type: [String], required: true },
     addedBy: { type: String, required: true },
+    liveDemo: { type: String, required: true },
   },
   { timestamps: true }
 );

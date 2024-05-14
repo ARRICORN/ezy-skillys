@@ -14,7 +14,7 @@ export async function GET(req) {
     filterConditions["title"] = { $regex: searchTerm, $options: "i" };
   }
   if (tag) {
-    filterConditions["tag"] = tag;
+    filterConditions["tag"] = { $regex: tag, $options: "i" };
   }
   if (categories && categories.length > 0) {
     filterConditions["categories"] = {
@@ -36,7 +36,8 @@ export const fieldsThatShouldBeInCourse = [
   "desc",
   "price",
   "tag",
-  "categories"
+  "categories",
+  "liveDemo"
 ];
 
 export async function POST(req) {
@@ -65,8 +66,7 @@ export async function POST(req) {
     if (!categories.length) {
       throw new Error("Categories must have atleast one value!");
     }
-
-
+    // Checking if the course is already exists or not
     if (await Course.findOne({ title })) {
       throw new Error(`Course is already exists!`);
     }
