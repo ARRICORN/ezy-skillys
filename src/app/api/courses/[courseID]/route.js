@@ -1,6 +1,6 @@
 import { Course } from "@/Models/Course";
 import { UserInfo } from "@/Models/UserInfo";
-import checkIsLoggedIn from "@/middlewares/CheckIsLoggedIn";
+import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 
 export async function GET(req, { params }) {
