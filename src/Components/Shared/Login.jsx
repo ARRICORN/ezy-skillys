@@ -10,13 +10,20 @@ import UseAxiosPublic from '../Utils/UseAxiosPublic';
 import { useRouter } from 'next/navigation';
 import Loading from '../Ui/Loading';
 import { MdErrorOutline } from "react-icons/md";
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 
-const Register = () => {
+const Login = () => {
     const axiosPublic = UseAxiosPublic();
     const [formLoading, setFormLoading] = React.useState(false);
     const [error, setError] = React.useState("");
     const router = useRouter();
+    const session = useSession();
+    console.log(session);
+
+    // if(session.status = 'authenticated'){
+    //     router.push('/')
+    // }
+
     const {
         register,
         handleSubmit,
@@ -24,18 +31,13 @@ const Register = () => {
     } = useForm();
 
     const onSubmit = (data) => {
-        setFormLoading(true)
-        axiosPublic.post('/register', { ...data, phone: '', image: '', city: '', streetAddress: '' })
-            .then(() => {
-                setFormLoading(false);
-                setError("")
-                router.push('/');
-            })
-            .catch((err) => {
-                setFormLoading(false)
-                setError(err.message)
-                console.log(err);
-            })
+        signIn("credentials", { email: data.email, password: data.password, redirect: false }).then(async (e) => {
+            if (e.error) {
+                setError("Invalid email/password")
+            } else {
+                router.push("/");
+            }
+        })
     }
 
     return (
@@ -46,7 +48,7 @@ const Register = () => {
                     <div className='md:col-span-2'>
                         <div className='p-8 shadow-xl rounded-3xl'>
                             <h3 className='text-2xl font-semibold text-center'>
-                                <span className='text-[#004aad]'>Create </span>
+                                <span className='text-[#004aad]'>Login </span>
                                 <span className='text-orange-500'>Account</span>
                             </h3>
                             <form onSubmit={handleSubmit(onSubmit)} className='mt-8 mb-5'>
@@ -56,11 +58,7 @@ const Register = () => {
                                         <p className='text-white text-sm ml-2'>{error}</p>
                                     </div>
                                 }
-                                <div className="relative mt-6">
-                                    <input autoComplete="off" id="name" name="name" type="text" className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Name" {...register("name", { required: true })} />
-                                    <label htmlFor="name" className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs">Name</label>
-                                    {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
-                                </div>
+
 
                                 <div className="relative mt-6">
                                     <input autoComplete="off" id="email" name="email" type="email" className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Email address" {...register("email", { required: true })} />
@@ -83,13 +81,13 @@ const Register = () => {
                                 <div className='flex justify-center mt-3'>
                                     <button className="group flex h-min items-center disabled:opacity-50 disabled:hover:opacity-50 hover:opacity-95 justify-center ring-none rounded-md shadow-lg font-semibold py-1 px-2.5 font-dm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-800 border-b-blue-950 disabled:border-0 disabled:bg-blue-500 disabled:text-white ring-white text-white border-b-4 active:border-0 hover:text-gray-100 active:bg-blue-900 active:text-gray-300 focus-visible:outline-blue-900 text-sm sm:text-base"
                                     >
-                                        Create Account
+                                        Login Account
                                     </button>
                                 </div>
 
                             </form>
                             <div>
-                                <h5 className='text-gray-500 text-sm text-center'>Already Created? <Link className='text-gray-700' href='/login'>Login Here</Link></h5>
+                                <h5 className='text-gray-500 text-sm text-center'>{"Don't have account? "}<Link className='text-gray-700' href='/login'>Register Here</Link></h5>
                             </div>
                             <div className='flex justify-center items-center my-5'>
                                 <div className="flex flex-row flex-nowrap justify-center mx-auto items-center">
@@ -102,12 +100,12 @@ const Register = () => {
                             </div>
 
                             <div>
-                                <div className="flex items-center justify-center space-x-4 mt-3">
-                                    <button onClick={() => signIn('google')} className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"          >
+                                <div className="space-y-4 mt-3">
+                                    <button onClick={() => signIn('google')} className="flex items-center py-2 px-4 text-sm uppercase rounded bg-gray-200 hover:bg-gray-200 text-black border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 w-full justify-center">
                                         <FcGoogle className='text-2xl mr-3' />
                                         Google
                                     </button>
-                                    <button onClick={() => signIn('github')} className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"          >
+                                    <button onClick={() => signIn('github')} className="flex items-center py-2 px-4 text-sm uppercase rounded bg-blue-500 hover:bg-blue-500 text-white border border-transparent hover:border-transparent shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 justify-center w-full">
                                         <FaGithub className='text-2xl mr-3 text-black' />
                                         Github
                                     </button>
@@ -127,4 +125,5 @@ const Register = () => {
     );
 };
 
-export default Register;
+
+export default Login;

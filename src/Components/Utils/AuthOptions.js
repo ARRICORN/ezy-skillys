@@ -14,19 +14,16 @@ export const authOptions = {
       clientSecret: process.env.GOOGLE_SECRET,
     }),
     CredentialsProvider({
-      type: "credentials",
+      name: "Credentials",
       credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          placeholder: "hello@example.com",
-        },
-        password: { label: "Password", type: "password" },
+        email: { label: "email", type: "email", placeholder: "Email address" },
+        password: { label: "password", type: "password" }
       },
       async authorize(credentials, req) {
         const { email, password } = credentials;
         // post data
         console.log(email, password);
+        return credentials;
       }
     })
 
@@ -54,7 +51,7 @@ export const authOptions = {
           const { name, email, image } = user
           // if (account.provider === 'google' || account.provider === 'github') {
           //   const res = await fetch('http://locahost:4000/api/user', {
-          //     body: JSON.stringify(user),
+          //     body: JSON.stringify({name, email, image, phone: '', city: '', streetAddress: ''}),
           //     method: 'POST',
           //     headers: {
           //       "Content-Type": "application/json"
