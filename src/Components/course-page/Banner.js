@@ -11,11 +11,11 @@ const Banner = () => {
         }}
         className="h-[90vh] bg-cover bg-center flex justify-evenly items-center px-12 rounded-b-[32px]"
       >
-        <div className="flex justify-center gap-12 items-center w-5/6 mx-auto relative top-16">
-          <div className="w-1/4">
-            <Image src={angular1} alt="" width={160} height={160} />
+        <div className="flex flex-col lg:flex-row justify-center gap-12 items-center w-5/6 mx-auto relative lg:top-16">
+          <div className="lg:w-1/4">
+            <Image src={angular1} alt="" width={150} height={150} />
           </div>
-          <div className="w-1/2">
+          <div className="lg:w-1/2 text-center lg:text-start">
             <h1 className="font-bold text-[3.5rem] leading-tight">
               <span className="block text-[#F98149]">AngularJS:</span>
               <span className="text-[#FDFDFD]">
