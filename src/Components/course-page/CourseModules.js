@@ -10,7 +10,8 @@ const CourseModules = ({ courseModules }) => {
   };
 
   return (
-    <div className="w-80 lg:w-3/4 mx-auto bg-white rounded-3xl shadow-md p-6 font-poppins">
+    <div className="w-80 lg:w-3/4 mx-auto bg-white rounded-3xl shadow-md p-6 font-poppins z-50">
+      <div>
       <h2 className="heading mb-10">Course Content</h2>
       <div className="divide-y divide-gray-200">
         {courseModules.map((each, index) => (
@@ -57,6 +58,7 @@ const CourseModules = ({ courseModules }) => {
             )}
           </div>
         ))}
+        </div>
       </div>
     </div>
   );

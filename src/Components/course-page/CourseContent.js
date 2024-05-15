@@ -3,6 +3,8 @@ import "../../app/(main)/course-page/coursePage.css";
 import CourseModules from "./CourseModules";
 import Image from "next/image";
 import tick from "/src/Components/course-page/assets/tick1.png";
+import beads from "/src/Components/course-page/assets/beads1.png";
+import ellipse from "/src/Components/course-page/assets/ellipse3.png";
 
 const CourseContent = ({ courseContentObjectives, courseModules }) => {
   return (
@@ -30,8 +32,10 @@ const CourseContent = ({ courseContentObjectives, courseModules }) => {
             ))}
           </div>
         </div>
-        <div className="lg:w-1/2">
+        <div className="lg:w-1/2 flex relative">
+          <Image src={ellipse} alt="ellipse" className="absolute left-0 -bottom-16 w-32"/>
           <CourseModules courseModules={courseModules} />
+          <Image src={beads} alt="ellipse" className="absolute right-3 top-12 w-16"/>
         </div>
       </div>
     </Fragment>
