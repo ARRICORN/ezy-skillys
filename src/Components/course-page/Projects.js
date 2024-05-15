@@ -1,8 +1,10 @@
+import { Fragment } from "react";
+
 const Projects = () => {
     return (
-        <div>
+        <Fragment>
             
-        </div>
+        </Fragment>
     );
 };
 
