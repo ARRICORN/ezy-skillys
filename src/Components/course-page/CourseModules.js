@@ -1,44 +1,26 @@
 "use client";
 import React, { useState } from "react";
 
-const CourseModules = () => {
-  const faqs = [
-    {
-      question: "What is Tailwind CSS?",
-      answer:
-        "Tailwind CSS is a utility-first CSS framework for building custom designs quickly.",
-    },
-    {
-      question: "Why use React?",
-      answer:
-        "React is a popular JavaScript library for building user interfaces, known for its component-based architecture and virtual DOM.",
-    },
-    {
-      question: "How do I install Tailwind CSS?",
-      answer:
-        "You can install Tailwind CSS via npm or yarn, and then configure it in your project.",
-    },
-    
-  ];
+const CourseModules = ({ courseModules }) => {
 
   const [openIndex, setOpenIndex] = useState(null);
 
-  const toggleFAQ = (index) => {
+  const toggleModule = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <div className="w-80 lg:w-96 mx-auto bg-white rounded-3xl shadow-md p-6">
-        <h2 className="heading mb-10">Course Content</h2>
+    <div className="w-80 lg:w-3/4 mx-auto bg-white rounded-3xl shadow-md p-6">
+      <h2 className="heading mb-10">Course Content</h2>
       <div className="divide-y divide-gray-200">
-        {faqs.map((faq, index) => (
+        {courseModules.map((each, index) => (
           <div key={index} className="py-4">
             <button
-              onClick={() => toggleFAQ(index)}
+              onClick={() => toggleModule(index)}
               className="flex justify-between items-center w-full focus:outline-none"
             >
-              <h3 className="text-lg font-medium text-gray-900">
-                {faq.question}
+              <h3 className="text-lg font-semibold text-[#003F7D]">
+                {each.serial} {each.moduleName}
               </h3>
               {openIndex === index ? (
                 <svg
@@ -70,7 +52,7 @@ const CourseModules = () => {
             </button>
             {openIndex === index && (
               <div className="overflow-hidden transition-max-height duration-300 ease-in-out">
-                <p className="mt-4 text-gray-500">{faq.answer}</p>
+                <p className="mt-4 text-gray-500 text-xs">{each.moduleContent}</p>
               </div>
             )}
           </div>
