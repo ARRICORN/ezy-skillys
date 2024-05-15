@@ -1,7 +1,13 @@
 import Banner from "@/Components/course-page/Banner";
 import CourseContent from "@/Components/course-page/CourseContent";
+import MoreCourses from "@/Components/course-page/MoreCourses";
 import Projects from "@/Components/course-page/Projects";
+import Tools from "@/Components/course-page/Tools";
 import { Fragment } from "react";
+import uiAngular from "/src/Components/course-page/assets/ui-angular.png"
+import mean from "/src/Components/course-page/assets/mean.png"
+import devops from "/src/Components/course-page/assets/devops.png"
+import react from "/src/Components/course-page/assets/react.png"
 
 const layout = () => {
   const courseModules = [
@@ -103,11 +109,33 @@ const layout = () => {
       text: `Organizing, composing, and ultimately sending the application`,
     },
   ];
+  const courseTools = [
+    {
+        img: uiAngular
+    },
+    {
+        img: mean
+    },
+    {
+        img: devops
+    },
+    {
+        img: react
+    },
+    {
+        img: uiAngular
+    },
+    {
+        img: uiAngular
+    },
+  ]
   return (
     <Fragment>
       <Banner />
       <CourseContent courseContentObjectives={courseObjectives} courseModules={courseModules} />
       <Projects />
+      <MoreCourses/>
+      <Tools courseTools={courseTools}/>
     </Fragment>
   );
 };

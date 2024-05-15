@@ -9,7 +9,7 @@ import ellipse from "/src/Components/course-page/assets/ellipse3.png";
 const CourseContent = ({ courseContentObjectives, courseModules }) => {
   return (
     <Fragment>
-      <div className="flex flex-col lg:flex-row p-6 justify-between lg:w-5/6 mx-auto font-montserrat font-semibold">
+      <div className="flex flex-col lg:flex-row p-6 justify-between lg:w-5/6 mx-auto font-montserrat font-semibold mb-12">
         <div className="p-6 lg:w-1/2">
           <div className="mb-6 lg:mb-10">
             <h2 className="heading">Objectives</h2>
