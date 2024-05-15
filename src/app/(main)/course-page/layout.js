@@ -4,10 +4,10 @@ import MoreCourses from "@/Components/course-page/MoreCourses";
 import Projects from "@/Components/course-page/Projects";
 import Tools from "@/Components/course-page/Tools";
 import { Fragment } from "react";
-import uiAngular from "/src/Components/course-page/assets/ui-angular.png"
-import mean from "/src/Components/course-page/assets/mean.png"
-import devops from "/src/Components/course-page/assets/devops.png"
-import react from "/src/Components/course-page/assets/react.png"
+import uiAngular from "/src/Components/course-page/assets/ui-angular.png";
+import mean from "/src/Components/course-page/assets/mean.png";
+import devops from "/src/Components/course-page/assets/devops.png";
+import react from "/src/Components/course-page/assets/react.png";
 
 const layout = () => {
   const courseModules = [
@@ -111,31 +111,68 @@ const layout = () => {
   ];
   const courseTools = [
     {
-        img: uiAngular
+      img: uiAngular,
     },
     {
-        img: mean
+      img: mean,
     },
     {
-        img: devops
+      img: devops,
     },
     {
-        img: react
+      img: react,
     },
     {
-        img: uiAngular
+      img: uiAngular,
     },
     {
-        img: uiAngular
+      img: uiAngular,
     },
-  ]
+  ];
+  const courseProjects = [
+    {
+      title: "Angular Hello World Project",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "Angular Bare Bones project",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "Data Binding In Forms",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "Angular Projects On Local Storage",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "Admin Panel Framework",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "AngularJS In Patterns",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "NGRX Libraries",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+    {
+      title: "Data Binding In Forms",
+      info: "Hello, World offers a tremendous opportunity to hone your skills if you are just starting with Angular and Typescript.",
+    },
+  ];
   return (
     <Fragment>
       <Banner />
-      <CourseContent courseContentObjectives={courseObjectives} courseModules={courseModules} />
-      <Projects />
-      <MoreCourses/>
-      <Tools courseTools={courseTools}/>
+      <CourseContent
+        courseContentObjectives={courseObjectives}
+        courseModules={courseModules}
+      />
+      <Projects courseProjects={courseProjects}/>
+      <MoreCourses />
+      <Tools courseTools={courseTools} />
     </Fragment>
   );
 };
