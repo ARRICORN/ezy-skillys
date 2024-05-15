@@ -7,7 +7,7 @@ import tick from "/src/Components/course-page/assets/tick1.png";
 const CourseContent = ({ courseContentObjectives, courseModules }) => {
   return (
     <Fragment>
-      <div className="flex flex-col lg:flex-row p-6 justify-between lg:w-5/6 mx-auto">
+      <div className="flex flex-col lg:flex-row p-6 justify-between lg:w-5/6 mx-auto font-montserrat font-semibold">
         <div className="p-6 lg:w-1/2">
           <div className="mb-6 lg:mb-10">
             <h2 className="heading">Objectives</h2>
