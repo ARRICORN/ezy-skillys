@@ -29,7 +29,7 @@ const Register = () => {
             .then(() => {
                 setFormLoading(false);
                 setError("")
-                router.push('/');
+                router.push('/login');
             })
             .catch((err) => {
                 setFormLoading(false)
