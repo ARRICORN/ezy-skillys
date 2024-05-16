@@ -4,6 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import mentorsData from "@/utility/temp/trainer.json";
+import styles from "./mentors.module.css";
 
 const MentorsTrainer = () => {
   const settings = {
@@ -35,8 +36,8 @@ const MentorsTrainer = () => {
   };
 
   return (
-    <div>
-      <div className="container py-5 md:py-10">
+    <div className={`${styles.bgImage}`}>
+      <div className={`container py-5 md:py-10`}>
         <div className="ml-2 md:ml-6">
           <span className="text-[#003F7D] text-[30px] font-bold md:text-[50px] block">
             Meet Our Professional

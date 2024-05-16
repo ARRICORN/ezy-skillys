@@ -48,7 +48,7 @@ const CertificateAchievement = () => {
 
         {/* === branding image === */}
         <div>
-          <h1 className="mt-14 text-center font-semibold text-[30px] md:text-[50px] text-[#003F7D]">
+          <h1 className="mt-14 md:mt-28 text-center font-semibold text-[30px] md:text-[50px] text-[#003F7D]">
             Our <span className="text-orange-500">Collaborations</span>
           </h1>
           <Image
