@@ -18,10 +18,6 @@ const Login = () => {
     const session = useSession();
     console.log(session);
 
-    // if(session.status = 'authenticated'){
-    //     router.push('/')
-    // }
-
     const {
         register,
         handleSubmit,
@@ -31,14 +27,16 @@ const Login = () => {
     const onSubmit = (data) => {
         setFormLoading(true);
         signIn("credentials", { email: data.email, password: data.password, redirect: false }).then(async (e) => {
+            console.log(e);
             if (e.error) {
-                setError("Invalid email/password")
+                setError("Invalid email/password");
             } else {
                 //location.reload();
                 router.push("/");
             }
             setFormLoading(false);
         })
+
     }
 
     return (

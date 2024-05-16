@@ -26,14 +26,20 @@ const Register = () => {
     const onSubmit = (data) => {
         setFormLoading(true)
         axiosPublic.post('/register', { ...data, phone: '', image: '', city: '', streetAddress: '' })
-            .then(() => {
+            .then((res) => {
+                console.log(res);
+                if (res?.data?.isOk) {
+                    router.push('/login');
+                    setError("")
+                }
+                else {
+                    setError(res?.data?.message)
+                }
                 setFormLoading(false);
-                setError("")
-                router.push('/login');
             })
             .catch((err) => {
                 setFormLoading(false)
-                setError(err.message)
+                setError(err?.response?.data?.message || err.message);
                 console.log(err);
             })
     }

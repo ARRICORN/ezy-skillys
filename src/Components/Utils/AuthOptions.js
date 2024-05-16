@@ -1,3 +1,4 @@
+import axios from "axios";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GithubProvider from "next-auth/providers/github"
 import GoogleProvider from "next-auth/providers/google";
@@ -20,50 +21,30 @@ export const authOptions = {
         password: { label: "password", type: "password" }
       },
       async authorize(credentials, req) {
-        const { email, password } = credentials;
-        // post data
-        console.log(email, password);
-        return credentials;
+        try {
+          const { email, password } = credentials;
+          // post data is server
+          const loginResponse = await axios.post(process.env.SERVER_URL + '/login', { email, password });
+          return loginResponse.data.user;
+        } catch (err) {
+          return false;
+        }
       }
     })
-
-    // CredentialsProvider({
-    //   name: "Credentials",
-    //   credentials: {
-    //     email: { label: "Username", type: "text" },
-    //     password: { label: "Password", type: "password" },
-    //   },
-    //   authorize(credentials, req) {
-    //     // database operations
-    //     return {
-    //       id: "1",
-    //       Email: credentials.email,
-    //     };
-    //   },
-    // }),
   ],
   callbacks: {
     async signIn({ user, account }) {
-
       try {
         console.log(account);
         if (user) {
           const { name, email, image } = user
-          // if (account.provider === 'google' || account.provider === 'github') {
-          //   const res = await fetch('http://locahost:4000/api/user', {
-          //     body: JSON.stringify({name, email, image, phone: '', city: '', streetAddress: ''}),
-          //     method: 'POST',
-          //     headers: {
-          //       "Content-Type": "application/json"
-          //     }
-          //   })
-          // }
+          // post data in server
+          //
         }
         return user
       } catch (err) {
         return false
       }
-
 
       const isAllowedToSignIn = true
       if (isAllowedToSignIn) {
