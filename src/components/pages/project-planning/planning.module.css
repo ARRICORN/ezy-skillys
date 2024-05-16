@@ -1,6 +1,6 @@
 .responsive {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0.5rem;
 }
 .bg_image {
@@ -9,11 +9,6 @@
   background-repeat: no-repeat;
   background-size: 17%;
   object-fit: contain;
+  width: auto;
+  height: auto;
 }
-/* .dotedImage {
-  background-image: url("../../../../public/assets/doted.png");
-  background-position: 0% -10%;
-  background-repeat: no-repeat;
-  background-size: 17%;
-  object-fit: contain;
-} */

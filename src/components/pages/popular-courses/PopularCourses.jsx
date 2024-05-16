@@ -1,11 +1,11 @@
 import React from "react";
 import PopularTemplate from "./PopularTemplate";
-import style from "./popular.module.css";
+import styles from "./popular.module.css";
 import courseData from "../../../utility/temp/course_data.json";
 
 const PopularCourses = () => {
   return (
-    <div className="container bg-[#ffffff]">
+    <div className="container bg-[#ffffff] py-8">
       <div className="">
         {/* heading */}
         <h1 className="py-[10px] text-center text-[50px] text-[#003F7D] font-bold">
@@ -13,7 +13,7 @@ const PopularCourses = () => {
         </h1>
 
         {/* === course data will render === */}
-        <div className={`${style.responsive}`}>
+        <div className={`${styles.responsive}`}>
           {courseData &&
             courseData.map((item, index) => (
               <PopularTemplate item={item} key={index} />

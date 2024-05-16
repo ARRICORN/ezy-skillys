@@ -9,6 +9,7 @@ const PlanningTemplate = ({ item }) => {
           <span className="text-[#FB923C]">{item?.title}</span>
 
           <Image
+            priority={true}
             className=" mx-auto"
             src={item?.image}
             width={121}

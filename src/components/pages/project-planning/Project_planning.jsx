@@ -1,12 +1,12 @@
 import Image from "next/image";
 import planningData from "../../../../src/utility/temp/course_planing.json";
 import PlanningTemplate from "./PlanningTemplate";
-import style from "./planning.module.css";
+import styles from "./planning.module.css";
 import logo from "../../../../public/assets/doted.png";
 
 const Project_planning = () => {
   return (
-    <div className={` bg-[#FDFDFD] py-14 ${style.bg_image} relative`}>
+    <div className={` bg-[#FDFDFD] py-14 ${styles.bg_image} relative`}>
       <div className={``}>
         <div className={`container bg-[#003F7D] rounded-lg py-14 relative`}>
           <div className="max-w-[40%] md:max-w-[30%] mx-auto absolute top-[-35px] right-[20%] left-[20%] bg-orange-400 py-3 text-white font-semibold  md:px-[10px] text-center rounded-lg md:text-[22px]">
@@ -14,7 +14,7 @@ const Project_planning = () => {
           </div>
 
           {/* === course planning === */}
-          <div className={`${style.responsive}`}>
+          <div className={`${styles.responsive}`}>
             {planningData &&
               planningData.map((item) => (
                 <PlanningTemplate item={item} key={item.count} />
@@ -25,7 +25,7 @@ const Project_planning = () => {
 
       {/* bg-image */}
       <div className="absolute bottom-[0px] left-[63px]">
-        <Image src={logo} width={60} height={0} alt="logo" />
+        <Image priority={true} src={logo} width={60} height={10} alt="logo" />
       </div>
     </div>
   );

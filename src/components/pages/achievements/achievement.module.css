@@ -7,4 +7,6 @@
   background-repeat: no-repeat;
   background-size: 17%;
   object-fit: contain;
+  width: auto;
+  height: auto;
 }
