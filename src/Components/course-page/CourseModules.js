@@ -13,7 +13,7 @@ const CourseModules = ({ courseModules }) => {
     <div className="w-80 lg:w-3/4 mx-auto bg-white rounded-3xl shadow-md p-6 font-poppins z-50">
       <div>
       <h2 className="heading mb-10">Course Content</h2>
-      <div className="divide-y divide-gray-200">
+      <div className={`divide-y divide-gray-200`}>
         {courseModules.map((each, index) => (
           <div key={index} className="py-4">
             <button
@@ -52,7 +52,7 @@ const CourseModules = ({ courseModules }) => {
               )}
             </button>
             {openIndex === index && (
-              <div className="overflow-hidden transition-max-height duration-300 ease-in-out">
+              <div className={`h-0 ${openIndex === index && "h-20"}`} style={{transitionProperty: "height", transitionDuration: "120ms", transitionTimingFunction: "ease-out"}}>
                 <p className="mt-4 text-gray-500 text-xs">{each.moduleContent}</p>
               </div>
             )}
