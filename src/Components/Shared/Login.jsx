@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import banner from '/public/registerPage-img.png'
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
@@ -10,8 +10,10 @@ import { useRouter } from 'next/navigation';
 import { MdErrorOutline } from "react-icons/md";
 import { getSession, signIn, useSession } from 'next-auth/react';
 import Loading from '../Ui/Loading';
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 const Login = () => {
+    const [openPassword, setOpenPasswords] = useState(true);
     const [formLoading, setFormLoading] = React.useState(false);
     const [error, setError] = React.useState("");
     const router = useRouter();
@@ -66,12 +68,16 @@ const Login = () => {
                                     <label htmlFor="email" className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs">Email Address</label>
                                     {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
                                 </div>
-
                                 <div className="relative mt-6">
-                                    <input autoComplete="off" id="password" name="password" type="text" className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" {...register("password")} />
+                                    <input autoComplete="off" id="password" name="password"   type={openPassword ? "password" : "text"} className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" {...register("password")} />
                                     <label htmlFor="password" className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs">Password</label>
-                                    
-
+                                     
+                                    {
+                openPassword ?
+                      <FaEyeSlash className="absolute text-black cursor-pointer right-3 top-0" onClick={()=>setOpenPasswords(!openPassword)}/>
+                      :
+                      <FaEye className="absolute absolute text-black cursor-pointer right-3 top-0" onClick={()=>setOpenPasswords(!openPassword)}/>
+              }
                                 </div>
 
                                 <div className="mt-2 flex items-center text-gray-500">

@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 import banner from '/public/registerPage-img.png'
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
@@ -11,8 +11,11 @@ import Loading from '../Ui/Loading';
 import { MdErrorOutline } from "react-icons/md";
 import { signIn } from 'next-auth/react';
 import axios from 'axios';
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 const Register = () => {
+    const [openPassword, setOpenPasswords] = useState(true);
+  const [conOpenPassword, setConOpenPasswords] = useState(true);
     const [formLoading, setFormLoading] = React.useState(false);
     const [error, setError] = React.useState("");
     const router = useRouter();
@@ -20,8 +23,9 @@ const Register = () => {
         register,
         handleSubmit,
         formState: { errors },
+        watch
     } = useForm();
-
+    const password = watch("password");
     const onSubmit = (data) => {
         setFormLoading(true)
         axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/register', { ...data, phone: '', image: '', city: '', streetAddress: '' })
@@ -74,9 +78,46 @@ const Register = () => {
                                 </div>
 
                                 <div className="relative mt-6">
-                                    <input autoComplete="off" id="password" name="password" type="text" className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" {...register("password", { required: true, pattern: /(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/, minLength: 6 })} />
+                                    <input autoComplete="off" id="password" name="password"
+                                        type={openPassword ? "password" : "text"}
+                                        className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" {...register("password", { required: true, minLength: 6 })} />
                                     <label htmlFor="password" className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs">Password</label>
-                                    {errors.password && <p className="text-red-500 text-sm w-72">use minimum 1 capital, 1 number and 1 special character & 6 length</p>}
+                                    {
+                openPassword ?
+                      <FaEyeSlash className="absolute text-black cursor-pointer right-3 top-0" onClick={()=>setOpenPasswords(!openPassword)}/>
+                      :
+                      <FaEye className="absolute absolute text-black cursor-pointer right-3 top-0" onClick={()=>setOpenPasswords(!openPassword)}/>
+              }
+                                    {errors.password && <p className="text-red-500 text-sm w-72">password length should be 6 or more</p>}
+
+                                </div>
+                                <div className="relative mt-6">
+                                    <input autoComplete="off" id="password" name="password"
+                                          type={conOpenPassword ? "password" : "text"}
+                                        className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password"
+                                        {...register("confirmPassword", {
+                                            required: "Confirm Password is Required",
+                                            validate: (value) =>
+                                              value === password || "Passwords do not match",
+                                          })}/>
+                                    <label htmlFor="password" className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs">Confirm Password</label>
+
+               {conOpenPassword ? (
+        <FaEyeSlash
+          className="absolute text-black cursor-pointer right-3 top-0"
+          onClick={() => setConOpenPasswords(!conOpenPassword)}
+        />
+      ) : (
+        <FaEye
+          className="absolute text-black cursor-pointer right-3 top-0"
+          onClick={() => setConOpenPasswords(!conOpenPassword)}
+        />
+      )}
+                                      {errors.confirmPassword && (
+        <p className="text-red-600" role="alert">
+          {errors.confirmPassword?.message}
+        </p>
+      )}
 
                                 </div>
 
