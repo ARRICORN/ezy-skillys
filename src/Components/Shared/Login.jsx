@@ -8,7 +8,7 @@ import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form"
 import { useRouter } from 'next/navigation';
 import { MdErrorOutline } from "react-icons/md";
-import { signIn, useSession } from 'next-auth/react';
+import { getSession, signIn, useSession } from 'next-auth/react';
 import Loading from '../Ui/Loading';
 
 const Login = () => {
@@ -16,7 +16,10 @@ const Login = () => {
     const [error, setError] = React.useState("");
     const router = useRouter();
     const session = useSession();
+
     console.log(session);
+
+    if (session.status == 'authenticated') router.push('/');
 
     const {
         register,
@@ -31,12 +34,12 @@ const Login = () => {
             if (e.error) {
                 setError("Invalid email/password");
             } else {
-                //location.reload();
-                router.push("/");
+                const sessions = await getSession();
+                //router.push("/blog");
+                location.reload();
             }
             setFormLoading(false);
         })
-
     }
 
     return (
@@ -65,9 +68,9 @@ const Login = () => {
                                 </div>
 
                                 <div className="relative mt-6">
-                                    <input autoComplete="off" id="password" name="password" type="text" className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" {...register("password", { required: true, pattern: /(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/, minLength: 6 })} />
+                                    <input autoComplete="off" id="password" name="password" type="text" className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600" placeholder="Password" {...register("password")} />
                                     <label htmlFor="password" className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs">Password</label>
-                                    {errors.password && <p className="text-red-500 text-sm w-72">use minimum 1 capital, 1 number and 1 special character & 6 length</p>}
+                                    
 
                                 </div>
 

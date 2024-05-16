@@ -39,22 +39,24 @@ export const authOptions = {
         if (user) {
           const { name, email, image } = user
           // post data in server
-          //
+          const loginResponse = await axios.post(process.env.SERVER_URL + '/providerLogin', { name, email, image, phone: "", streetAddress: "", city: "" });
+          console.log("login res", loginResponse);
+          return user
         }
-        return user
+        return false
       } catch (err) {
         return false
-      }
-
-      const isAllowedToSignIn = true
-      if (isAllowedToSignIn) {
-        return '/unauthorized'
-      } else {
-        // Return false to display a default error message
-        return false
-        // Or you can return a URL to redirect to:
-        // return '/unauthorized'
       }
     }
   }
 };
+
+// const isAllowedToSignIn = true
+//       if (isAllowedToSignIn) {
+//         return '/unauthorized'
+//       } else {
+//         // Return false to display a default error message
+//         return false
+//         // Or you can return a URL to redirect to:
+//         // return '/unauthorized'
+//       }

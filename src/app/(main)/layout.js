@@ -10,8 +10,10 @@ export default function MainLayout({ children }) {
     <main className="bg-white">
       <Navbar />
       <NextAuthSessionProvider>
-        
-        {children}
+
+        <div className="min-h-screen">
+          {children}
+        </div>
       </NextAuthSessionProvider>
       <Footer />
     </main>
