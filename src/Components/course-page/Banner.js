@@ -1,6 +1,6 @@
 import { Fragment } from "react";
-import banner from "./assets/banner.png";
-import angular1 from "./assets/angular1.png";
+// import banner from "/src/assets/banner.png";
+import angular1 from "/src/assets/angular1.png"
 import Image from "next/image";
 const Banner = () => {
   return (
