@@ -8,7 +8,7 @@ import { Fragment } from "react";
 export default function MainLayout({ children }) {
   return (
     <main className="bg-white">
-      <Navbar />
+      {/* <Navbar /> */}
       <NextAuthSessionProvider>
 
         <div className="min-h-screen">
