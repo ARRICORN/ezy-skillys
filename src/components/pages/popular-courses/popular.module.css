@@ -55,7 +55,9 @@
   color: #ffffff;
   animation: scaleUp 0.3s ease-in-out;
 }
-
+.buttons img {
+  z-index: 9999;
+}
 @keyframes scaleUp {
   0% {
     transform: scale(1);
