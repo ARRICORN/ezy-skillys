@@ -24,7 +24,7 @@ export const authOptions = {
         try {
           const { email, password } = credentials;
           // post data is server
-          const loginResponse = await axios.post(process.env.SERVER_URL + '/login', { email, password });
+          const loginResponse = await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/login', { email, password });
           return loginResponse.data.user;
         } catch (err) {
           return false;
@@ -39,7 +39,7 @@ export const authOptions = {
         if (user) {
           const { name, email, image } = user
           // post data in server
-          const loginResponse = await axios.post(process.env.SERVER_URL + '/providerLogin', { name, email, image, phone: "", streetAddress: "", city: "" });
+          const loginResponse = await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/providerLogin', { name, email, image, phone: "", streetAddress: "", city: "" });
           console.log("login res", loginResponse);
           return user
         }

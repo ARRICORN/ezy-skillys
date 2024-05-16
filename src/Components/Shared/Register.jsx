@@ -6,14 +6,13 @@ import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form"
-import UseAxiosPublic from '../Utils/UseAxiosPublic';
 import { useRouter } from 'next/navigation';
 import Loading from '../Ui/Loading';
 import { MdErrorOutline } from "react-icons/md";
 import { signIn } from 'next-auth/react';
+import axios from 'axios';
 
 const Register = () => {
-    const axiosPublic = UseAxiosPublic();
     const [formLoading, setFormLoading] = React.useState(false);
     const [error, setError] = React.useState("");
     const router = useRouter();
@@ -25,7 +24,7 @@ const Register = () => {
 
     const onSubmit = (data) => {
         setFormLoading(true)
-        axiosPublic.post('/register', { ...data, phone: '', image: '', city: '', streetAddress: '' })
+        axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/register', { ...data, phone: '', image: '', city: '', streetAddress: '' })
             .then((res) => {
                 console.log(res);
                 if (res?.data?.isOk) {
