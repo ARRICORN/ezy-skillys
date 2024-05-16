@@ -3,6 +3,7 @@ import CertificateAchievement from "@/components/pages/certificate-achivement/Ce
 import MentorsTrainer from "@/components/pages/mentors-trainers-review/MentorsTrainer";
 import PopularCourses from "@/components/pages/popular-courses/PopularCourses";
 import Project_planning from "@/components/pages/project-planning/Project_planning";
+import Footer from "@/components/shared/Footer";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Achievement />
       <MentorsTrainer />
       <CertificateAchievement />
+      <Footer />
     </main>
   );
 }

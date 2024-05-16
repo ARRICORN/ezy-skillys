@@ -1,8 +1,8 @@
 import Image from "next/image";
-import logo from "../../../../public/assets/boy.png";
-import star from "../../../../public/assets/favorite.png";
-import downloads from "../../../../public/assets/file.png";
-import award from "../../../../public/assets/trophy.png";
+import logo from "../../../assets/boy.png";
+import star from "../../../assets/favorite.png";
+import downloads from "../../../assets/file.png";
+import award from "../../../assets/trophy.png";
 import styles from "./mentors.module.css";
 
 const MentorsTemplate = ({ user }) => {

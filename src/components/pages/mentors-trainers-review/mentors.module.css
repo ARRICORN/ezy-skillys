@@ -3,7 +3,7 @@
   border-radius: 10px;
 }
 .bgImage {
-  background-image: url("../../../../public/assets/elips.png");
+  background-image: url("../../../assets/elips.png");
   background-repeat: no-repeat;
   background-position: 1% 84%;
   background-size: 14%;

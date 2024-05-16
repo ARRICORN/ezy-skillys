@@ -2,7 +2,7 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .bg {
-  background-image: url("../../../../public/assets/ornament.png");
+  background-image: url("../../../assets/ornament.png");
   background-position: right;
   background-repeat: no-repeat;
   background-size: 17%;

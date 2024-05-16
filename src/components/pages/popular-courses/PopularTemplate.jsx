@@ -1,7 +1,7 @@
 import Image from "next/image";
-import files from "../../../../public/assets/file.png";
-import demo from "../../../../public/assets/computer.png";
-import pin from "../../../../public/assets/push-pin.png";
+import files from "../../../assets/file.png";
+import demo from "../../../assets/computer.png";
+import pin from "../../../assets/push-pin.png";
 import styles from "./popular.module.css";
 
 const PopularTemplate = ({ item }) => {

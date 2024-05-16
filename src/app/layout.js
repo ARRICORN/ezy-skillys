@@ -1,10 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-<<<<<<< HEAD
-import Footer from "@/components/shared/footer/Footer";
-=======
 import NextAuthSessionProvider from "@/Provider/SessionProvider";
->>>>>>> dd9c29d0d8dd5bf386bbb6a793f35108eb5553f9
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,17 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-<<<<<<< HEAD
       <body suppressHydrationWarning={true} className={inter.className}>
-        {children}
-        {/* === footer section will show everywhere === */}
-        <Footer />
-=======
-      <body className={inter.className}>
-        <NextAuthSessionProvider>
-          {children}
-        </NextAuthSessionProvider>
->>>>>>> dd9c29d0d8dd5bf386bbb6a793f35108eb5553f9
+        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
       </body>
     </html>
   );

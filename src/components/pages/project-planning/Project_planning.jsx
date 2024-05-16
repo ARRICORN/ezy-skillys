@@ -2,7 +2,7 @@ import Image from "next/image";
 import planningData from "../../../../src/utility/temp/course_planing.json";
 import PlanningTemplate from "./PlanningTemplate";
 import styles from "./planning.module.css";
-import logo from "../../../../public/assets/doted.png";
+import logo from "../../../assets/doted.png";
 
 const Project_planning = () => {
   return (
