@@ -4,10 +4,10 @@ import MoreCourses from "@/Components/course-page/MoreCourses";
 import Projects from "@/Components/course-page/Projects";
 import Tools from "@/Components/course-page/Tools";
 import { Fragment } from "react";
-import uiAngular from "/src/Components/course-page/assets/ui-angular.png";
-import mean from "/src/Components/course-page/assets/mean.png";
-import devops from "/src/Components/course-page/assets/devops.png";
-import react from "/src/Components/course-page/assets/react.png";
+import uiAngular from "/src/assets/ui-angular.png";
+import mean from "/src/assets/mean.png";
+import devops from "/src/assets/devops.png";
+import react from "/src/assets/react.png";
 
 const layout = () => {
   const courseModules = [

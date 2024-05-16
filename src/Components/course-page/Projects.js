@@ -1,5 +1,5 @@
 "use client";
-import angular2 from "/src/Components/course-page/assets/angular2.png";
+import angular2 from "/src/assets/angular2.png";
 import Image from "next/image";
 import { Fragment, useState } from "react";
 

@@ -2,9 +2,9 @@ import { Fragment } from "react";
 import "../../app/(main)/course-page/coursePage.css";
 import CourseModules from "./CourseModules";
 import Image from "next/image";
-import tick from "/src/Components/course-page/assets/tick1.png";
-import beads from "/src/Components/course-page/assets/beads1.png";
-import ellipse from "/src/Components/course-page/assets/ellipse3.png";
+import tick from "/src/assets/tick1.png";
+import beads from "/src/assets/beads1.png";
+import ellipse from "/src/assets/ellipse3.png";
 
 const CourseContent = ({ courseContentObjectives, courseModules }) => {
   return (

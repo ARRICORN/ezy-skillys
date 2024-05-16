@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Fragment } from "react";
-import download from "/src/Components/course-page/assets/download-vector.png";
-import monitor from "/src/Components/course-page/assets/monitor-vector.png";
-import enroll from "/src/Components/course-page/assets/enroll-vector.png";
+import download from "/src/assets/download-vector.png";
+import monitor from "/src/assets/monitor-vector.png";
+import enroll from "/src/assets/enroll-vector.png";
 
 const MoreCourses = () => {
   return (
