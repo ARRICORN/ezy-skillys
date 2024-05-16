@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form"
 import { useRouter } from 'next/navigation';
 import Loading from '../Ui/Loading';
 import { MdErrorOutline } from "react-icons/md";
-import { signIn } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import axios from 'axios';
 
 const Register = () => {
@@ -21,6 +21,9 @@ const Register = () => {
         handleSubmit,
         formState: { errors },
     } = useForm();
+    const session = useSession();
+
+    if (session.status == 'authenticated') router.push('/');
 
     const onSubmit = (data) => {
         setFormLoading(true)
