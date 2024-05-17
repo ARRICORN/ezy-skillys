@@ -21,8 +21,8 @@ const NavBar = () => {
   );
   return (
     <div>
-      <nav className="w-full ">
-        <div className="flex items-center lg:hidden justify-between relative p-6">
+      <nav>
+        <div className="flex items-center lg:hidden justify-between relative p-6 ">
           <Image
             className="md:scale-90 xl:scale-100 scale-75"
             src={NavIcon}
@@ -42,7 +42,7 @@ const NavBar = () => {
         {mobileNavOpen && (
           <div
             onClick={() => setMobileNavOpen(false)}
-            className="absolute lg:hidden py-4 bg-slate-200 w-full rounded-lg  flex flex-col gap-2 text-center"
+            className="absolute lg:hidden py-4 bg-slate-200 w-full rounded-lg  flex flex-col gap-2 text-center z-50"
           >
             <div>
               <ul className=" space-y-5 ">{navList}</ul>
