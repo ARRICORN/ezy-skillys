@@ -5,13 +5,13 @@ import SliderBody from "./Slider/SliderBody";
 
 const WorldsFirstAI = () => {
   return (
-    <div className="grid md:grid-cols-2 gap-10 items-center relative  pb-20 sm:pt-10 ">
+    <div className="grid md:grid-cols-2 gap-10 items-center relative  pb-20 ">
       <div>
         <Heading cssClass={`text-[#003F7D]`}>World’s</Heading>
         <Heading cssClass={`text-[#003F7D]`}>First AI Based </Heading>
         <Heading cssClass={`text-[#FF8B36] `}>Online Learning Platform</Heading>
       </div>
-      <div>
+      <div> 
         <SliderBody />
       </div>
       <div className="absolute -bottom-10 -left-20 ">
