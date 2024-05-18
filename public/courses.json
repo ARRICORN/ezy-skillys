@@ -1,0 +1,73 @@
+[
+    {
+      "_id": "66433637a85b68967bf5a507",
+      "title": "Angular JS",
+      "desc": "A JavaScript-based open-source front-end web framework for developing single-page applications. ",
+      "image": "https://s3-alpha-sig.figma.com/img/4095/d50c/6dfd7b0fa140985d5767b1fa113e1440?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ig70pT8o4dmwbOE9cMITriYKt0vWzzjJkiCisLFCxKHm2GUfPPLP2Hko3uZ5W~Y6SsX~R2SASOU46iBoHuvWw3~EiE4KOScicTvJnuKWUSTg6MT6TEGBk4godsPw7Bb5ZjevP8SbuVQkgYT-Rj5FDK8E3jj6ThLVgzCdz1Pi2FlbIbvCPO2gbpKDHW1bC4qcPtKciU83QwDBFjHYfXtiDpXHTd8v2CwaMu7jOqcgUxJCq~xeDgoKKVj5SxPy7ewfmjFjcCyPitsShpUeGL1rilPbDRKkX66KcdWKmFac7NDcLp0QTQdvuNtxrtS-EWykQz~dGJ5vL~UkAtZSe2~Caw__",
+      "price": 400,
+      "tag": "opened",
+      "categories": [
+        "Web Development",
+        "IT"
+      ],
+      "addedBy": "test@gmail.com",
+      "createdAt": "2024-05-14T10:00:23.528Z",
+      "updatedAt": "2024-05-14T10:00:23.528Z",
+      "__v": 0,
+      "liveDemo": "https://www.youtube.com/watch?v=5Xy-t8k_M4A&list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr"
+    },
+    {
+      "_id": "66433717a85b68967bf5a50d",
+      "title": "Vue JS",
+      "desc": "An open-source model–view–viewmodel front end JavaScript framework for building user interfaces & single-page applications.",
+      "image": "https://s3-alpha-sig.figma.com/img/2135/b9c9/ab57a65e6ebd04e859949106f426b47e?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=THB8Ljy6Yo0PWyjya8-N3esBU5Hq9HnnEExWuZDGBqXw51RcK~D7uYX~TL02dFuG32UCmh5G4C4K30Cqqz1QOOvyWTD57O-9betBO~zByQyL079D7BhGv5145B1B5Qst8lpXAa40CSrpJF1fE0tORH~cdwBLEeuGVU5seIroGTLsMn4pFYkZ-D~sy5jD4QneeYhUlf0crVUKG1K8Gq0eZpz3dzPi5yGgDq27l~tbga85YmQ1I9xLN4~D61dtuTmajaKwhegH49LTun4qMfyZkgGLcqXm3dlTCXbREbwk7dJ~4wslXl4ls2avMG7WxWir--H8e981j-2f270bFRNz7Q__",
+      "price": 450,
+      "tag": "opened",
+      "categories": [
+        "Web Development",
+        "Frontend",
+        "Coding"
+      ],
+      "addedBy": "test@gmail.com",
+      "createdAt": "2024-05-14T10:04:07.725Z",
+      "updatedAt": "2024-05-14T10:04:07.725Z",
+      "__v": 0,
+      "liveDemo": "https://www.youtube.com/watch?v=5Xy-t8k_M4A&list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr"
+    },
+    {
+      "_id": "66433783a85b68967bf5a511",
+      "title": "Python",
+      "desc": "Python is an interpreted high-level general-purpose programming language.",
+      "image": "https://s3-alpha-sig.figma.com/img/1d40/b3c0/6878b484498c49a35c522fd009a37775?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Xe0iO9Bz82by19rUhiSbTbYIEGERpePhcEsosTV2wRch6OuCqqvwN2THq9COmpLceR4b2vygygZxM1KyL1LKQneJ0QKQvldrYZ36UK1urKwlMlcQDeNymXHHCjZBfgqp1WvJxFss4qZs0MC7-5W5yM4DpRdVo86GcYLnrEJUcsVZJtsr5~chnKuRhCWV6DuVDQa6qybheQMkldehYGdMx6C5FfXefl2~eY9iX3kiFMcHetojlCBFGck3cAj~XHx7HVGGFimR2SR9JU~6ku0NtS8erlfclIT9csnQH7w4xnBQKczaZAmXxgVCWSsuN2uT1F45Oj5OV2DA6kJH3YLmUg__",
+      "price": 500,
+      "tag": "opened",
+      "categories": [
+        "Web Development",
+        "Frontend",
+        "Coding"
+      ],
+      "addedBy": "test@gmail.com",
+      "createdAt": "2024-05-14T10:05:55.800Z",
+      "updatedAt": "2024-05-14T10:05:55.800Z",
+      "__v": 0,
+      "liveDemo": "https://www.youtube.com/watch?v=5Xy-t8k_M4A&list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr"
+    },
+    {
+      "_id": "66433a566999f779fbeded08",
+      "title": "React JS",
+      "desc": "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components.",
+      "image": "https://s3-alpha-sig.figma.com/img/430f/b989/91f2cb89a5f99056685d2f4a4c483aec?Expires=1716768000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=ZPIsare49q0Xgm5qRtq-lGA0ik8iMhkiAhcEwLbx2J41-Fx04yuW4JGFc~pYLioLLexUPOrfY~C3HhZWT8K7-NH5HApp21TPykqL13SxQkzaye6gCLCACoamLimAORFkwHJQJemZKV5lR5lnmcZyH7skkPCkTC~aJFkuD1aKDXiR9SKxdczcEFpdqrg3rOiGj7KksGRegVPx~5z7rK~-whYDopE4bGuQnibJ4-FHvrYeQ-ML8YdvkWOlkzIV99flfc7ToD2YLQCSoFsmqK6rUOu0A2h4uTxjbwZH4puLIv3~jtf9F1FtyHio4xwqqOPWBx5IY2KqWxWvKG~XSy7qRg__",
+      "price": 400,
+      "tag": "opened",
+      "categories": [
+        "Web Development",
+        "Frontend",
+        "Coding"
+      ],
+      "addedBy": "test@gmail.com",
+      "liveDemo": "https://www.youtube.com/watch?v=5Xy-t8k_M4A&list=PLHiZ4m8vCp9M6HVQv7a36cp8LKzyHIePr",
+      "createdAt": "2024-05-14T10:17:58.637Z",
+      "updatedAt": "2024-05-14T10:17:58.637Z",
+      "__v": 0
+    }
+  ]
