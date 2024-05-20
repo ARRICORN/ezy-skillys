@@ -7,8 +7,12 @@ import NavButton from "./NavButton";
 import { FaBar, Close } from "@/Components/Icons/ReactIcons";
 import { useState } from "react";
 
+
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+
+  
+
   const navList = (
     <>
       <NavLink href={"/home"}>Home</NavLink>
@@ -21,7 +25,7 @@ const NavBar = () => {
   );
   return (
     <div>
-      <nav>
+      <nav className="">
         <div className="flex items-center lg:hidden justify-between relative p-6 ">
           <Image
             className="md:scale-90 xl:scale-100 scale-75"
