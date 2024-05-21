@@ -13,21 +13,21 @@
   justify-content: center;
   align-items: center;
   border-radius: 5px;
-  background: #183153;
+  background: #fb923c;
   font-family: "Montserrat", sans-serif;
   box-shadow: 0px 6px 24px 0px rgba(0, 0, 0, 0.2);
   overflow: hidden;
   cursor: pointer;
   border: none;
   margin: auto;
-  padding: 0px 10px;
+  padding: 3px 10px;
 }
 
 .buttons:after {
   content: " ";
   width: 0%;
   height: 100%;
-  background: orange;
+  background: #183153;
   position: absolute;
   transition: all 0.4s ease-in-out;
   right: 0;
