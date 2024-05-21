@@ -12,13 +12,16 @@ const Innovating = () => {
     <div className="w-11/12 mx-auto ">
       <div className="grid md:grid-cols-2 gap-10 ">
         {/* left  */}
-
-        <div className="relative md:h-full h-72 ">
-          <Image src={Office} alt="BookReading" className="w-6/12 z-10 absolute" />
+        <div className="relative md:h-full h-96 ">
+          <Image
+            src={Office}
+            alt="BookReading"
+            className="w-6/12 z-10 absolute"
+          />
           <Image
             src={CircleBg}
             alt="CircleBg"
-            className="w-4/12 top-36 absolute left-0 translate-x-3/4 translate-y-1-4"
+            className="w-5/12 top-36 absolute left-0 translate-x-3/4 translate-y-1-4"
           />
           <Image
             src={UpArrow}
@@ -30,7 +33,6 @@ const Innovating = () => {
             alt="CircleBg"
             className="w-10  absolute left-0 bottom-0 "
           />
-          
         </div>
 
         {/* right  */}
