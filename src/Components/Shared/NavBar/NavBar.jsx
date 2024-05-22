@@ -6,17 +6,20 @@ import NavButtonBorder from "./NavButtonBorder";
 import NavButton from "./NavButton";
 import { FaBar, Close } from "@/Components/Icons/ReactIcons";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 
 
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
-  
+  const pathName = usePathname()
+
+  const AboutActive = pathName.toString() === "/about";
 
   const navList = (
     <>
       <NavLink href={"/home"}>Home</NavLink>
-      <NavLink href={"/selector"}>Course Selector</NavLink>
+      <NavLink href={"/course-selector"}>Course Selector</NavLink>
       <NavLink href={"/courses"}>Courses</NavLink>
       <NavLink href={"/pricing"}>Pricing</NavLink>
       <NavLink href={"/faq"}>FAQ</NavLink>
@@ -25,7 +28,7 @@ const NavBar = () => {
   );
   return (
     <div>
-      <nav className="">
+      <nav className={`${AboutActive && 'bg-[#003F7D]'}`}>
         <div className="flex items-center lg:hidden justify-between relative p-6 ">
           <Image
             className="md:scale-90 xl:scale-100 scale-75"
@@ -68,7 +71,7 @@ const NavBar = () => {
             <ul className="flex items-center gap-7 ">{navList}</ul>
           </div>
           <div className=" flex gap-4 scale-90 xl:scale-100">
-            <NavButtonBorder href={"/login"}>Log In</NavButtonBorder>
+            <NavButtonBorder  href={"/login"}>Log In</NavButtonBorder>
             <NavButton href={"/create"}>Create Account</NavButton>
           </div>
         </div>
