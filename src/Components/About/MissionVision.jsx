@@ -10,7 +10,7 @@ const MissionVision = () => {
   return (
     <div className="w-11/12 mx-auto relative md:py-20 py-10">
       <div className="grid md:grid-cols-2 gap-10">
-        <div className="text-center space-y-5">
+        <div className="text-center space-y-6">
           <Image
             src={TargetBoard}
             alt="TargetBoard"
@@ -27,7 +27,7 @@ const MissionVision = () => {
             re-skilling.
           </SubTitle>
         </div>
-        <div className="text-center space-y-5">
+        <div className="text-center space-y-6">
           <Image
             src={Binoculars}
             alt="Binoculars"
