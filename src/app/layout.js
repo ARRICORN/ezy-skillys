@@ -1,6 +1,7 @@
 import { Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import NextAuthSessionProvider from "@/Provider/SessionProvider";
+import NextAuthSessionProvider from "@/Provider/SessionProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600", "700", "800"], variable: "--font-poppins" });
