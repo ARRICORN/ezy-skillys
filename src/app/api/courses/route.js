@@ -58,8 +58,6 @@ export async function POST(req) {
       throw new Error("You can't set isDeleted when creating a course!");
     }
 
-    const { title, categories } = body;
-
     const fieldsFromBody = Object.keys(body);
 
     fieldsThatShouldBeInCourse.map((field) => {
@@ -68,6 +66,7 @@ export async function POST(req) {
         throw new Error(`${field} is required to create a course!`);
       }
     });
+    const { title, categories } = body;
 
     if (!categories.length) {
       throw new Error("Categories must have atleast one value!");
