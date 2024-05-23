@@ -3,27 +3,28 @@ import Image from "next/image";
 import { Fragment, useState } from "react";
 import downArrow from "/src/assets/ic_Dropdown.png";
 
-const CoursesSort = ({ options, onChange }) => {
+const CoursesSort = ({ options }) => {
   const [selected, setSelected] = useState(options[0]);
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(selected);
-
   return (
     <Fragment>
-      <div className="w-full flex gap-10">
-        <span>Sort by: </span>
-        <span>{selected.name}</span>
-        <button onClick={() => setIsOpen(!isOpen)}>
-          <Image src={downArrow} alt="Down Arrow Button" />
+      <div className="w-full flex justify-between text-xs">
+        <div className="flex items-center ml-2">
+        <span>
+          Sort by: <span className="font-semibold">{selected.name}</span>
+        </span>
+        </div>
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2 border h-full">
+          <Image src={downArrow} alt="Down Arrow Button" className="w-4"/>
         </button>
       </div>
       {isOpen && (
-        <div className="w-full flex flex-col">
+        <div className="w-full flex flex-col justify-start border text-xs text-start">
           {options
             .filter((each) => each !== selected)
             .map((each) => (
-              <button key={each.id} onClick={() => setSelected(each)}>
+              <button className="w-full  text-start pl-[3.5rem] py-1" key={each.id} onClick={() => setSelected(each)}>
                 {each.name}
               </button>
             ))}

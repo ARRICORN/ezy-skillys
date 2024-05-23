@@ -40,7 +40,7 @@ const CourseMenu = () => {
           <button>Coming Soon</button>
           <button>Archived</button>
         </div>
-        <div className="w-1/5 border">
+        <div className="w-1/5 border rounded-md text-sm">
         <CoursesSort options={options}/>
         </div>
       </div>
