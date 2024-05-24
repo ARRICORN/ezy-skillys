@@ -4,7 +4,7 @@ import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 
-const fieldsThatShouldBeWithBody = ["courseId"];
+const fieldsThatShouldBeWithBody = ["course"];
 
 export async function POST(req) {
   try {
@@ -32,16 +32,16 @@ export async function POST(req) {
         throw new Error(`${field} is required to purchase a course!`);
       }
     });
-    const { courseId } = body;
+    const { course } = body;
 
-    const course = await Course.findById(courseId);
-    if (!course) {
+    const courseDetails = await Course.findById(course);
+    if (!courseDetails) {
       throw new Error("The course doesn't exist!");
     }
     // checking is the course already purchased or not
     const isAlreadyPurchased = await PurchasedCourse.findOne({
       userEmail: userInfo.email,
-      courseId: course._id,
+      course,
     });
     if (isAlreadyPurchased) {
       throw new Error("You already purchased this course!");
@@ -49,7 +49,7 @@ export async function POST(req) {
 
     const payload = {
       userEmail: userInfo.email,
-      courseId,
+      course,
     };
 
     const result = await PurchasedCourse.create(payload);
