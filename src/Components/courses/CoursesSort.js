@@ -9,27 +9,36 @@ const CoursesSort = ({ options }) => {
 
   return (
     <Fragment>
-      <div className="w-full flex justify-between text-xs">
-        <div className="flex items-center ml-2">
-        <span>
-          Sort by: <span className="font-semibold">{selected.name}</span>
-        </span>
+      <div className="relative">
+        <div className="w-full flex justify-between text-xs">
+          <div className="flex items-center ml-2">
+            <span>
+              Sort by: <span className="font-semibold">{selected.name}</span>
+            </span>
+          </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="p-2 border h-full"
+          >
+            <Image src={downArrow} alt="Down Arrow Button" className="w-4" />
+          </button>
         </div>
-        <button onClick={() => setIsOpen(!isOpen)} className="p-2 border h-full">
-          <Image src={downArrow} alt="Down Arrow Button" className="w-4"/>
-        </button>
+        {isOpen && (
+          <div className="w-full flex flex-col justify-start border text-xs text-start absolute bg-white rounded-b-md">
+            {options
+              .filter((each) => each !== selected)
+              .map((each) => (
+                <button
+                  className="w-full  text-start pl-[3.5rem] py-1"
+                  key={each.id}
+                  onClick={() => setSelected(each)}
+                >
+                  {each.name}
+                </button>
+              ))}
+          </div>
+        )}
       </div>
-      {isOpen && (
-        <div className="w-full flex flex-col justify-start border text-xs text-start">
-          {options
-            .filter((each) => each !== selected)
-            .map((each) => (
-              <button className="w-full  text-start pl-[3.5rem] py-1" key={each.id} onClick={() => setSelected(each)}>
-                {each.name}
-              </button>
-            ))}
-        </div>
-      )}
     </Fragment>
   );
 };
