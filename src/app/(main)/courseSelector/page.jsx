@@ -15,11 +15,11 @@ import ornaments from '../../../assets/Ornament3.png'
 import elipse from '../../../assets/Ellipse1.png'
 import Image from 'next/image'
 import styles from './courseSelector.module.css'
-import { useState } from 'react'
-import NonIt from '@/Components/NonIt/NonIt'
+import { useEffect, useState } from 'react'
+import ItCourses from '@/Components/ItCourses/ItCourses'
 import Upskill from '@/Components/Upskill/Upskill'
 import Link from 'next/link'
-
+import NonItCourses from '@/Components/ItCourses/NonItCourses/nonItCourses'
 
 const Course = () => {
     const [isLookingJob, setIsLookingJob] = useState(false)
@@ -28,9 +28,13 @@ const Course = () => {
     const [isItField, setIsItField] = useState(false);
     const [isCoding, setIsCoding] = useState(false);
     const [choosedPath, setChoosedPath] = useState({})
+    const [isIt, setIsIt] = useState(false)
     const [isNonIt, setIsNonIt] = useState(false)
     const [isUpSkill, setIsUpSkill] = useState(false)
+
+
     const lookingJobClicked = () => {
+        setIsIt(false);
         setIsNonIt(false);
         setIsLookingJob(true)
         setIsGreet(true)
@@ -40,12 +44,23 @@ const Course = () => {
         setIsNonIt(true)
         setIsLookingJob(false)
         setIsUpSkill(false)
+
+    }
+    const itJobFind = () => {
+        setIsIt(true)
+        setIsNonIt(false);
+        setIsLookingJob(false)
+        setIsUpSkill(false)
+
     }
     const upSkill = () => {
         setIsUpSkill(true)
-        setIsNonIt(false)
+        setIsNonIt(false);
+        setIsIt(false)
         setIsLookingJob(false)
     }
+
+
 
 
     return (
@@ -94,7 +109,10 @@ const Course = () => {
                                         </div>
                                         <div>
 
-                                            <button onClick={nonItJobFind} className="border-2 border-white p-5 rounded-3xl"><Image src={it} alt="job" /></button>
+                                            <button onClick={nonItJobFind}
+                                                className="border-2 border-white p-5 rounded-3xl"><Image src={it} alt="job" /></button>
+                                            {/* <button
+                                                className="border-2 border-white p-5 rounded-3xl"><Image src={it} alt="job" /></button> */}
 
                                             <p className='text-white mt-1 text-center'>IT to Non IT<br />
                                                 Job Shift</p>
@@ -157,7 +175,7 @@ const Course = () => {
 
                                                         <div className='w-full flex px-3 md:px-0'>
                                                             <button onClick={() => setIsItField(true)} className='px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-secondary'>IT Field</button>
-                                                            <button onClick={nonItJobFind} className='px-4 md:px-12 ml-4 py-0 mt-4 md:py-3 rounded-lg text-white border-2'>Non IT Field</button>
+                                                            <button onClick={itJobFind} className='px-4 md:px-12 ml-4 py-0 mt-4 md:py-3 rounded-lg text-white border-2'>Non IT Field</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -264,7 +282,10 @@ const Course = () => {
                                                                 <p className='bg-yellow-500 w-full md:w-[440px]'>Excellent! Click next to get into</p>
                                                             </div>
 
-                                                            <button className='px-6 mt-4 py-2 rounded-lg text-white bg-secondary'>Next</button>
+
+                                                            <Link href="/ItCourses/categories=it&categories=coding&categories=forntend">
+                                                                <button className='px-6 mt-4 py-2 rounded-lg text-white bg-secondary'>Next</button>
+                                                            </Link>
 
                                                         </div>
                                                     </div>
@@ -279,10 +300,15 @@ const Course = () => {
 
 
 
-                                {/* if select non it */}
+                                {/* if select  it */}
+                                {/* {
+                                    isIt && <ItCourses></ItCourses>
+                                } */}
+                                {/* if select  nonit */}
                                 {
-                                    isNonIt && <NonIt></NonIt>
+                                    isNonIt && <NonItCourses></NonItCourses>
                                 }
+
 
                                 {/* if select Upskill */}
                                 {

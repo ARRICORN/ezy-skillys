@@ -22,6 +22,7 @@ export async function GET(req) {
     };
   }
 
+  mongoose.connect(process.env.DATABASE_URL);
   const result = await Course.find(!!filterConditions && filterConditions);
   return Response.json({
     success: true,
@@ -42,14 +43,14 @@ export const fieldsThatShouldBeInCourse = [
 
 export async function POST(req) {
   try {
-     // Checking the user is logged in or not by checking the token;
-     const decoded = checkIsLoggedIn();
-     mongoose.connect(process.env.DATABASE_URL);
- 
-     const userInfo = await UserInfo.findOne({ email: decoded.email });
-     if (!userInfo) {
-       throw new Error("You are not authorized!");
-     }
+    // Checking the user is logged in or not by checking the token;
+    const decoded = checkIsLoggedIn();
+    mongoose.connect(process.env.DATABASE_URL);
+
+    const userInfo = await UserInfo.findOne({ email: decoded.email });
+    if (!userInfo) {
+      throw new Error("You are not authorized!");
+    }
     const body = await req.json();
 
     const { title, categories } = body;
