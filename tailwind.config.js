@@ -13,14 +13,12 @@ module.exports = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
     },
-    colors: {
-      primary: '#003F7D',
-      secondary: '#f98149',
-      white: '#FFF'
-    }
+    // === if you use container it will automatically center the section
+    container: {
+      center: true,
+      padding: "1rem",
+    },
   },
-
-
 
   plugins: [],
 };

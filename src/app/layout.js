@@ -12,10 +12,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <NextAuthSessionProvider>
-          {children}
-        </NextAuthSessionProvider>
+      <body suppressHydrationWarning={true} className={inter.className}>
+        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
       </body>
     </html>
   );
