@@ -9,7 +9,7 @@ export async function GET(req) {
   const tag = url.searchParams.get("tag");
   const categories = url.searchParams.getAll("categories");
 
-  const filterConditions = {isDeleted: false};
+  const filterConditions = { isDeleted: false };
   if (searchTerm) {
     filterConditions["title"] = { $regex: searchTerm, $options: "i" };
   }
@@ -37,24 +37,21 @@ export const fieldsThatShouldBeInCourse = [
   "price",
   "tag",
   "categories",
-  "liveDemo"
+  "liveDemo",
 ];
 
 export async function POST(req) {
   try {
-     // Checking the user is logged in or not by checking the token;
-     const decoded = checkIsLoggedIn();
-     mongoose.connect(process.env.DATABASE_URL);
- 
-     const userInfo = await UserInfo.findOne({ email: decoded.email });
-     if (!userInfo) {
-       throw new Error("You are not authorized!");
-     }
-     if(userInfo.role !== "admin") {
-      throw new Error("You are not authorized to create a course!");
-     }
+    // Checking the user is logged in or not by checking the token;
+    const decoded = checkIsLoggedIn();
+    mongoose.connect(process.env.DATABASE_URL);
+
+    const userInfo = await UserInfo.findOne({ email: decoded.email });
+    if (!userInfo) {
+      throw new Error("You are not authorized!");
+    }
     const body = await req.json();
-    if(body.isDeleted) {
+    if (body.isDeleted) {
       throw new Error("You can't set isDeleted when creating a course!");
     }
 
@@ -77,8 +74,8 @@ export async function POST(req) {
     }
     const payload = {
       ...body,
-      addedBy: decoded.email
-    }
+      addedBy: decoded.email,
+    };
     const result = await Course.create(payload);
     return Response.json({
       success: true,
