@@ -4,7 +4,7 @@ import mongoose, { Schema } from "mongoose";
 const PurchasedCourseSchema = new Schema(
   {
     userEmail: { type: String, required: true },
-    course: { type: String, required: true, ref: Course },
+    course: { type: Schema.Types.ObjectId, required: true, ref: Course },
   },
   { timestamps: true }
 );
