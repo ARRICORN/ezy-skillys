@@ -32,7 +32,7 @@ export async function GET() {
             },
             {
                 $match: {
-                    "courseInfo.addedBy": "robin@gmail.com"
+                    "courseInfo.addedBy": decoded.email
                 }
             }, 
             {
