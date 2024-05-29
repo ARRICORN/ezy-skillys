@@ -127,7 +127,6 @@ export async function DELETE(req, { params }) {
       {
         isDeleted: true,
       },
-      { new: true }
     );
     if (!result) {
       throw new Error("Course not found!");
@@ -135,7 +134,9 @@ export async function DELETE(req, { params }) {
     return Response.json({
       success: true,
       message: "Course is deleted successfully.",
-      data: result,
+      data: {
+        message: "Course is deleted successfully."
+      },
     });
   } catch (error) {
     console.error("Error during course deletion", error);
