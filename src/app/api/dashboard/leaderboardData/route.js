@@ -69,7 +69,7 @@ export async function GET() {
 
     return Response.json({
       success: true,
-      message: "My students are retrieved successfully",
+      message: "Leaderboard data is retrieved successfully",
       data: result,
     });
   } catch (error) {
