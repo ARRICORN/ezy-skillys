@@ -19,5 +19,6 @@ module.exports = {
       padding: "1rem",
     },
   },
+
   plugins: [],
 };

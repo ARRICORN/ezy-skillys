@@ -1,9 +1,8 @@
-import { Course } from "@/Models/Course";
 import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 
-export async function GET(req, { params }) {
+export async function GET(req) {
   try {
     // Checking the user is logged in or not by checking the token;
     const decoded = checkIsLoggedIn();
@@ -13,26 +12,17 @@ export async function GET(req, { params }) {
     if (!userInfo) {
       throw new Error("You are not authorized!");
     }
-
-    const courseID = params.courseID;
-    const result = await Course.findById(courseID);
-    if (!result) {
-      throw new Error("Course not found!");
-    }
-    if (result.isDeleted) {
-      throw new Error("The course is deleted!");
-    }
     return Response.json({
       success: true,
-      message: "Course details are retrieved successfully.",
-      data: result,
+      message: "Here is your role",
+      data: {
+        role: userInfo.role,
+      },
     });
   } catch (error) {
-    console.error("Error during course retrieving", error);
-
     return Response.json({
       success: false,
-      message: error.message || "Something went wrong",
+      message: error.message || "Internal server error",
     });
   }
 }
