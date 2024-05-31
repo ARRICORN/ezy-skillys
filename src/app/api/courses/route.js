@@ -9,7 +9,7 @@ export async function GET(req) {
   const tag = url.searchParams.get("tag");
   const categories = url.searchParams.getAll("categories");
 
-  const filterConditions = {};
+  const filterConditions = {isDeleted: false};
   if (searchTerm) {
     filterConditions["title"] = { $regex: searchTerm, $options: "i" };
   }
@@ -21,7 +21,7 @@ export async function GET(req) {
       $in: categories.map((category) => new RegExp(category, "i")),
     };
   }
-
+  mongoose.connect(process.env.DATABASE_URL);
   const result = await Course.find(!!filterConditions && filterConditions);
   return Response.json({
     success: true,
@@ -50,7 +50,13 @@ export async function POST(req) {
      if (!userInfo) {
        throw new Error("You are not authorized!");
      }
+     if(userInfo.role !== "admin") {
+      throw new Error("You are not authorized to create a course!");
+     }
     const body = await req.json();
+    if(body.isDeleted) {
+      throw new Error("You can't set isDeleted when creating a course!");
+    }
 
     const { title, categories } = body;
 

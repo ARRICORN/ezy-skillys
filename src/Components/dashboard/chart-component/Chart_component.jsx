@@ -11,7 +11,6 @@ const Chart_component = () => {
   return (
     <div>
       <div className={`m-5 h-[83vh] overflow-x-scroll no-scrollbar`}>
-
         {/* === top bar === */}
         <div className="flex items-center justify-between py-2 mb-5 px-5">
           <span>

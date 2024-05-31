@@ -1,6 +1,5 @@
 import SidebarComponent from "@/components/dashboard/Sidebar/SidebarComponent";
 import Top_header from "@/components/dashboard/top-header/Top_header";
-import React from "react";
 
 const layout = ({ children }) => {
   return (

@@ -22,16 +22,14 @@ const PopularTemplate = ({ item }) => {
       {/* details box */}
       <div className={`absolute top-[64%] px-2`}>
         <div className={`${styles.shadow} bg-[#FDFDFD] rounded-lg p-2 pb-4`}>
-          <h3 className="text-[20px] md:text-[25px] py-2">
-            {item?.courseName}
-          </h3>
+          <h3 className="text-[20px] md:text-[25px] py-2">{item?.title}</h3>
           <p className="text-[15px]">
-            {item?.description.length >= 100
-              ? `${item?.description.slice(0, 90)} ...`
-              : item?.description}
+            {item?.desc.length >= 100
+              ? `${item?.desc.slice(0, 90)} ...`
+              : item?.desc}
           </p>
           {/* button with icon */}
-          <div className="flex items-center justify-evenly py-3 gap-x-2">
+          <div className="flex items-center justify-evenly py-4 gap-x-2">
             <div className="flex items-center justify-between gap-x-3 border-[1px] py-[2px] border-orange-400 px-3 rounded">
               <Image
                 priority={true}
@@ -40,9 +38,12 @@ const PopularTemplate = ({ item }) => {
                 alt="icon"
                 src={demo}
               />
-              <button className="inline-block font-semibold text-[#575757]">
+              <a
+                href={item.liveDemo}
+                className="inline-block font-semibold text-[#575757]"
+              >
                 Live demo
-              </button>
+              </a>
             </div>
 
             <div className="flex items-center justify-between gap-x-2 border-[1px] py-[2px] border-orange-400 px-2 rounded">
