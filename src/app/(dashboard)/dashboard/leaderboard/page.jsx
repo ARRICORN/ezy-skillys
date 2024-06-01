@@ -1,11 +1,7 @@
-import React from "react";
+import Leader_board from "@/Components/dashboard/leader-board/Leader_board";
 
 const page = () => {
-  return (
-    <div className="p-5 flex items-center justify-center text-[30px] h-[83vh]">
-      <h1>Leader board is coming soon</h1>
-    </div>
-  );
+  return <Leader_board />;
 };
 
 export default page;
