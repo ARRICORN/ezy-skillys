@@ -13,11 +13,20 @@ export async function GET(req, { params }) {
     if (!userInfo) {
       throw new Error("You are not authorized!");
     }
+    if (userInfo.role !== "admin") {
+      throw new Error("You are not authorized!");
+    }
 
     const courseID = params.courseID;
-    const result = await Course.findById(courseID);
+    const result = await Course.findOne({
+      _id: courseID,
+      addedBy: userInfo.email,
+    });
     if (!result) {
       throw new Error("Course not found!");
+    }
+    if (result.isDeleted) {
+      throw new Error("The course is deleted!");
     }
     return Response.json({
       success: true,
@@ -45,7 +54,7 @@ export async function PATCH(req, { params }) {
       throw new Error("You are not authorized!");
     }
 
-    if(userInfo.role !== "admin") {
+    if (userInfo.role !== "admin") {
       throw new Error("You are not authorized to updated course details!");
     }
 
@@ -53,10 +62,16 @@ export async function PATCH(req, { params }) {
     if (!body) {
       throw new Error("No data given!");
     }
+    if (body.addedBy) {
+      throw new Error("You can't edit addedBy field!");
+    }
     const courseID = params.courseID;
     const course = await Course.findById(courseID);
     if (!course) {
       throw new Error("Course not found!");
+    }
+    if (course.isDeleted) {
+      throw new Error("This Course is already deleted!");
     }
 
     // Updating the course details
@@ -94,15 +109,27 @@ export async function DELETE(req, { params }) {
       throw new Error("You are not authorized!");
     }
 
-    if(userInfo.role !== "admin") {
+    if (userInfo.role !== "admin") {
       throw new Error("You are not authorized to delete this course!");
     }
-
-    
     const courseID = params.courseID;
-    const result = await Course.findByIdAndDelete(courseID);
+
+    const course = await Course.findById(courseID);
+    if (!course) {
+      throw new Error("Course not found!");
+    }
+    if (course.isDeleted) {
+      throw new Error("The course is already deleted!");
+    }
+
+    const result = await Course.findByIdAndUpdate(
+      courseID,
+      {
+        isDeleted: true,
+      },
+      { new: true }
+    );
     if (!result) {
-      sss;
       throw new Error("Course not found!");
     }
     return Response.json({

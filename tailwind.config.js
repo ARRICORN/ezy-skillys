@@ -17,6 +17,12 @@ module.exports = {
         montserrat: ["var(--font-montserrat)"],
       },
     },
+    // === if you use container it will automatically center the section
+    container: {
+      center: true,
+      padding: "1rem",
+    },
   },
+
   plugins: [],
 };

@@ -34,8 +34,8 @@ export const authOptions = {
   ],
   callbacks: {
     async signIn({ user, account }) {
+      console.log(user);
       try {
-        console.log(account);
         if (user) {
           const { name, email, image } = user
           // post data in server
@@ -50,13 +50,3 @@ export const authOptions = {
     }
   }
 };
-
-// const isAllowedToSignIn = true
-//       if (isAllowedToSignIn) {
-//         return '/unauthorized'
-//       } else {
-//         // Return false to display a default error message
-//         return false
-//         // Or you can return a URL to redirect to:
-//         // return '/unauthorized'
-//       }
