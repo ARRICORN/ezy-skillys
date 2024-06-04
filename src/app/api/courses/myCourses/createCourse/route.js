@@ -47,7 +47,7 @@ export const fieldsThatShouldBeInCourse = [
         throw new Error("Categories must have atleast one value!");
       }
       // Checking if the course is already exists or not
-      if (await Course.findOne({ title })) {
+      if (await Course.findOne({ title, addedBy: userInfo.email })) {
         throw new Error(`Course is already exists!`);
       }
       const payload = {
