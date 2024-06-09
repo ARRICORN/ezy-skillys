@@ -14,7 +14,7 @@ export async function GET(req) {
       throw new Error("You are not authorized!");
     }
     if (userInfo.role !== "admin") {
-      throw new Error("You are not authorized to create a course!");
+      throw new Error("Only admin can see their added courses!");
     }
 
     const url = new URL(req.url);
