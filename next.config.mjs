@@ -8,9 +8,14 @@ const nextConfig = {
       "i.ibb.co",
       "upload.wikimedia.org",
     ],
-  },
-  images: {
-    domains: ["i.ibb.co"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "s3-alpha-sig.figma.com",
+        port: "",
+        pathname: "img/**",
+      },
+    ],
   },
 };
 

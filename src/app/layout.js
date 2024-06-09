@@ -23,7 +23,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${poppins.variable} ${montserrat.variable}`}
+        suppressHydrationWarning={true}
+        className={`${poppins.variable} ${montserrat.variable}`}
       >
         <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
       </body>
