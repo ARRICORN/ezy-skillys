@@ -1,4 +1,6 @@
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUm9iaW4iLCJlbWFpbCI6InJvYmluQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicm9iaW4xMjMiLCJpYXQiOjE3MTYzMDc2NDl9.Mzuw1FnbWdHF_miGMT6eAuV19dtQCmq_hmGDIwA164M`;
+import { getServerSession } from "next-auth";
+import GET_TOKEN_FROM_COOKIES from "./get_cookies";
+import { authOptions } from "@/Components/Utils/AuthOptions";
 
 /**
  *
@@ -8,12 +10,15 @@ const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUm9iaW4iLCJlbWFp
  */
 const API_REQUEST_BY_URL = async (url) => {
   try {
-    if (!token) {
-      return { message: "Unauthorize token", status: 401 };
-    }
+    // const token = await GET_TOKEN_FROM_COOKIES("next-auth.csrf-token");
+    // const sesson = await getServerSession();
+    // console.log("session xx", sesson);
+    // if (!token) {
+    //   return { message: "Unauthorized user token", status: 401 };
+    // }
 
     const request = await fetch(`${url}`, {
-      next: { revalidate: 300 },
+      next: { revalidate: 3000 },
       headers: {
         Authorization: `${token}`,
       },

@@ -7,23 +7,30 @@ import trainerData from "../../../utility/temp/trainer.json";
 const Search_user = ({ userData }) => {
   const [searchSiring, setSearchString] = useState("");
 
+  // === filter trainer with user by search name
+  let filterData = userData;
+
   const handler = (e) => {
     setSearchString(e.target.value.toLowerCase());
   };
 
-  // === filter trainer with user by search name
-  let filterData = userData;
-
   if (searchSiring) {
-    filterData = trainerData.filter((el) =>
+    filterData = userData.filter((el) =>
       el.name.toLowerCase().includes(searchSiring.toLowerCase())
     );
   }
 
-  console.log(filterData);
+  if (!filterData) {
+    return (
+      <h1 className="block text-xl p-2 mt-8 text-orange-500">
+        There is no user information
+      </h1>
+    );
+  }
 
   return (
     <div>
+      {/* === search input box === */}
       <div className="relative mt-4 md:mt-0 p-4">
         <span className="absolute inset-y-0 left-3 flex items-center pl-3">
           <svg
@@ -51,7 +58,7 @@ const Search_user = ({ userData }) => {
 
       {/* === display user === */}
       <div className={`${styles.responsive}`}>
-        {filterData.length > 0 && filterData.map((user) => <Display_user />)}
+        {filterData && filterData.map((user) => <Display_user />)}
       </div>
     </div>
   );

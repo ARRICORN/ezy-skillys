@@ -1,10 +1,11 @@
+import GET_GLOBAL_DATA from "@/utility/request_data/getAllCourses";
 import PopularTemplate from "./PopularTemplate";
 import styles from "./popular.module.css";
 // import courseData from "../../../utility/temp/course_data.json";
-import get_all_courses from "@/utility/request_data/getAllCourses";
 
+const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`;
 const PopularCourses = async () => {
-  const courseData = await get_all_courses();
+  const courseData = await GET_GLOBAL_DATA(url);
 
   return (
     <div className="container bg-[#ffffff] py-8">
@@ -17,9 +18,9 @@ const PopularCourses = async () => {
         {/* === course data will render === */}
         <div className={`${styles.responsive} py-5`}>
           {courseData.data.length > 0 &&
-            courseData.data.map((item) => (
-              <PopularTemplate item={item} key={item._id} />
-            ))}
+            courseData?.data
+              ?.slice(0, 8)
+              .map((item) => <PopularTemplate item={item} key={item._id} />)}
         </div>
 
         {/* === view all courses button === */}

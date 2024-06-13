@@ -6,6 +6,8 @@ import Image from "next/image";
 import arrow from "../../../assets/arrow.png";
 import BarChartExample from "../revenue-chart/BarChart";
 import PieChart from "./PieChart";
+import { Suspense } from "react";
+import Loading from "@/app/loading";
 
 const Chart_component = () => {
   return (
@@ -41,8 +43,10 @@ const Chart_component = () => {
 
         {/* === Bar chart & pie chart component === */}
         <div className={`${style.chartResponsive}`}>
-          <BarChartExample />
-          <PieChart />
+          <Suspense fallback={<Loading />}>
+            <BarChartExample />
+            <PieChart />
+          </Suspense>
         </div>
       </div>
     </div>

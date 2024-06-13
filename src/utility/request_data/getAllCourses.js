@@ -1,12 +1,21 @@
-const { default: axios } = require("axios");
-
-const get_all_courses = async () => {
+const GET_GLOBAL_DATA = async (url) => {
   try {
-    const result = await axios.get(`${process.env.BASE_URL}/api/courses`);
-    return result.data;
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      return { message: "Server error is occurred bad request 404" };
+    }
+
+    const result = await response.json({
+      message: "api request is successful",
+      status: 200,
+    });
+    return result;
+
+    // error handle by catch
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
 
-export default get_all_courses;
+export default GET_GLOBAL_DATA;

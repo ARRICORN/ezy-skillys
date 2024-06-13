@@ -14,7 +14,7 @@ const Table_body = ({ studentData }) => {
 
         {/* === table body === */}
         <tbody className=" bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-          {studentData.length > 0 &&
+          {studentData &&
             studentData?.map((std) => (
               <tr key={std._id}>
                 <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
