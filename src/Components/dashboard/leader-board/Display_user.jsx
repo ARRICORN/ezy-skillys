@@ -24,7 +24,7 @@ const Display_user = ({ user }) => {
         {/* === details === */}
         <div>
           <div>
-            <strong className="text-[25px] block">{"mohammed nazim"}</strong>
+            <strong className="text-[25px] block">{user?.instructor}</strong>
             <strong className="text-[#FF8B36]">{"web developer"}</strong>
           </div>
 

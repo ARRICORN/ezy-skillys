@@ -1,9 +1,10 @@
+import My_courses_main from "@/Components/dashboard/my-courses/My_courses_main";
 import React from "react";
 
 const page = () => {
   return (
-    <div className="p-5 flex items-center justify-center text-[30px] h-[83vh]">
-      <h1>My course is coming soon</h1>
+    <div className="p-5 h-[83vh]">
+      <My_courses_main />
     </div>
   );
 };

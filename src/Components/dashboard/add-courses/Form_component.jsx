@@ -8,21 +8,23 @@ import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
 import { useSession } from "next-auth/react";
+import Select from "react-select";
 
 // initial value
 let defaultValues = {
-  title: "xxx",
-  description: "fffff",
-  price: "100",
-  authorName: "asdfasd",
-  email: "ssss@gmail.com",
-  liveDemo: "",
+  title: "",
+  description: "",
+  price: "",
+  authorName: "",
+  email: "",
+  liveDemo: "link not available",
+  tag: "",
   image: "",
   category: "",
   upload_image: {},
   category: [],
 };
-// user role url
+// create course api for admin
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCourse`;
 
 // === form component here === //
@@ -30,13 +32,11 @@ const Form_component = () => {
   const [isLoading, setIsLoading] = useState();
   const { data, status, update } = useSession();
 
-  // TODO: work will start again
-  console.log("data session ", update);
-
   const {
     control,
     handleSubmit,
     register,
+    reset,
     formState: { errors },
   } = useForm({ defaultValues });
 
@@ -55,15 +55,23 @@ const Form_component = () => {
       title: data?.title,
       desc: data?.description,
       price: data?.price,
-      tag: "",
+      tag: data?.tag?.value,
       categories: data?.category,
       addedBy: data?.email,
       liveDemo: data?.liveDemo,
       image: imageUrl?.url,
     };
-    const postCourse = await POST_REQUEST_BY_DATA(url, createCourse);
+    const response = await POST_REQUEST_BY_DATA(url, createCourse);
+
+    if (!response.statusText === "OK") {
+      toast.error("Course create is failed");
+      setIsLoading(false);
+      return;
+    }
+
     setIsLoading(false);
-    console.log(postCourse);
+    toast.success("Course is created successfully");
+    reset();
   };
 
   return (
@@ -99,7 +107,7 @@ const Form_component = () => {
               defaultValue={"description"}
               rules={{
                 required: "Description field is required",
-                maxLength: 100,
+                maxLength: 1000,
               }}
               render={({ field }) => (
                 <textarea
@@ -204,11 +212,33 @@ const Form_component = () => {
             </span>
           </div>
 
+          {/* === tag === */}
+          <div>
+            <Controller
+              name="tag"
+              control={control}
+              rules={{ required: "Tag field is required" }}
+              defaultValue={"tag"}
+              render={({ field }) => (
+                <Select
+                  {...field}
+                  options={[
+                    { value: "opened", label: "Opened" },
+                    { value: "closed", label: "Closed" },
+                  ]}
+                />
+              )}
+            />
+            <span className="block text-red-400 font-semibold text-[13px] my-1">
+              <ErrorMessage name={"tag"} errors={errors} />
+            </span>
+          </div>
+
           {/* === image === */}
           <div>
             <input
               {...register("upload_image", {
-                required: "image field is required",
+                required: "Image field is required",
               })}
               placeholder="upload image"
               alt="upload image"

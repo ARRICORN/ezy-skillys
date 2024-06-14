@@ -1,6 +1,5 @@
 import { cookies } from "next/headers";
 
-
 /**
  * @param token string
  * @returns jwt
@@ -21,7 +20,6 @@ const GET_TOKEN_FROM_COOKIES = async (token_key) => {
       return { token: token.value, isToken: true, status: 200 };
     }
   } catch (error) {
-    // throw new Error({})
     console.log("error from cookies", error);
   }
 };

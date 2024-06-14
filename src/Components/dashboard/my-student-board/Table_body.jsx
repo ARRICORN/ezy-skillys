@@ -6,14 +6,14 @@ import style from "./student.module.css";
 const Table_body = ({ studentData }) => {
   return (
     <div
-      className={`h-[90vh] no-scrollbar overflow-y-auto border border-gray-200 dark:border-gray-700 md:rounded-lg bg-gray-700`}
+      className={`h-[86vh] no-scrollbar overflow-y-auto border border-gray-200`}
     >
       <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
         {/* === table head === */}
         <Table_head />
 
         {/* === table body === */}
-        <tbody className=" bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
+        <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
           {studentData &&
             studentData?.map((std) => (
               <tr key={std._id}>
@@ -105,9 +105,6 @@ const Table_body = ({ studentData }) => {
             ))}
         </tbody>
       </table>
-
-      {/* === pagination === */}
-      <Pagination />
     </div>
   );
 };

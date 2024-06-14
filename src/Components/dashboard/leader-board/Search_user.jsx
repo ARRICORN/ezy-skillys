@@ -16,7 +16,7 @@ const Search_user = ({ userData }) => {
 
   if (searchSiring) {
     filterData = userData.filter((el) =>
-      el.name.toLowerCase().includes(searchSiring.toLowerCase())
+      el?.instructor?.toLowerCase().includes(searchSiring.toLowerCase())
     );
   }
 
@@ -27,6 +27,7 @@ const Search_user = ({ userData }) => {
       </h1>
     );
   }
+  console.log(filterData);
 
   return (
     <div>
@@ -57,9 +58,16 @@ const Search_user = ({ userData }) => {
       </div>
 
       {/* === display user === */}
-      <div className={`${styles.responsive}`}>
-        {filterData && filterData.map((user) => <Display_user />)}
-      </div>
+      {filterData?.length ? (
+        <div className={`${styles.responsive}`}>
+          {filterData &&
+            filterData.map((user) => (
+              <Display_user user={user} key={user._id} />
+            ))}
+        </div>
+      ) : (
+        <h1 className="bg-teal-500 block m-3 text-xl p-1">User not found...</h1>
+      )}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import NextAuthSessionProvider from "@/Provider/SessionProvider";
+import { Toaster } from "react-hot-toast";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body suppressHydrationWarning={true} className={inter.className}>
         <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+        <Toaster position="top-right" reverseOrder={false} />
       </body>
     </html>
   );

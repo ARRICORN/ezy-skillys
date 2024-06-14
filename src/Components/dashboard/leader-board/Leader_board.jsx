@@ -10,7 +10,11 @@ const Leader_board = async () => {
   return (
     <div className="h-[90vh] no-scrollbar overflow-auto">
       {/* === search user by name === */}
-      <Search_user userData={userData.data} />
+      {userData ? (
+        <Search_user userData={userData.data} />
+      ) : (
+        "User information was not found!"
+      )}
     </div>
   );
 };
