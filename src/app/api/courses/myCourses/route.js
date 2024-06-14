@@ -22,7 +22,7 @@ export async function GET(req) {
     const tag = url.searchParams.get("tag");
     const categories = url.searchParams.getAll("categories");
 
-    const filterConditions = { addedBy: decoded.email };
+    const filterConditions = { addedBy: decoded.email, isDeleted: false };
     if (searchTerm) {
       filterConditions["title"] = { $regex: searchTerm, $options: "i" };
     }
