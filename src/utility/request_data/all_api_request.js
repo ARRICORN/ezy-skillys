@@ -14,7 +14,7 @@ const API_REQUEST_BY_URL = async (url) => {
     }
 
     const response = await fetch(url, {
-      next: { revalidate: 30 },
+      next: { revalidate: 25 },
       headers: {
         Authorization: token,
         "Content-type": "Application/json",

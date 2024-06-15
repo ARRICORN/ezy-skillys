@@ -13,6 +13,7 @@
     "@nextui-org/react": "^2.4.1",
     "axios": "^1.6.8",
     "bcrypt": "^5.1.1",
+    "chroma-js": "^2.4.2",
     "cloudinary": "^2.2.0",
     "framer-motion": "^11.2.10",
     "jsonwebtoken": "^9.0.2",
