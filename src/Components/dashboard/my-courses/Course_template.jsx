@@ -1,5 +1,4 @@
 import Image from "next/image";
-import React from "react";
 import Delete_edit_component from "./Delete_edit_component";
 
 const Course_template = ({ courses }) => {
@@ -41,7 +40,10 @@ const Course_template = ({ courses }) => {
                   </div>
                 </td>
                 <td className="p-3 text-sm whitespace-nowrap">
-                  <Delete_edit_component element={el} />
+                  <Delete_edit_component
+                    // startTransition={startTransition}
+                    element={el}
+                  />
                 </td>
               </tr>
             ))}
