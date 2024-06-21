@@ -40,10 +40,7 @@ const Course_template = ({ courses }) => {
                   </div>
                 </td>
                 <td className="p-3 text-sm whitespace-nowrap">
-                  <Delete_edit_component
-                    // startTransition={startTransition}
-                    element={el}
-                  />
+                  <Delete_edit_component element={el} />
                 </td>
               </tr>
             ))}

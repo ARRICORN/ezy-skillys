@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUm9iaW4iLCJlbWFpbCI6InJvYmluQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicm9iaW4xMjMiLCJpYXQiOjE3MTgzNDA4ODh9.O-4zlo_FNoTyeM_rDR1Tm2Ldu_8zYENNJdtmOlfjnIg`;
+const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTkFaSU0iLCJlbWFpbCI6Im5hemltQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiam9objEyMyIsImlhdCI6MTcxNzI2MzMxNH0.N3RQTtduGXZEK2uw2Y_DrUDg5QwbwGw-0lp9nufIwrQ`;
 
 /**
  *
@@ -21,8 +21,8 @@ const POST_REQUEST_BY_DATA = async (url, data) => {
     if (!response.statusText === "OK") {
       toast.error("Network response was not ok");
     }
-    
-    return await response.json();
+    const res = await response.json();
+    return res;
   } catch (error) {
     console.error("There was a problem with the fetch operation:");
   }

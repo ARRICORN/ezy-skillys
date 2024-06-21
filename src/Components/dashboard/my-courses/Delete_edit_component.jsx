@@ -1,6 +1,7 @@
 "use client";
 import Small_loading from "@/Components/Shared/Small_loading";
 import DELETE_POST_WITH_ID from "@/utility/request_data/delete_post";
+import GET_SINGLE_POST_BY_DI from "@/utility/request_data/get_single_post_by_id";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
@@ -9,10 +10,9 @@ import toast from "react-hot-toast";
 const Delete_edit_component = ({ element }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
-
   const router = useRouter();
 
-  // delete post handler
+  // === delete post handler by id ===
   const deleteHandler = async (id) => {
     const check = confirm("Are you sure to delete");
     if (!check) {
@@ -33,6 +33,11 @@ const Delete_edit_component = ({ element }) => {
     startTransition(() => {
       router.refresh();
     });
+  };
+
+  // === Edit handler by id ===
+  const editHandler = async (id) => {
+    router.push(`/dashboard/update-single-course/${id}`);
   };
 
   return (
@@ -57,7 +62,10 @@ const Delete_edit_component = ({ element }) => {
         </svg>
       </button>
 
-      <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none inline-block">
+      <button
+        className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none inline-block"
+        onClick={() => editHandler(element?._id)}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

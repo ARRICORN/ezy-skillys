@@ -1,7 +1,7 @@
 const { default: toast } = require("react-hot-toast");
 
 // temporary token
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUm9iaW4iLCJlbWFpbCI6InJvYmluQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoicm9iaW4xMjMiLCJpYXQiOjE3MTgyODE4NzJ9.klJAt8LUfuD1e5mh0bGJcmFsT3sBrPpxZs-0BKmfFWo`;
+const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTkFaSU0iLCJlbWFpbCI6Im5hemltQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiam9objEyMyIsImlhdCI6MTcxNzI2MzMxNH0.N3RQTtduGXZEK2uw2Y_DrUDg5QwbwGw-0lp9nufIwrQ`;
 
 const DELETE_POST_WITH_ID = async (id) => {
   // Delete url with id
@@ -20,7 +20,8 @@ const DELETE_POST_WITH_ID = async (id) => {
     return;
   }
 
-  return response;
+  const res = await response.json();
+  return res;
 };
 
-export default DELETE_POST_WITH_ID
+export default DELETE_POST_WITH_ID;
