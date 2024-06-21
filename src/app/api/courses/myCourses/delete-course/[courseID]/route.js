@@ -3,7 +3,8 @@ import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 
-export async function GET(req, { params }) {
+
+export async function DELETE(req, { params }) {
   try {
     // Checking the user is logged in or not by checking the token;
     const decoded = checkIsLoggedIn();
@@ -13,28 +14,38 @@ export async function GET(req, { params }) {
     if (!userInfo) {
       throw new Error("You are not authorized!");
     }
+
     if (userInfo.role !== "admin") {
-      throw new Error("You are not authorized!");
+      throw new Error("You are not authorized to delete this course!");
+    }
+    const courseID = params.courseID;
+
+    const course = await Course.findById(courseID);
+    if (!course) {
+      throw new Error("Course not found!");
+    }
+    if (course.isDeleted) {
+      throw new Error("The course is already deleted!");
     }
 
-    const courseID = params.courseID;
-    const result = await Course.findOne({
-      _id: courseID,
-      addedBy: userInfo.email,
-    });
+    const result = await Course.findByIdAndUpdate(
+      courseID,
+      {
+        isDeleted: true,
+      },
+    );
     if (!result) {
       throw new Error("Course not found!");
     }
-    if (result.isDeleted) {
-      throw new Error("The course is deleted!");
-    }
     return Response.json({
       success: true,
-      message: "Course details are retrieved successfully.",
-      data: result,
+      message: "Course is deleted successfully.",
+      data: {
+        message: "Course is deleted successfully."
+      },
     });
   } catch (error) {
-    console.error("Error during course retrieving", error);
+    console.error("Error during course deletion", error);
 
     return Response.json({
       success: false,
@@ -42,5 +53,4 @@ export async function GET(req, { params }) {
     });
   }
 }
-
 
