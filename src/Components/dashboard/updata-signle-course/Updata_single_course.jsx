@@ -52,14 +52,11 @@ const Update_single_course = ({ params_id }) => {
       price: data?.price,
       tag: data?.tag?.value,
       categories: [...filterCtg],
-      addedBy: data?.email,
       liveDemo: data?.liveDemo,
     };
 
     // === create a post with form data by admin ===
     const response = await UPDATE_DATA_BY_ID(params_id, createCourse);
-
-    console.log("update ", response);
 
     if (!response.statusText === "OK") {
       toast.error("Course update is failed");

@@ -3,7 +3,7 @@ import React from "react";
 const Table_head = () => {
   return (
     <thead className="bg-gray-50 dark:bg-gray-800">
-      <tr>
+      <tr className="w-[100%]">
         <th
           scope="col"
           className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"

@@ -6,7 +6,6 @@ import UPLOAD_IMAGE from "@/utility/request_data/upload_image";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
-import { useSession } from "next-auth/react";
 import { Input, Textarea } from "@nextui-org/react";
 import { colourOptions, colourStyles } from "./data";
 import Select from "react-select";

@@ -3,7 +3,7 @@ import React from "react";
 
 const page = () => {
   return (
-    <div className="p-5 h-[83vh]">
+    <div className="h-[85vh]">
       <My_courses_main />
     </div>
   );
