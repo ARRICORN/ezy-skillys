@@ -42,5 +42,3 @@ export async function GET(req, { params }) {
     });
   }
 }
-
-
