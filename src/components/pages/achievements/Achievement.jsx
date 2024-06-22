@@ -2,7 +2,7 @@ import Image from "next/image";
 import img from "../../../assets/Frame.png";
 import person from "../../../assets/boy.png";
 import book from "../../../assets/stack-of-books.png";
-import styles from "@/components/pages/achievements/achievement.module.css";
+import styles from "./achievement.module.css";
 
 const Achievement = () => {
   return (
