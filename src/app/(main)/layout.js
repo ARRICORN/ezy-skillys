@@ -1,13 +1,12 @@
 import Footer from "@/Components/Shared/Footer";
-import Navbar from "@/Components/Shared/Navbar";
-import { Fragment } from "react";
+import NavBar from "@/Components/Shared/NavBar/NavBar";
 
 export default function MainLayout({ children }) {
   return (
-    <Fragment>
-      <Navbar />
-      {children}
+    <div className="bg-white">
+      <NavBar />
+      <div className="bg-white">{children}</div>
       <Footer />
-    </Fragment>
+    </div>
   );
 }
