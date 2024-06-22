@@ -72,7 +72,7 @@ const NavBar = () => {
           </div>
           <div className=" flex gap-4 scale-90 xl:scale-100">
             <NavButtonBorder  href={"/login"}>Log In</NavButtonBorder>
-            <NavButton href={"/create"}>Create Account</NavButton>
+            <NavButton href={"/register"}>Create Account</NavButton>
           </div>
         </div>
       </nav>
