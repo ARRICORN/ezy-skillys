@@ -1,5 +1,6 @@
 import Image from "next/image";
 import LearningBoy from "../../../assets/LearningBoy.png";
+import Link from "next/link";
 const Courses = () => {
   return (
     <div className="w-11/12 mx-auto py-20">
@@ -17,12 +18,21 @@ const Courses = () => {
                 Ok, Let me help you
               </h2>
               <div className="flex md:gap-10 gap-5 justify-center scale-90 lg:scale-100 items-center">
+
+                <Link href="/courseSelector">
                 <button className="bg-[#F2831F] border-2 border-[#F2831F] px-5 py-24   rounded-3xl text-white font-bold  sm:text-xl text-lg">
                   Discover <br/> Course
                 </button>
+                </Link>
+               
+
+
+                
                 <button className="border-[#2048AB] border-2 px-5 py-24   rounded-3xl text-[#2048AB] font-bold  sm:text-xl text-lg">
                   Suggest <br/> Course
                 </button>
+            
+               
               </div>
             </div>
           </div>

@@ -18,7 +18,7 @@ const NavBar = () => {
 
   const navList = (
     <>
-      <NavLink href={"/home"}>Home</NavLink>
+      <NavLink href={"/"}>Home</NavLink>
       <NavLink href={"/course-selector"}>Course Selector</NavLink>
       <NavLink href={"/courses"}>Courses</NavLink>
       <NavLink href={"/pricing"}>Pricing</NavLink>
