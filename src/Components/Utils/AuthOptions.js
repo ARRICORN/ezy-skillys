@@ -32,7 +32,26 @@ export const authOptions = {
       }
     })
   ],
+  secret: process.env.JWT_SECRET_KEY,
+  jwt: {
+    secret: process.env.JWT_SECRET_KEY,
+    maxAge: 7 * 24 * 60 * 60, // 7 days
+  },
+  session: {
+    strategy: "jwt",
+    maxAge: 7 * 24 * 60 * 60, // 7 days
+  },
   callbacks: {
+    async session({ session, token }) {
+      session.user = token.user;
+      return session;
+    },
+    async jwt({ token, user }) {
+      if (user) {
+        token.user = user;
+      }
+      return token;
+    },
     async signIn({ user, account }) {
       console.log(user);
       try {

@@ -129,9 +129,9 @@ const SidebarComponent = () => {
           </MenuItem>
           <MenuItem
             className={`${
-              pathName === "/dashboard/students-board" ? style.active : ""
+              pathName === "/dashboard/my-students-board" ? style.active : ""
             }`}
-            component={<Link href={"/dashboard/students-board"} />}
+            component={<Link href={"/dashboard/my-students-board"} />}
           >
             <div className="flex items-center justify-start gap-x-3">
               <Image

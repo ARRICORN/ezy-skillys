@@ -16,34 +16,10 @@ const CertificateAchievement = () => {
 
         {/* certificate achievement */}
         <div className={`${styles.certificates} md:mx-24`}>
-          <Image
-            src={certificate}
-            width={190}
-            height={190}
-            alt="certificate"
-            priority={true}
-          />
-          <Image
-            src={certificate2}
-            width={190}
-            height={190}
-            alt="certificate"
-            priority={true}
-          />
-          <Image
-            src={certificate3}
-            width={190}
-            height={190}
-            alt="certificate"
-            priority={true}
-          />
-          <Image
-            src={certificate4}
-            width={190}
-            height={190}
-            alt="certificate"
-            priority={true}
-          />
+          <Image src={certificate} alt="certificate" priority={true} />
+          <Image src={certificate2} alt="certificate" priority={true} />
+          <Image src={certificate3} alt="certificate" priority={true} />
+          <Image src={certificate4} alt="certificate" priority={true} />
         </div>
 
         {/* === branding image === */}

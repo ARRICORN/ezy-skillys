@@ -7,6 +7,8 @@ const nextConfig = {
       "seeklogo.com",
       "i.ibb.co",
       "upload.wikimedia.org",
+      "res.cloudinary.com",
+      "images.unsplash.com",
     ],
     remotePatterns: [
       {

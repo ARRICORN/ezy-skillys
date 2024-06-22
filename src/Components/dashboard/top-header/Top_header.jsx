@@ -4,7 +4,7 @@ import style from "./header.module.css";
 
 const Top_header = () => {
   return (
-    <div className={`${style.shadow} flex p-4 items-center`}>
+    <div className={`${style.shadow} flex p-4 items-center `}>
       <div>
         <h1 className="font-semibold text-[#151D48] md:text-[30px]">
           Dashboard

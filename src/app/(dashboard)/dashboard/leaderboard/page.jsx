@@ -1,5 +1,7 @@
+import Leader_board from "@/Components/dashboard/leader-board/Leader_board";
+
 const page = () => {
-  return <div>leader board</div>;
+  return <Leader_board />;
 };
 
 export default page;
