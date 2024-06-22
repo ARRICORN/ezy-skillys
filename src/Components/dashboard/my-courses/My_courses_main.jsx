@@ -16,7 +16,7 @@ const My_courses_main = async () => {
     <div>
       {/* course length */}
       <div>
-        <h1 className="block text-xl mt-1">
+        <h1 className="block text-xl py-2">
           Total course is :
           <span className="text-orange-500 px-1 font-bold inline-block">
             {userSort.length || "0"}
