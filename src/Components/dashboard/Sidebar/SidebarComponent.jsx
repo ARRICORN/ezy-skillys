@@ -9,10 +9,11 @@ import chart from "../../../assets/pie-chart.png";
 import menu from "../../../assets/menu.png";
 import course from "../../../assets/bar-graph.png";
 import shoping from "../../../assets/shopping-cart.png";
-import logout from "../../../assets/log-out.png";
 import addFile from "../../../assets/add-file.png";
+import userIcon from "../../../assets/user.png";
 import style from "./menu.module.css";
 import { usePathname } from "next/navigation";
+import SignOutBtn from "./SignOutBtn";
 
 const SidebarComponent = () => {
   const [collapsed, setCollapsed] = React.useState(false);
@@ -53,6 +54,7 @@ const SidebarComponent = () => {
               </span>
             </div>
           </MenuItem>
+          {/* === dashboard === */}
           <MenuItem
             className={`${pathName === "/dashboard" ? style.active : ""}`}
             component={<Link href={"/dashboard"} />}
@@ -70,6 +72,7 @@ const SidebarComponent = () => {
               </span>
             </div>
           </MenuItem>
+          {/* === leader board === */}
           <MenuItem
             className={`${
               pathName === "/dashboard/leaderboard" ? style.active : ""
@@ -89,6 +92,7 @@ const SidebarComponent = () => {
               </span>
             </div>
           </MenuItem>
+          {/* === my course === */}
           <MenuItem
             className={`${
               pathName === "/dashboard/my-courses" ? style.active : ""
@@ -108,6 +112,7 @@ const SidebarComponent = () => {
               </span>
             </div>
           </MenuItem>
+          {/* === add course === */}
           <MenuItem
             className={`${
               pathName === "/dashboard/add-course" ? style.active : ""
@@ -127,6 +132,7 @@ const SidebarComponent = () => {
               </span>
             </div>
           </MenuItem>
+          {/* === my student === */}
           <MenuItem
             className={`${
               pathName === "/dashboard/my-students-board" ? style.active : ""
@@ -146,24 +152,29 @@ const SidebarComponent = () => {
               </span>
             </div>
           </MenuItem>
+          {/* === View profile === */}
           <MenuItem
             className={`${
-              pathName === "/dashboard/sign-out" ? style.active : ""
+              pathName === "/dashboard/view-profile" ? style.active : ""
             }`}
-            component={<Link href={"/dashboard/sign-out"} />}
+            component={<Link href={"/dashboard/view-profile"} />}
           >
             <div className="flex items-center justify-start gap-x-3">
               <Image
-                src={logout}
+                src={userIcon}
                 width={30}
                 height={1}
                 priority={true}
                 alt="menu"
               />
               <span className="inline-block font-semibold text-[#737791]">
-                Sign out
+                View Profile
               </span>
             </div>
+          </MenuItem>
+          {/* === log out page === */}
+          <MenuItem>
+            <SignOutBtn />
           </MenuItem>
         </Menu>
       </Sidebar>
