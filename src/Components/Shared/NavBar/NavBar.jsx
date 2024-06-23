@@ -23,11 +23,12 @@ const NavBar = () => {
       <NavLink href={"/courses"}>Courses</NavLink>
       <NavLink href={"/pricing"}>Pricing</NavLink>
       <NavLink href={"/faq"}>FAQ</NavLink>
-      <NavLink href={"/contact"}>Contact US</NavLink>
+      <NavLink href={"/about"}>About</NavLink>
+      <NavLink href={"/contact"}>Contact</NavLink>
     </>
   );
   return (
-    <div>
+    <div className="relative z-50">
       <nav className={`${AboutActive && 'bg-[#003F7D]'}`}>
         <div className="flex items-center lg:hidden justify-between relative p-6 ">
           <Image
