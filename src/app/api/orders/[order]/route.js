@@ -1,13 +1,15 @@
 import { Order } from "@/Models/Order";
-import { checkIsSeller } from "@/middlewares/checkIsSeller";
-import { checkIsUser } from "@/middlewares/checkIsUser";
+import { UserInfo } from "@/Models/UserInfo";
+import { isAdmin } from "@/middlewares/checkAdmin";
+import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
+// import { checkIsUser } from "@/middlewares/checkIsUser";
 import mongoose, { Types } from "mongoose";
 
 // Get single order
 export const GET = async (req, context) => {
   try {
+    const decoded = checkIsLoggedIn();
     await mongoose.connect(process.env.DATABASE_URL);
-
     const id = context?.params?.order;
 
     if (!id || !Types.ObjectId.isValid(id)) {
@@ -15,10 +17,10 @@ export const GET = async (req, context) => {
     }
 
     // Check if the user is a seller
-    if (await checkIsSeller(req)) {
+    if (await isAdmin(decoded.email)) {
       const result = await Order.findById(id)
-        .populate("product")
-        .populate("customer");
+        .populate("course")
+        .populate("user");
 
       return Response.json(
         {
@@ -31,7 +33,7 @@ export const GET = async (req, context) => {
     } else {
       return Response.json(
         {
-          message: "You are not a seller of this product",
+          message: "You are not a admin of this course",
         },
         { status: 403 }
       );
@@ -63,11 +65,10 @@ export const PUT = async (req, context) => {
         { status: 400 }
       );
     }
+    const decoded = checkIsLoggedIn();
+    const user = await UserInfo.findOne({ email: decoded.email });
 
-    const isSeller = await checkIsSeller(req);
-    const isUser = await checkIsUser(req);
-
-    if (isSeller) {
+    if (isAdmin(decoded.email)) {
       if ("status" in data) {
         const result = await Order.findByIdAndUpdate(
           id,
@@ -82,10 +83,10 @@ export const PUT = async (req, context) => {
           }),
           { status: 200 }
         );
-      } else if ("isCancelled" in data) {
+      } else if (isAdmin(decoded.email) && "isCancelled" in data) {
         const result = await Order.findByIdAndUpdate(
           id,
-          { $set: { ...data, cancelledBy: "cancelledBySeller" } },
+          { $set: { ...data, cancelledBy: "cancelledByAdmin" } },
           { new: true }
         );
         return new Response(
@@ -105,7 +106,7 @@ export const PUT = async (req, context) => {
           { status: 400 }
         );
       }
-    } else if (isUser && "isCancelled" in data) {
+    } else if ((user.role = "user" && "isCancelled" in data)) {
       const result = await Order.findByIdAndUpdate(
         id,
         { $set: { ...data, cancelledBy: "cancelledByUser" } },
@@ -140,95 +141,3 @@ export const PUT = async (req, context) => {
     );
   }
 };
-// export const PUT = async (req, context) => {
-//   try {
-//     await mongoose.connect(process.env.DATABASE_URL);
-
-//     const data = await req?.json();
-//     const id = context?.params?.order;
-
-//     if (!id || !Types.ObjectId.isValid(id)) {
-//       return Response.json({ message: "Order ID is missing" }, { status: 400 });
-//     }
-
-//     const isSeller = await checkIsSeller(req);
-//     const isUser = await checkIsUser(req);
-
-//     if (isSeller) {
-//       if ("status" in data) {
-//         const result = await Order.findByIdAndUpdate(
-//           id,
-//           {
-//             $set: data,
-//           },
-//           { new: true }
-//         );
-//         return Response.json(
-//           {
-//             status: "Success",
-//             message: "Order status updated successfully",
-//             data: result,
-//           },
-//           { status: 200 }
-//         );
-//       } else if (isSeller && "isCancelled" in data) {
-//         const result = await Order.findByIdAndUpdate(
-//           id,
-//           {
-//             $set: { ...data, cancelledBy: "cancelledBySeller" },
-//           },
-//           { new: true }
-//         );
-//         return Response.json(
-//           {
-//             status: "Success",
-//             message: "Order cancelled successfully",
-//             data: result,
-//           },
-//           { status: 200 }
-//         );
-//       }
-//     } else if (isUser && "isCancelled" in data) {
-//       const result = await Order.findByIdAndUpdate(
-//         id,
-//         {
-//           $set: { ...data, cancelledBy: "cancelledByUser" },
-//         },
-//         { new: true }
-//       );
-//       return Response.json(
-//         {
-//           status: "Success",
-//           message: "Order cancelled successfully",
-//           data: result,
-//         },
-//         { status: 200 }
-//       );
-//     } else {
-//       return Response.json(
-//         {
-//           status: "Error",
-//           message: "Please provide a valid data field",
-//         },
-//         { status: 400 }
-//       );
-//     }
-
-//     return Response.json(
-//       {
-//         message: "You are not authorized to update this order",
-//       },
-//       { status: 403 }
-//     );
-//   } catch (error) {
-//     console.log(error);
-//     return Response.json(
-//       {
-//         status: "Error",
-//         message: "An error occurred while updating the order",
-//         error: error.message,
-//       },
-//       { status: 500 }
-//     );
-//   }
-// };
