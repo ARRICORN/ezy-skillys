@@ -1,0 +1,66 @@
+[
+  {
+    "courserName": "AWS",
+    "image": "https://i.ibb.co/KNNXyzj/Grouplogos.png",
+    "description": "AWS Coaching and Certification helps you build and validate your skills so you can get more out of the cloud. ",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "Vue JS",
+    "image": "https://i.ibb.co/y8ZwLm8/image-8logos.png",
+    "description": "An open-source model–view–viewmodel front end JavaScript framework for building user interfaces & single-page applications.",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "Power BI",
+    "image": "https://i.ibb.co/bdmCH77/image-11logos.png",
+    "description": "An interactive data visualization software developed by Microsoft with primary focus on business intelligence.",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "React JS",
+    "image": "https://i.ibb.co/4pY5q8w/image-10logos.png",
+    "description": "React is a free and open-source front-end JavaScript library for building user interfaces based on UI components. ",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "Software Testing",
+    "image": "https://i.ibb.co/Wc010fB/image-13logos.png",
+    "description": "The process of evaluating and verifying that a software product or application does what it is supposed to do.",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "Core UI",
+    "image": "https://i.ibb.co/sVg7Ynq/Group-2145logos.png",
+    "description": "Learn the fastest way to build a moder dashboard for any platforms, browser,or device. ",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "Python",
+    "image": "https://i.ibb.co/Gtjmf5f/image-12logos.png",
+    "description": "Python is an interpreted high-level general-purpose programming language. ",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  },
+  {
+    "courserName": "Angular JS",
+    "image": "https://i.ibb.co/rkgwCwF/image-6logos-1.png",
+    "description": "A JavaScript-based open-source front-end web framework for developing single-page applications. ",
+    "live_link": "",
+    "enroll_route": "",
+    "cv_link": ""
+  }
+]
