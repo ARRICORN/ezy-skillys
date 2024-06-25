@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 import banner from "/public/registerPage-img.png";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
@@ -10,14 +10,14 @@ import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
 import { getSession, signIn, useSession } from "next-auth/react";
 import Loading from "../Ui/Loading";
+import LOGIN_USER from "@/utility/request_data/loginHandler";
+import toast from "react-hot-toast";
 
 const Login = () => {
-  const [formLoading, setFormLoading] = React.useState(false);
-  const [error, setError] = React.useState("");
+  const [formLoading, setFormLoading] = useState(false);
+  const [error, setError] = useState("");
   const router = useRouter();
-  const session = useSession();
-
-  if (session.status == "authenticated") router.push("/");
+  const { status } = useSession();
 
   const {
     register,
@@ -25,23 +25,43 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  // const onSubmit = (data) => {
+  //   setFormLoading(true);
+  //   signIn("credentials", {
+  //     email: data.email,
+  //     password: data.password,
+  //     redirect: false,
+  //   }).then(async (e) => {
+  //     if (e.error) {
+  //       setError("Invalid email/password");
+  //     } else {
+  //       const sessions = await getSession();
+  //       // router.push("/blog");
+  //       console.log("pushing ");
+  //       location.reload();
+  //     }
+  //     setFormLoading(false);
+  //   });
+  // };
+
+  const onSubmit = async (data) => {
     setFormLoading(true);
-    signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    }).then(async (e) => {
-      if (e.error) {
-        setError("Invalid email/password");
-      } else {
-        const sessions = await getSession();
-        // router.push("/blog");
-        console.log("pushing ");
-        location.reload();
-      }
+    if (status === "authenticated") {
+      router.push("/");
+      return;
+    }
+
+    const response = await LOGIN_USER(data.email, data.password);
+
+    if (!response.ok) {
+      setError("invalid credentials");
       setFormLoading(false);
-    });
+      return;
+    }
+
+    toast.success("User logged in successful");
+    router.push("/");
+    setFormLoading(false);
   };
 
   return (
