@@ -61,7 +61,8 @@ export async function POST(req) {
       courseId: courseId,
       rating: body.rating,
       review: body.review,
-      addedBy: decoded.email,
+      user: decoded?.name,
+      userEmail: decoded?.email
     };
     const result = await Review.create(payload);
     return Response.json({

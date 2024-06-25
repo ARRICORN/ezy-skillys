@@ -17,7 +17,7 @@ export async function GET() {
       throw new Error("You are not authorized!");
     }
     const result = await Review.find({
-      addedBy: decoded.email,
+      userEmail: decoded.email,
     }).populate("courseId");
 
     if (result.length < 1) {
