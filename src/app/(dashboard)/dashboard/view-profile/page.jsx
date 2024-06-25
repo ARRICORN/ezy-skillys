@@ -1,4 +1,4 @@
-import My_profile from "@/Components/dashboard/my-profile/My_profile";
+import My_profile from "@/Components/dashboard/view-profile/My_profile";
 
 const page = () => {
   return (

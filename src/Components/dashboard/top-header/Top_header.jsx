@@ -26,7 +26,7 @@ const Top_header = async () => {
         <div>
           <h4 className="font-bold">Leroy Jenkins</h4>
           <span className="text-xs text-orange-500">
-            {response?.data?.role}
+            {response?.data && response?.data?.role}
           </span>
         </div>
       </div>
