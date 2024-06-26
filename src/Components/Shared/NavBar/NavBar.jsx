@@ -7,6 +7,7 @@ import NavButton from "./NavButton";
 import { FaBar, Close } from "@/Components/Icons/ReactIcons";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import LogInOutBtn from "@/Components/Ui/LogInOutBtn";
 
 
 const NavBar = () => {
@@ -70,8 +71,8 @@ const NavBar = () => {
           <div>
             <ul className="flex items-center gap-7 ">{navList}</ul>
           </div>
-          <div className=" flex gap-4 scale-90 xl:scale-100">
-            <NavButtonBorder  href={"/login"}>Log In</NavButtonBorder>
+          <div className=" flex gap-4 scale-90 xl:scale-100 items-center justify-center">
+          <LogInOutBtn/>
             <NavButton href={"/register"}>Create Account</NavButton>
           </div>
         </div>

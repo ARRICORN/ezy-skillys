@@ -9,11 +9,11 @@ const LogInOutBtn = () => {
     return (
         <div>
             {status == 'authenticated' ?
-                <button onClick={signOut} className="group flex h-min items-center disabled:opacity-50 disabled:hover:opacity-50 hover:opacity-95 justify-center ring-none rounded-md shadow-lg font-semibold py-1 px-2.5 font-dm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-800 border-b-blue-950 disabled:border-0 disabled:bg-blue-500 disabled:text-white ring-white text-white border-b-4 active:border-0 hover:text-gray-100 active:bg-blue-900 active:text-gray-300 focus-visible:outline-blue-900 text-sm sm:text-base"
+                <button onClick={signOut} className="px-10 py-2 rounded-md text-[#FF8B36] border-[#FF8B36] border-2"
                 >
                     Logout
                 </button> :
-                <Link href='/login' className="group flex h-min items-center disabled:opacity-50 disabled:hover:opacity-50 hover:opacity-95 justify-center ring-none rounded-md shadow-lg font-semibold py-1 px-2.5 font-dm focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 bg-blue-800 border-b-blue-950 disabled:border-0 disabled:bg-blue-500 disabled:text-white ring-white text-white border-b-4 active:border-0 hover:text-gray-100 active:bg-blue-900 active:text-gray-300 focus-visible:outline-blue-900 text-sm sm:text-base"
+                <Link href='/login' className="px-10 py-2 rounded-md text-[#FF8B36] border-[#FF8B36] border-2"
                 >
                     LogIn
                 </Link>}
