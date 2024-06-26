@@ -24,7 +24,8 @@ const NavBar = () => {
       <NavLink href={"/courses"}>Courses</NavLink>
       <NavLink href={"/pricing"}>Pricing</NavLink>
       <NavLink href={"/faq"}>FAQ</NavLink>
-      <NavLink href={"/contact"}>Contact US</NavLink>
+      <NavLink href={"/about"}>About</NavLink>
+      <NavLink href={"/contact"}>Contact</NavLink>
     </>
   );
   return (
