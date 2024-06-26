@@ -3,9 +3,14 @@ import Image from "next/image";
 import { Fragment, useState } from "react";
 import downArrow from "/src/assets/ic_Dropdown.png";
 
-const CoursesSort = ({ options }) => {
+const CoursesSort = ({ options, setSort }) => {
   const [selected, setSelected] = useState(options[0]);
   const [isOpen, setIsOpen] = useState(false);
+
+  const handleSelect = (each) => {
+    setSelected(each);
+    setSort(each.value);
+  };
 
   return (
     <Fragment>
@@ -24,14 +29,14 @@ const CoursesSort = ({ options }) => {
           </button>
         </div>
         {isOpen && (
-          <div className="w-full flex flex-col justify-start border text-xs text-start absolute bg-white rounded-b-md">
+          <div className="w-full flex flex-col justify-start border text-xs text-start absolute bg-white rounded-b-md z-10">
             {options
               .filter((each) => each !== selected)
               .map((each) => (
                 <button
                   className="w-full  text-start pl-[3.5rem] py-1"
                   key={each.id}
-                  onClick={() => setSelected(each)}
+                  onClick={() => handleSelect(each)}
                 >
                   {each.name}
                 </button>
