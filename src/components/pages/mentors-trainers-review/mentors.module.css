@@ -1,0 +1,10 @@
+.card_shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+}
+.bgImage {
+  background-image: url("../../../assets/elips.png");
+  background-repeat: no-repeat;
+  background-position: 1% 84%;
+  background-size: 14%;
+}

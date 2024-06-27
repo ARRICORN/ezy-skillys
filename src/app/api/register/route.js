@@ -1,8 +1,8 @@
 import { User } from "@/Models/User";
 import { UserInfo } from "@/Models/UserInfo";
 import bcrypt from "bcrypt";
-import mongoose from "mongoose";
 import jwt from 'jsonwebtoken';
+import mongoose from "mongoose";
 import { cookies } from 'next/headers';
 
 export async function POST(req) {
