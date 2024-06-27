@@ -7,6 +7,14 @@ export async function GET(req) {
   const tag = url.searchParams.get("tag");
   const categories = url.searchParams.getAll("categories");
 
+  const sortingType = url.searchParams.get("sort") || "ascending";
+  const sort = sortingType === "descending" ? -1 : 1;
+  const pageValue = url.searchParams.get("page") || 1;
+  const limitValue = url.searchParams.get("limit") || 10;
+  const page = Number(pageValue);
+  const limit = Number(limitValue);
+  const skip = (Number(page) - 1) * limit;
+
   const filterConditions = { isDeleted: false };
   if (searchTerm) {
     filterConditions["title"] = { $regex: searchTerm, $options: "i" };
@@ -20,10 +28,19 @@ export async function GET(req) {
     };
   }
   mongoose.connect(process.env.DATABASE_URL);
-  const result = await Course.find(!!filterConditions && filterConditions);
+  const result = await Course.find(!!filterConditions && filterConditions)
+    .sort({ price: sort })
+    .skip(skip)
+    .limit(limit);
   return Response.json({
     success: true,
     message: "All Courses are retrieved successfully",
+    meta: {
+      page,
+      limit,
+      skipped: skip,
+      totalData: result.length,
+    },
     data: result,
   });
 }
