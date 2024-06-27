@@ -63,7 +63,7 @@ export async function POST(req) {
     };
 
     const cookie = cookies().set("token", token, cookieOptions);
-
+console.log(token,"token from login route")
     return Response.json(
       {
         isOk: true,
@@ -73,6 +73,7 @@ export async function POST(req) {
           email: isUserPresent.email,
           image: isUserPresent.image,
         },
+        token
       },
       {
         headers: {

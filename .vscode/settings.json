@@ -1,4 +1,11 @@
 {
+<<<<<<< HEAD
+<<<<<<< HEAD
+  "cSpell.words": ["analystdatabase"]
+=======
+  "cSpell.words": ["Leaderboard", "shoping", "Swiper", "toaccompolish"]
+>>>>>>> fcf4e559894aa2f19713b3bf81bed4299a6e4f6e
+=======
   "cSpell.words": [
     "cloudinary",
     "Leaderboard",
@@ -7,4 +14,5 @@
     "Swiper",
     "toaccompolish"
   ]
+>>>>>>> a52c1971a30d882461989d19ecbce627dba39292
 }

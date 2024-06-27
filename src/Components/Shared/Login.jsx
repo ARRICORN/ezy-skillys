@@ -1,14 +1,14 @@
 "use client";
 import Image from "next/image";
 import { useState } from "react";
-import banner from "/public/registerPage-img.png";
+import banner from "../../assets/registerPage-img.png";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
-import { getSession, signIn, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Loading from "../Ui/Loading";
 import LOGIN_USER from "@/utility/request_data/loginHandler";
 import toast from "react-hot-toast";

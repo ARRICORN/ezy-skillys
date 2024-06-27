@@ -9,13 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@hookform/error-message": "^2.0.1",
-    "@nextui-org/react": "^2.4.1",
-    "axios": "^1.6.8",
+    "@next/swc-win32-x64-msvc": "^14.2.3",
+    "@nextui-org/react": "^2.4.2",
+    "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
-    "chroma-js": "^2.4.2",
-    "cloudinary": "^2.2.0",
-    "framer-motion": "^11.2.10",
+    "emailjs-com": "^3.2.0",
+    "framer-motion": "^11.2.12",
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.6.0",
     "mongoose": "^8.3.4",
@@ -30,7 +29,9 @@
     "react-pro-sidebar": "^1.1.0",
     "react-select": "^5.8.0",
     "react-slick": "^0.30.2",
-    "slick-carousel": "^1.8.1"
+    "slick-carousel": "^1.8.1",
+    "sweetalert2": "^11.12.0",
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "eslint": "^8",
