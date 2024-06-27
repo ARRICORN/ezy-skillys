@@ -8,7 +8,8 @@ import { Fragment } from "react";
 
 export default function MainLayout({ children }) {
   return (
-    <main className="bg-white">
+    <main >
+      <div className=" container mx-auto">
       <NavBar />
       <NextAuthSessionProvider>
 
@@ -16,6 +17,8 @@ export default function MainLayout({ children }) {
           {children}
         </div>
       </NextAuthSessionProvider>
+      </div>
+ 
       <Footer />
     </main>
   );

@@ -2,7 +2,7 @@ import Innovating from "@/Components/About/Innovating";
 import MissionVision from "@/Components/About/MissionVision";
 import TeamAdvisors from "@/Components/About/TeamAdvisors";
 import ThePlatform from "@/Components/About/ThePlatform";
-import ContactForm from "@/Components/Contact/ContactForm";
+
 
 const About = () => {
   return (
@@ -15,9 +15,7 @@ const About = () => {
        <MissionVision/>
       </div>
       <TeamAdvisors/>
-      <div>
-        <ContactForm/>
-      </div>
+    
     </div>
   );
 };

@@ -7,8 +7,11 @@ import NavIcon from "../../../assets/ezy.png";
 import { FaBar, Close } from "@/Components/Icons/ReactIcons";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import LogInOutBtn from "@/Components/Ui/LogInOutBtn";
+
 import { motion } from "framer-motion";
 import LoginProfile from "./LoginProfile";
+import NavButton from "./NavButton";
 
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
@@ -24,8 +27,7 @@ const NavBar = () => {
       <NavLink href={"/courses"}>Courses</NavLink>
       <NavLink href={"/pricing"}>Pricing</NavLink>
       <NavLink href={"/faq"}>FAQ</NavLink>
-      <NavLink href={"/about"}>About</NavLink>
-      <NavLink href={"/contact"}>Contact</NavLink>
+      <NavLink href={"/contact"}>Contact US</NavLink>
     </>
   );
   return (
@@ -84,10 +86,14 @@ const NavBar = () => {
           <div>
             <ul className="flex items-center gap-7 ">{navList}</ul>
           </div>
+          <div className=" flex gap-4 scale-90 xl:scale-100 items-center justify-center">
+          <LogInOutBtn/>
+            <NavButton href={"/register"}>Create Account</NavButton>
           <div>
             <LoginProfile login={true} />
           </div>
-        </div>
+          </div>
+          </div>
       </nav>
     </div>
   );
