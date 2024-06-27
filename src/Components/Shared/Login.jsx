@@ -25,25 +25,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  // const onSubmit = (data) => {
-  //   setFormLoading(true);
-  //   signIn("credentials", {
-  //     email: data.email,
-  //     password: data.password,
-  //     redirect: false,
-  //   }).then(async (e) => {
-  //     if (e.error) {
-  //       setError("Invalid email/password");
-  //     } else {
-  //       const sessions = await getSession();
-  //       // router.push("/blog");
-  //       console.log("pushing ");
-  //       location.reload();
-  //     }
-  //     setFormLoading(false);
-  //   });
-  // };
-
+  // === login handler with email & password after submitting ===
   const onSubmit = async (data) => {
     setFormLoading(true);
     if (status === "authenticated") {

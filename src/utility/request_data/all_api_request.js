@@ -4,10 +4,15 @@
  * @returns Promise
  *
  */
+
+import { useSession } from "next-auth/react";
+
 // TODO: have to chang token
 const token = process.env.NEXT_PUBLIC_TOKEN;
 
 const API_REQUEST_BY_URL = async (url) => {
+  const { data } = useSession();
+  console.log(data);
   try {
     if (!token) {
       return { message: "Unauthorized user token", status: 401 };
