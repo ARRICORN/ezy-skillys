@@ -13,6 +13,8 @@ import LoginProfile from "./LoginProfile";
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
+ 
+
   const pathName = usePathname();
 
   const AboutActive = pathName.toString() === "/about";
@@ -39,7 +41,6 @@ const NavBar = () => {
             alt="Nav Icon"
           />
           <div className="flex gap-8 items-center">
-                 <LoginProfile login={true} />
             <button
               className="text-2xl"
               onClick={() => setMobileNavOpen((prev) => !prev)}
@@ -61,11 +62,14 @@ const NavBar = () => {
             transition={{
               duration: 0.5,
             }}
-            onClick={() => setMobileNavOpen(false)}
             className="absolute lg:hidden py-4 bg-slate-200 w-full rounded-lg  flex flex-col gap-2 text-center z-50"
           >
-            <div>
-              <ul className=" space-y-5 ">{navList}</ul>
+            <div className=" space-y-10">
+              <LoginProfile login={true} />
+
+              <div onClick={() => setMobileNavOpen(false)}>
+                <ul className=" space-y-5 ">{navList}</ul>
+              </div>
             </div>
           </motion.div>
         )}
