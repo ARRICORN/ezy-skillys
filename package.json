@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/swc-win32-x64-msvc": "^14.2.3",
+    "@nextui-org/react": "^2.4.2",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
     "emailjs-com": "^3.2.0",
