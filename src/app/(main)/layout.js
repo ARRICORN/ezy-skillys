@@ -9,10 +9,12 @@ import { Fragment } from "react";
 export default function MainLayout({ children }) {
   return (
     <main >
+      
+      <NavBar/>
       <div className=" container mx-auto">
-      <NavBar />
+    
       <NextAuthSessionProvider>
-
+     
         <div className="min-h-screen">
           {children}
         </div>

@@ -176,7 +176,7 @@ const ContactForm = () => {
     </div>
   </div>
   
-  <div className="text-center mx-auto max-w-sm">
+  <div className="text-center mx-auto max-w-sm mb-5">
     <div className="flex flex-col items-center">
       <Image width={100} height={100} src={CallImage} alt="Call Icon" />
       <h4 className="text-[#F98149] font-bold text-[26px] leading-6 pt-8">Call Us</h4>
