@@ -1,5 +1,6 @@
 import Footer from "@/Components/Shared/Footer";
 import NavBar from "@/Components/Shared/NavBar/NavBar";
+import ClientScrollToTop from "@/Components/Ui/ScrollToTop";
 
 import NextAuthSessionProvider from "@/Provider/SessionProvider";
 import nextAuthSessionProvider from '@/Provider/SessionProvider'
@@ -20,7 +21,7 @@ export default function MainLayout({ children }) {
         </div>
       </NextAuthSessionProvider>
       </div>
- 
+      <ClientScrollToTop />
       <Footer />
     </main>
   );
