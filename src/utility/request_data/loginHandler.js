@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 const { signIn } = require("next-auth/react");
 
 /**
@@ -5,6 +7,7 @@ const { signIn } = require("next-auth/react");
  * @param {email,password} data
  * @returns promise
  */
+
 const LOGIN_USER = async (email, password) => {
   const response = await signIn("credentials", {
     email: email,

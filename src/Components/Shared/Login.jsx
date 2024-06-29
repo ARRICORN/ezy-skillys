@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import banner from "../../assets/registerPage-img.png";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
@@ -12,13 +12,23 @@ import { signIn, useSession } from "next-auth/react";
 import Loading from "../Ui/Loading";
 import LOGIN_USER from "@/utility/request_data/loginHandler";
 import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
   const { status } = useSession();
+  const session = useSession();
 
+  // === set cookie after login user ===
+  useEffect(() => {
+    if (session?.data?.user) {
+      Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
+    }
+  }, [session]);
+
+  // === hook-form functions ===
   const {
     register,
     handleSubmit,
@@ -26,14 +36,16 @@ const Login = () => {
   } = useForm();
 
   // === login handler with email & password after submitting ===
-  const onSubmit = async (data) => {
+  const onSubmit = async (form_data) => {
     setFormLoading(true);
     if (status === "authenticated") {
       router.push("/");
       return;
     }
 
-    const response = await LOGIN_USER(data.email, data.password);
+    const response = await LOGIN_USER(form_data.email, form_data.password);
+
+    console.log("response xxxxxxxxx", response);
 
     if (!response.ok) {
       setError("invalid credentials");
@@ -41,6 +53,7 @@ const Login = () => {
       return;
     }
 
+    // Cookies.set("user-cookie", data.data.token, { expires: 7 });
     toast.success("User logged in successful");
     router.push("/");
     setFormLoading(false);

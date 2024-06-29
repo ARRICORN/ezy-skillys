@@ -6,9 +6,9 @@
  */
 
 // TODO: have to chang token
-const token = process.env.NEXT_PUBLIC_TOKEN;
+// const token = process.env.NEXT_PUBLIC_TOKEN;
 
-const API_REQUEST_BY_URL = async (url) => {
+const API_REQUEST_BY_URL = async (url, token) => {
   try {
     if (!token) {
       return { message: "Unauthorized user token", status: 401 };

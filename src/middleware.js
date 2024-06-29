@@ -1,13 +1,12 @@
-import checkIsLoggedIn from "./middlewares/checkIsLoggedIn";
-
 const { NextResponse } = require("next/server");
 
 // This function can be marked `async` if using `await` inside
-const middleware = (request) => {
-  //TODO: have to get cookies
-  const user = true;
+const middleware = async (request, response) => {
+  let cookie = request.cookies.get("token");
+  // Check if the token is valid (this is a placeholder; replace with your own logic)
+  const isAuthenticated = Boolean(cookie);
 
-  if (!user) {
+  if (!isAuthenticated) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
   return NextResponse.next();

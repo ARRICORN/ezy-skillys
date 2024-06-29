@@ -10,6 +10,7 @@ import { Textarea } from "@nextui-org/react";
 import { Input } from "@nextui-org/input";
 import { colourOptions, colourStyles } from "./data";
 import Select from "react-select";
+import Cookies from "js-cookie";
 
 // initial value
 let defaultValues = {
@@ -31,6 +32,7 @@ const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCou
 // === form component here === //
 const Form_component = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const token = Cookies.get("user-cookie");
 
   const {
     control,
@@ -41,40 +43,87 @@ const Form_component = () => {
   } = useForm({ defaultValues });
 
   // form submit handler as well as create course
-  const onsubmitHandler = async (data) => {
-    setIsLoading(true);
-    const filterCtg = [];
-    data.category.filter((element) => filterCtg.push(element.value));
+  // const onsubmitHandler = async (data) => {
+  //   setIsLoading(true);
+  //   const filterCtg = [];
 
+  //   data.category.filter((element) => filterCtg.push(element.value));
+  //   const imageUrl = await UPLOAD_IMAGE(data);
+
+  //   if (!imageUrl) {
+  //     toast.error("invalid image upload");
+  //     setIsLoading(false);
+  //     return;
+  //   }
+
+  //   const createCourse = {
+  //     title: data?.title,
+  //     desc: data?.description,
+  //     price: data?.price,
+  //     tag: data?.tag?.value,
+  //     categories: [...filterCtg],
+  //     addedBy: data?.email,
+  //     liveDemo: data?.liveDemo,
+  //     image: imageUrl?.url,
+  //   };
+  //   // create a post with form data by admin
+  //   const response = await POST_REQUEST_BY_DATA(url, createCourse, token);
+
+  //   if (!response.statusText === "OK") {
+  //     toast.error("Course create is failed");
+  //     setIsLoading(false);
+  //     return;
+  //   }
+
+  //   setIsLoading(false);
+  //   toast.success("Course is created successfully");
+  //   reset();
+  // };
+
+  const onsubmitHandler = async (data) => {
+    // Set the loading state to true to indicate the submission process has started
+    setIsLoading(true);
+
+    // Extract and transform the categories from the form data
+    let filterCtg = data.category.map((element) => element.value);
+
+    // Upload the image and get the URL
     const imageUrl = await UPLOAD_IMAGE(data);
 
+    // Check if the image upload was successful
     if (!imageUrl) {
-      toast.error("invalid image upload");
-      setIsLoading(false);
+      toast.error("Invalid image upload");
+      setIsLoading(false); // Reset the loading state
       return;
     }
 
+    // Create the course object with the form data and the uploaded image URL
     const createCourse = {
-      title: data?.title,
-      desc: data?.description,
-      price: data?.price,
-      tag: data?.tag?.value,
-      categories: [...filterCtg],
-      addedBy: data?.email,
-      liveDemo: data?.liveDemo,
-      image: imageUrl?.url,
+      title: data.title,
+      desc: data.description,
+      price: data.price,
+      tag: data.tag?.value,
+      categories: filterCtg,
+      addedBy: data.email,
+      liveDemo: data.liveDemo,
+      image: imageUrl.url,
     };
-    // create a post with form data by admin
-    const response = await POST_REQUEST_BY_DATA(url, createCourse);
 
-    if (!response.statusText === "OK") {
-      toast.error("Course create is failed");
-      setIsLoading(false);
+    // Make a POST request to create the course
+    const response = await POST_REQUEST_BY_DATA(url, createCourse, token);
+    console.log("res ", response);
+    // Check if the response is not OK
+    if (!response.success) {
+      toast.error(response.message);
+      setIsLoading(false); // Reset the loading state
       return;
     }
 
+    // Reset the loading state and display a success message
     setIsLoading(false);
-    toast.success("Course is created successfully");
+    toast.success("Course created successfully");
+
+    // Reset the form
     reset();
   };
 

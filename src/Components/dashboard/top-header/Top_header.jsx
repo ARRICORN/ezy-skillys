@@ -1,9 +1,15 @@
 import API_REQUEST_BY_URL from "@/utility/request_data/all_api_request";
 import style from "./header.module.css";
+import Image from "next/image";
+import avatar from "@/assets/user.png";
+import { authOptions } from "@/Components/Utils/AuthOptions";
+import { getServerSession } from "next-auth";
 
+// === top dashboard header nav ===
 const Top_header = async () => {
+  const session = await getServerSession(authOptions);
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
-  const response = await API_REQUEST_BY_URL(url);
+  const response = await API_REQUEST_BY_URL(url, session?.token);
 
   return (
     <div className={`${style.shadow} flex p-4 items-center justify-between`}>
@@ -17,16 +23,21 @@ const Top_header = async () => {
       </div>
       <div className="flex space-x-4 justify-end">
         <div>
-          <img
-            src="https://source.unsplash.com/100x100/?portrait"
+          <Image
+            width={70}
+            height={70}
+            priority={true}
+            src={avatar}
             alt=""
-            className="object-cover w-12 h-12 rounded-full dark:bg-gray-500"
+            className="object-cover w-12 h-12 rounded-full"
           />
         </div>
         <div>
           <h4 className="font-bold">Leroy Jenkins</h4>
           <span className="text-xs text-orange-500">
-            {response?.data && response?.data?.role}
+            {response?.data &&
+              response?.data?.role.charAt(0).toUpperCase() +
+                response?.data?.role.slice(1)}
           </span>
         </div>
       </div>
