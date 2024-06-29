@@ -5,7 +5,7 @@ const Profile_template = () => {
     <section className="lg:pl-10">
       <hr />
       <div className="container">
-        <h2 className="text-2xl font-bold md:text-4xl py-1">
+        <h2 className="text-xl font-bold md:text-2xl py-2">
           Profile <span className="text-teal-500">Information</span>
         </h2>
         <div className="space-y-8 mt-1">

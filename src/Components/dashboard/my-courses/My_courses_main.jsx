@@ -26,13 +26,15 @@ const My_courses_main = async () => {
       </div>
 
       {/* === course template === */}
-      <div className="h-[80vh] no-scrollbar overflow-auto">
-        {userSort ? (
+      {userSort ? (
+        <div className="h-[80vh] no-scrollbar overflow-auto">
           <Course_template courses={userSort} />
-        ) : (
-          "Courses is not found"
-        )}
-      </div>
+        </div>
+      ) : (
+        <h1 className="mt-5 text-center text-orange-500">
+          Course information was not found!
+        </h1>
+      )}
     </div>
   );
 };

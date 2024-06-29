@@ -13,7 +13,9 @@ const Leader_board = async () => {
       {userData ? (
         <Search_user userData={userData.data} />
       ) : (
-        "User information was not found!"
+        <h1 className="mt-5 text-center text-orange-500">
+          User information was not found!
+        </h1>
       )}
     </div>
   );

@@ -8,7 +8,13 @@ const My_student_board = async () => {
   return (
     <section className="">
       {/* === Table body === */}
-      <Table_body studentData={student_data.data} />
+      {student_data ? (
+        <Table_body studentData={student_data.data} />
+      ) : (
+        <h1 className="mt-5 text-center text-orange-500">
+          Student information was not found!
+        </h1>
+      )}
     </section>
   );
 };

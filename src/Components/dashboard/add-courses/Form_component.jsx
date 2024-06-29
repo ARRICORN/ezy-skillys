@@ -6,7 +6,8 @@ import UPLOAD_IMAGE from "@/utility/request_data/upload_image";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
-import { Input, Textarea } from "@nextui-org/react";
+import { Textarea } from "@nextui-org/react";
+import { Input } from "@nextui-org/input";
 import { colourOptions, colourStyles } from "./data";
 import Select from "react-select";
 
@@ -94,7 +95,8 @@ const Form_component = () => {
                     {...field}
                     type="text"
                     label="Course name"
-                    variant="bordered"
+                    variant=""
+                    name="title"
                     className="w-full mb-1"
                   />
                 )}
