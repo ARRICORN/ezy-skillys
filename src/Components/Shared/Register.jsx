@@ -1,8 +1,8 @@
-"use client";
-import Image from "next/image";
-import React from "react";
-import banner from "/public/registerPage-img.png";
-import Link from "next/link";
+'use client'
+import Image from 'next/image';
+import React, { useState } from 'react';
+import banner from '../../assets/registerPage-img.png'
+import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";

@@ -23,14 +23,14 @@ export async function POST(req) {
     // Check if the user is already registered as a regular user
     const isUserRegistered = await UserInfo.findOne({ email });
     if (isUserRegistered) {
-      return Response.json({ isOk: false, message: "You are already registered as a regular user. Cannot register as a User." }, { status: 400 });
+      return Response.json({ isOk: false, message: "You are already a user.you can't register again." }, { status: 400 });
     }
 
     const isUserPresent = await User.findOne({ email });
 
 
     if (isUserPresent) {
-      return Response.json({ isOk: false, message: "You are already registered as a regular user. Cannot register as a User." }, { status: 400 });
+      return Response.json({ isOk: false, message: "You are already a user.you can't register again." }, { status: 400 });
     }
 
     const session = await mongoose.startSession();

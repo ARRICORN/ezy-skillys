@@ -75,9 +75,9 @@ const Course = () => {
                 <div>
 
 
-                    <h1 className="text-primary text-5xl pb-5 font-extrabold text-center">Choose The <span className="text-secondary">Course</span></h1>
+                    <h1 className="text-[#003F7D] text-5xl pb-5 font-extrabold text-center">Choose The <span className="text-[#f98149]">Course</span></h1>
                     {/* main section */}
-                    <main className="bg-primary rounded-xl p-6 lg:p-16 relative">
+                    <main className="bg-[#003F7D] rounded-xl p-6 lg:p-16 relative">
                         <div className='grid grid-cols-8' >
 
                             <div className='col-span-8 md:col-span-5 relative'>
@@ -152,7 +152,7 @@ const Course = () => {
                                                         </div>
 
                                                         <div className='flex  justify-between md:justify-start '>
-                                                            <button onClick={() => setIsDiscoverCourse(true)} className='px-3 md:px-8 mt-4 py-4 rounded-lg text-white bg-secondary'>Discover Course</button>
+                                                            <button onClick={() => setIsDiscoverCourse(true)} className='px-3 md:px-8 mt-4 py-4 rounded-lg text-white bg-[#f98149]'>Discover Course</button>
                                                             <button className='px-4 md:px-8 ml-4 py-4 md:py-0 mt-4 rounded-lg text-white border-2'><Link href="/course">Suggest Course</Link></button>
                                                         </div>
                                                     </div>
@@ -174,7 +174,7 @@ const Course = () => {
                                                         </div>
 
                                                         <div className='w-full flex px-3 md:px-0'>
-                                                            <button onClick={() => setIsItField(true)} className='px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-secondary'>IT Field</button>
+                                                            <button onClick={() => setIsItField(true)} className='px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-[#f98149]'>IT Field</button>
                                                             <button onClick={itJobFind} className='px-4 md:px-12 ml-4 py-0 mt-4 md:py-3 rounded-lg text-white border-2'>Non IT Field</button>
                                                         </div>
                                                     </div>
@@ -284,7 +284,7 @@ const Course = () => {
 
 
                                                             <Link href="/ItCourses/categories=it&categories=coding&categories=forntend">
-                                                                <button className='px-6 mt-4 py-2 rounded-lg text-white bg-secondary'>Next</button>
+                                                                <button className='px-6 mt-4 py-2 rounded-lg text-white bg-[#f98149]'>Next</button>
                                                             </Link>
 
                                                         </div>

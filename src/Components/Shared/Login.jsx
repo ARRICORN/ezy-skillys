@@ -1,15 +1,19 @@
-"use client";
-import Image from "next/image";
-import React from "react";
-import banner from "/public/registerPage-img.png";
-import Link from "next/link";
+'use client'
+import Image from 'next/image';
+import React, { useState } from 'react';
+import banner from '../../assets/registerPage-img.png'
+import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
-import { getSession, signIn, useSession } from "next-auth/react";
-import Loading from "../Ui/Loading";
+import { getSession, signIn, useSession } from 'next-auth/react';
+import Loading from '../Ui/Loading';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+
+
 
 const Login = () => {
   const [formLoading, setFormLoading] = React.useState(false);

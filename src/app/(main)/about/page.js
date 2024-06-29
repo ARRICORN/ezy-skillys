@@ -3,7 +3,8 @@ import MissionVision from "@/Components/About/MissionVision";
 import TeamAdvisors from "@/Components/About/TeamAdvisors";
 import ThePlatform from "@/Components/About/ThePlatform";
 
-const AboutPage = () => {
+
+const About = () => {
   return (
     <div className=" space-y-32">
       <div className="bg-[#003F7D]  rounded-bl-[50px]">
@@ -14,8 +15,9 @@ const AboutPage = () => {
        <MissionVision/>
       </div>
       <TeamAdvisors/>
+    
     </div>
   );
 };
 
-export default AboutPage;
+export default About;
