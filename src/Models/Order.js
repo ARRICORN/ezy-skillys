@@ -12,6 +12,10 @@ const orderSchema = new mongoose.Schema(
       required: true,
       ref: "UserInfo",
     },
+    transactionId: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
       default: "pending",

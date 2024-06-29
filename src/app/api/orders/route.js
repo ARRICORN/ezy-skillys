@@ -5,65 +5,49 @@ import { isAdmin } from "@/middlewares/checkAdmin";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
+import Stripe from "stripe";
 
-export const POST = async (req) => {
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+
+export const POST = async (req, res) => {
   try {
     const decoded = checkIsLoggedIn();
     // Connect to the database
     await mongoose.connect(process.env.DATABASE_URL);
 
     // Find the user by email
+    const { courseId, amount } = await req.json(); // Parse the request body
+
+    // Create a payment intent with Stripe
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount,
+      currency: "usd",
+      payment_method_types: ["card"],
+    });
     const user = await UserInfo.findOne({ email: decoded.email });
-    if (!user) {
-      return new NextResponse(
-        JSON.stringify({
-          message: "User not found",
-        }),
-        { status: 404 }
-      );
-    }
 
-    // Parse and validate the request body to get the product ID
-    const { courseId } = await req.json();
-    if (!courseId) {
-      return new NextResponse(
-        JSON.stringify({
-          message: "Course ID is required",
-        }),
-        { status: 400 }
-      );
-    }
-
-    // Check if the product exists
-    const course = await Course.findById(courseId);
-    if (!course) {
-      return new NextResponse(
-        JSON.stringify({
-          message: "Course not found",
-        }),
-        { status: 404 }
-      );
-    }
-
-    // Create a new order with the provided product ID and user's ID
-    const order = await Order.create({
+    // Create a new order with status 'pending'
+    const newOrder = new Order({
       course: courseId,
       user: user._id,
+      status: "confirmed",
+      transactionId: paymentIntent.id,
     });
+
+    const result = await newOrder.save();
 
     return new NextResponse(
       JSON.stringify({
-        status: "Success",
-        message: "Order created successfully",
-        data: order,
+        message: "Order placed successfully",
+        data: result,
       }),
-      { status: 201 }
+      { status: 200 }
     );
   } catch (error) {
-    console.error(error);
     return new NextResponse(
       JSON.stringify({
-        message: "Something went wrong",
+        message: "Order processing failed",
+        error: error.message,
       }),
       { status: 500 }
     );
@@ -103,7 +87,7 @@ export const GET = async (req) => {
         const page = parseInt(searchParams.get("page")) || 1;
         const limit = parseInt(searchParams.get("limit")) || 10;
         const skip = (page - 1) * limit;
-        // Retrieve all orders related to the seller's products
+        // Retrieve all orders related to the admin's courses
         const result = await Order.find({
           course: { $in: adminCourses.map((c) => c._id) },
         })
