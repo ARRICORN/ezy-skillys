@@ -4,6 +4,7 @@ import CertificateAchievement from "@/components/pages/certificate-achivement/Ce
 import MentorsTrainer from "@/components/pages/mentors-trainers-review/MentorsTrainer";
 import PopularCourses from "@/components/pages/popular-courses/PopularCourses";
 import Project_planning from "@/components/pages/project-planning/Project_planning";
+import Review from "@/components/pages/review/review";
 
 export default function Home() {
   return (
@@ -13,7 +14,9 @@ export default function Home() {
       <PopularCourses />
       <Achievement />
       <MentorsTrainer />
+      <Review/>
       <CertificateAchievement />
+
       <Footer />
     </main>
   );

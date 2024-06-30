@@ -7,7 +7,8 @@
     "modules": 100,
     "students": 36,
     "description": "Sandeep is a Software Developer who expertise in .NET & Azure for more than 24 years and training 100’s of students toaccompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+    "time":"26/6/2023"
   },
   {
     "name": "Sudhansu",
@@ -17,7 +18,8 @@
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+     "time":"16/3/2024"
   },
   {
     "name": "Sudhansu",
@@ -27,17 +29,19 @@
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+     "time":"10/2/2024"
   },
   {
-    "name": "mudhansu",
+    "name": "Mudhansu",
     "position": "",
     "profession": "Cloud & Cyber Security, Forensic",
     "review": 12,
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+    "time":"5/2/2023"
   },
   {
     "name": "Ruchika Tuteja",
@@ -47,7 +51,8 @@
     "modules": 158,
     "students": 147,
     "description": "I have 9 years of experience in Fullstack development. Have worked on multiple projects on.  I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance...",
-    "profile_url": "https://i.ibb.co/PjttV26/Group.png"
+    "profile_url": "https://i.ibb.co/PjttV26/Group.png",
+    "time":"10/2/2022"
   },
   {
     "name": "Sudhansu",
@@ -57,7 +62,8 @@
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+    "time":"9/9/2024"
   },
   {
     "name": "Ruchika Tuteja",
@@ -67,6 +73,7 @@
     "modules": 158,
     "students": 147,
     "description": "I have 9 years of experience in Fullstack development. Have worked on multiple projects on.  I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance...",
-    "profile_url": "https://i.ibb.co/PjttV26/Group.png"
+    "profile_url": "https://i.ibb.co/PjttV26/Group.png",
+    "time":"3/17/2023"
   }
 ]
