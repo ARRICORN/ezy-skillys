@@ -14,12 +14,12 @@ const CourseMenu = ({ setSort, setSearch, setCourseStatus }) => {
     {
       id: 2,
       name: "Newest",
-      value: "createdAt",
+      value: "ascending",
     },
     {
       id: 3,
       name: "Oldest",
-      value: "-createdAt",
+      value: "descending",
     },
     {
       id: 4,
@@ -69,11 +69,8 @@ const CourseMenu = ({ setSort, setSearch, setCourseStatus }) => {
             name=""
             id=""
             className="bg-[#F1F1F5] outline-none text-xs w-full"
-            onKeyDown={(event) => {
-              if (event.key === "Enter") {
-                console.log(event.target.value);
-                setSearch(event.target.value);
-              }
+            onChange={(event) => {
+              setSearch(event.target.value);
             }}
             placeholder={"Search the Course Here"}
           />

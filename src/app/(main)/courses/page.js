@@ -1,7 +1,7 @@
 "use client";
 import { useQuery } from "@tanstack/react-query";
 import axiosConfig from "/axiosConfig";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Heading from "@/Components/courses/Heading";
 import CourseMenu from "@/Components/courses/CourseMenu";
 import AllCourses from "@/Components/courses/AllCourses";
@@ -16,7 +16,7 @@ const AllCoursesPage = () => {
   const [courseStatus, setCourseStatus] = useState("all");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 10;
+  const itemsPerPage = 40;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -31,12 +31,15 @@ const AllCoursesPage = () => {
     link.click();
     document.body.removeChild(link);
   };
+
   // fetches data from all courses
   const fetchCourses = async () => {
     const { data } = await axiosConfig.get(
-      `/courses?_page=${currentPage}&_per_page=${itemsPerPage}${
-        search !== "" ? `&title=${search.trim().split(" ").join("+")}` : ""
-      }${sort ? `&_sort=${sort}` : ""}${
+      `/courses?page=${currentPage}&limit=${itemsPerPage}${
+        search !== ""
+          ? `&search_term=${search.trim().split(" ").join("+")}`
+          : ""
+      }${sort ? `&sort=${sort}` : ""}${
         courseStatus != "all" ? `&courseStatus.${courseStatus}=true` : ""
       }`
     );
@@ -61,6 +64,8 @@ const AllCoursesPage = () => {
   useEffect(() => {
     refetch();
   }, [refetch, sort, search, courseStatus]);
+
+  if (coursesIsSuccess) console.log(coursesData);
 
   return (
     <div className="font-poppins relative">
