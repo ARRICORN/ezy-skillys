@@ -35,6 +35,9 @@ export async function GET(req) {
       .limit(limit)
       .populate("course")
       .select("-createdAt -updatedAt -__v");
+    const totalData = (await PurchasedCourse.find({userEmail: userInfo.email})).length || 0;
+    const retrievedData = result.length;
+    const totalPages = Math.ceil(totalData / limit);
 
     return Response.json({
       success: true,
@@ -42,8 +45,9 @@ export async function GET(req) {
       meta: {
         page,
         limit,
-        skipped: skip,
-        totalData: result.length,
+        totalData,
+        retrieved: retrievedData,
+        totalPages,
       },
       data: result,
     });

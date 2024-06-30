@@ -13,7 +13,7 @@ export async function GET(req) {
   const limitValue = url.searchParams.get("limit") || 10;
   const page = Number(pageValue);
   const limit = Number(limitValue);
-  const skip = (Number(page) - 1) * limit;
+  const skip = (page - 1) * limit;
 
   const filterConditions = { isDeleted: false };
   if (searchTerm) {
@@ -32,14 +32,18 @@ export async function GET(req) {
     .sort({ price: sort })
     .skip(skip)
     .limit(limit);
+  const totalData = (await Course.find({ isDeleted: false })).length || 0;
+  const retrievedData = result.length;
+  const totalPages = Math.ceil(totalData / limit);
   return Response.json({
     success: true,
     message: "All Courses are retrieved successfully",
     meta: {
       page,
       limit,
-      skipped: skip,
-      totalData: result.length,
+      totalData,
+      retrieved: retrievedData,
+      totalPages
     },
     data: result,
   });
