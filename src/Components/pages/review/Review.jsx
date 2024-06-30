@@ -50,7 +50,7 @@ const review = () => {
       </div>
 
       {/* cart demo */}
-      <div className="my-12 ">
+      <div className="my-4 ">
         <Slider {...settings}>
           {mentorsData &&
             mentorsData?.map((user, index) => (
