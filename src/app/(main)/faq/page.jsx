@@ -15,7 +15,7 @@ const FaqPage = () => {
     return (
         <div>
             <div>
-                <div className='bg-[#F98149] h-96  md:h-[450px] lg:h-[480px] -mt-32 pt-40 w-full'>
+                <div className='bg-[#003F7D] h-96  md:h-[450px] lg:h-[480px] -mt-32 pt-40 w-full'>
                     <h1 className='text-3xl font-poppins font-medium text-center text-white'>Frequently Asked Questions</h1>
                 </div>
                 <div>
