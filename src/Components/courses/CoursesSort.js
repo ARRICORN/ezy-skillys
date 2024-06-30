@@ -16,9 +16,10 @@ const CoursesSort = ({ options, setSort }) => {
     <Fragment>
       <div className="relative">
         <div className="w-full flex justify-between text-xs">
-          <div className="flex items-center ml-2">
+          <div className="flex items-center mx-1 md:ml-2">
             <span>
-              Sort by: <span className="font-semibold">{selected.name}</span>
+              <span className="hidden lg:inline">Sort By:</span>{" "}
+              <span className="font-semibold">{selected.name}</span>
             </span>
           </div>
           <button
@@ -34,7 +35,7 @@ const CoursesSort = ({ options, setSort }) => {
               .filter((each) => each !== selected)
               .map((each) => (
                 <button
-                  className="w-full  text-start pl-[3.5rem] py-1"
+                  className="w-full text-start pl-1 md:pl-2 lg:pl-[3.5rem] py-1"
                   key={each.id}
                   onClick={() => handleSelect(each)}
                 >

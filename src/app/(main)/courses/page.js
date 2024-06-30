@@ -16,7 +16,7 @@ const AllCoursesPage = () => {
   const [courseStatus, setCourseStatus] = useState("all");
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 40;
+  const itemsPerPage = 16;
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -25,8 +25,8 @@ const AllCoursesPage = () => {
   const handleCourseCurriculumDownload = () => {
     const link = document.createElement("a");
     link.href = pdfLink;
-    link.setAttribute("download", ""); // Set the download attribute
-    link.setAttribute("target", "_blank"); // Open in a new tab
+    link.setAttribute("download", "");
+    link.setAttribute("target", "_blank");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -54,7 +54,7 @@ const AllCoursesPage = () => {
     isSuccess: coursesIsSuccess,
     refetch,
   } = useQuery({
-    queryKey: ["courses"],
+    queryKey: ["courses", currentPage],
     queryFn: () => fetchCourses(),
     onSuccess: () => {
       refetch();
@@ -83,8 +83,8 @@ const AllCoursesPage = () => {
         setSearch={setSearch}
         setCourseStatus={setCourseStatus}
       />
-      {coursesIsLoading && <Loading />}
       <div class="bg-[#F3F3F3]">
+        {coursesIsLoading && <Loading />}
         {coursesIsSuccess && (
           <AllCourses
             data={coursesData}
@@ -94,7 +94,7 @@ const AllCoursesPage = () => {
         )}
         <Pagination
           currentPage={currentPage}
-          totalPages={coursesData?.pages}
+          totalPages={coursesData?.meta?.totalPages}
           onPageChange={handlePageChange}
         />
       </div>

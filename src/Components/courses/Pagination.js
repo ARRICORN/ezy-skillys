@@ -26,11 +26,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <button
           key={i}
           onClick={() => handlePageChange(i)}
-          className={`h-[44px] rounded-[4px] text-[22px]   ${
+          className={`h-8 md:h-[44px] rounded-[4px] text-base md:text-[22px]   ${
             i === currentPage
               ? "bg-[#F98149] text-white"
               : "bg-[#F3F3F3] text-[#F98149]"
-          }    border-2 border-[#F98149] pt-[6px] pr-[15px] pb-[17px] pl-[14px] font-semibold`}
+          }    border-2 border-[#F98149] px-2 md:pt-[6px] md:pr-[15px] md:pb-[17px] md:pl-[14px] font-semibold`}
         >
           {i}
         </button>
@@ -40,11 +40,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   };
 
   return (
-    <div className="w-full flex justify-center align-center gap-[53px] pt-[127px] pb-[89px]">
+    <div className="w-full flex justify-center align-center gap-2 md:gap-4 lg:gap-[33px] xl:gap-[53px] pt-[127px] pb-[89px] ">
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className={`h-[44px] rounded-[4px] text-[22px] bg-[#F3F3F3] disabled:opacity-50 text-[#F98149]  border-2 border-[#F98149] py-[10px] px-[12px] font-semibold`}
+        className={`h-8 md:h-[44px] rounded-[4px] text-base md:text-[22px] bg-[#F3F3F3] disabled:opacity-50 text-[#F98149] border-2 border-[#F98149] py-1 md:py-[10px] px-2 md:px-[12px] font-semibold`}
       >
         <FaLessThan />
       </button>
@@ -52,7 +52,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className={`h-[44px] rounded-[4px] text-[22px] bg-[#F3F3F3] disabled:opacity-50 text-[#F98149]  border-2 border-[#F98149] py-[10px] px-[12px] font-semibold`}
+        className={`h-8 md:h-[44px] rounded-[4px] text-base md:text-[22px] bg-[#F3F3F3] disabled:opacity-50 text-[#F98149] border-2 border-[#F98149] py-1 md:py-[10px] px-2 md:px-[12px] font-semibold`}
       >
         <FaGreaterThan />
       </button>
