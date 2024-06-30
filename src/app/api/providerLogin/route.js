@@ -32,17 +32,20 @@ export async function POST(req) {
             sameSite: 'lax',
             secure: process.env.NODE_ENV === 'production',
         };
-        console.log(cookieOptions, "cookies")
+       // console.log(cookieOptions, "cookies")
 
         const cookie = cookies().set('token', token, cookieOptions);
-        console.log(cookie, "cookie");
-
+       // console.log(cookie, "cookie");
+console.log(token,"provider login token: " );
 
         // Check if the user is already registered as a regular user
         const isUserRegistered = await UserInfo.findOne({ email });
         if (isUserRegistered) {
             return Response.json(
-                { isOk: true, message: 'Login successfully' },
+                {
+                    isOk: true, message: 'Login successfully',
+                    token
+                },
                 {
                     headers: {
                         'Set-Cookie': cookie,
@@ -51,7 +54,7 @@ export async function POST(req) {
             );
         }
 
-        // creat new account, if user not exist
+        // create new account, if user not exist
         const newUser = { name, email, password: '', image };
         const createdUser = await User.create([newUser], { session });
 
@@ -60,7 +63,7 @@ export async function POST(req) {
         const createdUserInfo = await UserInfo.create([{ ...newUserInfo, _id: UserId }], { session });
 
         return Response.json(
-            { User: createdUser[0], UserInfo: createdUserInfo[0], isOk: true, message: 'Registration successfully' },
+            { User: createdUser[0], UserInfo: createdUserInfo[0], isOk: true, message: 'Registration successfully',token },
             {
                 headers: {
                     'Set-Cookie': cookie,

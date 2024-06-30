@@ -63,44 +63,25 @@ const Course = () => {
     setJobType(type);
   };
 
-  return (
-    <div className="w-full px-6 relative">
-      <div className="w-full lg:w-10/12 mx-auto my-8 px-5 relative">
-        <Image src={group1} alt="" className="absolute top-32 left-[-20px] " />
-        <Image
-          src={ornaments}
-          alt=""
-          className="w-[30px] absolute top-80 right-[-50px] "
-        />
-        <Image
-          src={ornaments}
-          alt=""
-          className="w-[30px] absolute left-[-20px] bottom-16  "
-        />
-        <Image
-          src={group1}
-          alt=""
-          className="absolute top-32 left-[-20px] -z-10"
-        />
-        <Image
-          src={group2}
-          alt=""
-          className="w-[30px] absolute bottom-1/3 right-[-56px] "
-        />
-        <Image
-          src={elipse}
-          alt=""
-          className="w-36 absolute bottom-[-56px] right-[-2px] md:right-0 "
-        />
-        <div>
-          <h1 className="text-primary text-5xl pb-5 font-extrabold text-center">
-            Choose The <span className="text-secondary">Course</span>
-          </h1>
-          {/* main section */}
-          <main className="bg-primary rounded-xl p-6 lg:p-16 relative">
-            <div className="grid grid-cols-8">
-              <div className="col-span-8 md:col-span-5 relative">
-                {/* Welcome part */}
+    return (
+        <div className="w-full px-6 relative">
+            <div className="w-full lg:w-10/12 mx-auto my-8 px-5 relative">
+                <Image src={group1} alt="" className='absolute top-32 left-[-20px] ' />
+                <Image src={ornaments} alt="" className='w-[30px] absolute top-80 right-[-50px] ' />
+                <Image src={ornaments} alt="" className='w-[30px] absolute left-[-20px] bottom-16  ' />
+                <Image src={group1} alt="" className='absolute top-32 left-[-20px] -z-10' />
+                <Image src={group2} alt="" className='w-[30px] absolute bottom-1/3 right-[-56px] ' />
+                <Image src={elipse} alt="" className='w-36 absolute bottom-[-56px] right-[-2px] md:right-0 ' />
+                <div>
+
+
+                    <h1 className="text-primary text-5xl pb-5 font-extrabold text-center">Choose The <span className="text-secondary">Course</span></h1>
+                    {/* main section */}
+                    <main className="bg-primary rounded-xl p-6 lg:p-16 relative">
+                        <div className='grid grid-cols-8' >
+
+                            <div className='col-span-8 md:col-span-5 relative'>
+                                {/* Welcome part */}
 
                 <div>
                   <div className="flex flex-col md:flex-row items-center">
@@ -178,21 +159,25 @@ const Course = () => {
                               </p>
                             </div>
 
-                            <div className="flex  justify-between md:justify-start ">
-                              <button
-                                onClick={() => setIsDiscoverCourse(true)}
-                                className="px-3 md:px-8 mt-4 py-4 rounded-lg text-white bg-secondary"
-                              >
-                                Discover Course
-                              </button>
-                              <button className="px-4 md:px-8 ml-4 py-4 md:py-0 mt-4 rounded-lg text-white border-2">
-                                <Link href="/course">Suggest Course</Link>
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
+
+                                                    <div className=' w-full md:w-[470px] ml-5 md:ml-0'>
+
+                                                        <div className='bg-white px-4 mt-8 text-xl font-semibold  rounded-xl rounded-tl-none py-4'>
+                                                            <p className='bg-yellow-500'>Great ! Let me help you</p>
+                                                        </div>
+
+                                                        <div className='flex  justify-between md:justify-start '>
+                                                            <button onClick={() => setIsDiscoverCourse(true)} className='px-3 md:px-8 mt-4 py-4 rounded-lg text-white bg-secondary'>Discover Course</button>
+                                                            <button className='px-4 md:px-8 ml-4 py-4 md:py-0 mt-4 rounded-lg text-white border-2'><Link href="/course">Suggest Course</Link></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
 
                     {/* selecct field part */}
                     <div className={`${isDiscoverCourse ? "block" : "hidden"}`}>
@@ -206,24 +191,13 @@ const Course = () => {
                               </p>
                             </div>
 
-                            <div className="w-full flex px-3 md:px-0">
-                              <button
-                                onClick={() => setIsItField(true)}
-                                className="px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-secondary"
-                              >
-                                IT Field
-                              </button>
-                              <button
-                                onClick={itJobFind}
-                                className="px-4 md:px-12 ml-4 py-0 mt-4 md:py-3 rounded-lg text-white border-2"
-                              >
-                                Non IT Field
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                                                        <div className='w-full flex px-3 md:px-0'>
+                                                            <button onClick={() => setIsItField(true)} className='px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-secondary'>IT Field</button>
+                                                            <button onClick={itJobFind} className='px-4 md:px-12 ml-4 py-0 mt-4 md:py-3 rounded-lg text-white border-2'>Non IT Field</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
                     {/* it field part */}
                     <div className={`${isItField ? "block" : "hidden"}`}>
@@ -369,20 +343,23 @@ const Course = () => {
                                 </p>
                               </div>
 
-                              <Link
-                                href={`/ItCourses/categories=it&categories=${jobType}&categories=${choosedPath.course}`}
-                              >
-                                <button className="px-6 mt-4 py-2 rounded-lg text-white bg-secondary">
-                                  Next
-                                </button>
-                              </Link>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </>
-                )}
+
+                                                            <Link href="/ItCourses/categories=it&categories=coding&categories=forntend">
+                                                                <button className='px-6 mt-4 py-2 rounded-lg text-white bg-secondary'>Next</button>
+                                                            </Link>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                    </>
+                                }
+
+
 
                 {/* if select  it */}
                 {/* {

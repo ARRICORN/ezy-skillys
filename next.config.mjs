@@ -7,8 +7,21 @@ const nextConfig = {
       "seeklogo.com",
       "i.ibb.co",
       "upload.wikimedia.org",
+
       "i.ibb.co",
       "res.cloudinary.com",
+
+      "res.cloudinary.com",
+      "images.unsplash.com",
+      "lh3.googleusercontent.com",
+    ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "s3-alpha-sig.figma.com",
+        port: "",
+        pathname: "img/**",
+      },
     ],
   },
 };

@@ -10,6 +10,7 @@ const CourseSchema = new Schema(
     categories: { type: [String], required: true },
     addedBy: { type: String, required: true },
     liveDemo: { type: String, required: true },
+    isDeleted: { type: Boolean, required: false, default: false },
   },
   { timestamps: true }
 );
