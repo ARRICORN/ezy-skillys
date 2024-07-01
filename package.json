@@ -11,11 +11,8 @@
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
     "@next/swc-win32-x64-msvc": "^14.2.3",
-<<<<<<< HEAD
-    "@nextui-org/input": "^2.2.2",
-=======
     "@nextui-org/accordion": "^2.0.35",
->>>>>>> 039f4eccba4b15aae8543c40ae053989a146b74e
+    "@nextui-org/input": "^2.2.2",
     "@nextui-org/react": "^2.4.2",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
@@ -35,6 +32,8 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
     "react-pro-sidebar": "^1.1.0",
+    "react-rating-stars-component": "^2.2.0",
+    "react-responsive-modal": "^6.4.2",
     "react-scroll-to-top": "^3.0.0",
     "react-select": "^5.8.0",
     "react-slick": "^0.30.2",
