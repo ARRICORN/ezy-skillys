@@ -45,8 +45,8 @@ const Login = () => {
         const sessions = await getSession();
         toast.success('Logged In Successful', {
             
-          // duration: 2000,
-          position: "bottom-center",
+           duration: 2000,
+         
         
         });
         // router.push("/blog");
@@ -56,7 +56,7 @@ const Login = () => {
         setTimeout(() => {
           console.log("pushing ");
           location.reload();
-        }, 10);
+        }, 1000);
       }
    
       setFormLoading(false);
