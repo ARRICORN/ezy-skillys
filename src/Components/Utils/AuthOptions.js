@@ -233,10 +233,8 @@ export const authOptions = {
             streetAddress: "", 
             city: "" 
           });
-          console.log("login res", loginResponse);
          
           const token = loginResponse.data.token
-          console.log(token, "token from login response")
           user.token = token;
           return true;
         } catch (err) {
@@ -256,8 +254,6 @@ export const authOptions = {
     async session({ session, token }) {
       session.user = token.user;
       session.token = token.token;
-      console.log(session.token, "token from session")
-      console.log(session.user, "user from session")
       return session;
     },
   },

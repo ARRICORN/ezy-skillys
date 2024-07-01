@@ -8,6 +8,7 @@ import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
+<<<<<<< HEAD
 import { signIn, useSession } from "next-auth/react";
 import Loading from "../Ui/Loading";
 import LOGIN_USER from "@/utility/request_data/loginHandler";
@@ -17,6 +18,21 @@ import Cookies from "js-cookie";
 const Login = () => {
   const [formLoading, setFormLoading] = useState(false);
   const [error, setError] = useState("");
+=======
+import { getSession, signIn, useSession } from 'next-auth/react';
+import Loading from '../Ui/Loading';
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import toast from 'react-hot-toast';
+
+
+
+const Login = () => {
+  const [formLoading, setFormLoading] = React.useState(false);
+  const [openPassword, setOpenPasswords] = useState(true);
+
+  const [error, setError] = React.useState("");
+>>>>>>> 039f4eccba4b15aae8543c40ae053989a146b74e
   const router = useRouter();
   const { status } = useSession();
   const session = useSession();
@@ -38,6 +54,7 @@ const Login = () => {
   // === login handler with email & password after submitting ===
   const onSubmit = async (form_data) => {
     setFormLoading(true);
+<<<<<<< HEAD
     if (status === "authenticated") {
       router.push("/");
       return;
@@ -49,6 +66,33 @@ const Login = () => {
 
     if (!response.ok) {
       setError("invalid credentials");
+=======
+    signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    }).then(async (e) => {
+      if (e.error) {
+        setError("Invalid email/password");
+      } else {
+        const sessions = await getSession();
+        toast.success('Logged In Successful', {
+            
+          // duration: 2000,
+          position: "bottom-center",
+        
+        });
+        // router.push("/blog");
+     
+        console.log("pushing ");
+   
+        setTimeout(() => {
+          console.log("pushing ");
+          location.reload();
+        }, 10);
+      }
+   
+>>>>>>> 039f4eccba4b15aae8543c40ae053989a146b74e
       setFormLoading(false);
       return;
     }
@@ -104,11 +148,17 @@ const Login = () => {
                     autoComplete="off"
                     id="password"
                     name="password"
-                    type="text"
+                    type={openPassword?"password":"text"}
                     className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                     {...register("password")}
                   />
+                  {
+                     openPassword ?
+                     <FaEyeSlash className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
+                     :
+                     <FaEye className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
+                  }
                   <label
                     htmlFor="password"
                     className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs"
@@ -138,7 +188,7 @@ const Login = () => {
               <div>
                 <h5 className="text-gray-500 text-sm text-center">
                   {"Don't have account? "}
-                  <Link className="text-gray-700" href="/register">
+                  <Link className="text-[#F97316] font-bold" href="/register">
                     Register Here
                   </Link>
                 </h5>

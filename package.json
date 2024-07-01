@@ -11,7 +11,11 @@
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
     "@next/swc-win32-x64-msvc": "^14.2.3",
+<<<<<<< HEAD
     "@nextui-org/input": "^2.2.2",
+=======
+    "@nextui-org/accordion": "^2.0.35",
+>>>>>>> 039f4eccba4b15aae8543c40ae053989a146b74e
     "@nextui-org/react": "^2.4.2",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
@@ -35,7 +39,7 @@
     "react-select": "^5.8.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-    "sweetalert2": "^11.12.0",
+    "sweetalert2": "^11.6.13",
     "swiper": "^11.1.4"
   },
   "devDependencies": {
