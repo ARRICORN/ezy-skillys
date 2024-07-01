@@ -12,9 +12,9 @@ const Top_header = async () => {
   const response = await API_REQUEST_BY_URL(url, session?.token);
 
   return (
-    <div className={`${style.shadow} flex p-4 items-center justify-between`}>
+    <div className={`${style.shadow} flex p-4 items-center md:justify-between`}>
       <div>
-        <span className="font-semibold text-[#151D48] text-[26px]">
+        <span className="font-semibold text-[#151D48] text-[26px] hidden md:block">
           <span className="hidden lg:inline-block text-orange-400">
             Welcome to
           </span>{" "}

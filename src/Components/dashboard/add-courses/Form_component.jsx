@@ -357,7 +357,7 @@ const Form_component = () => {
             className="bg-teal-500 block  px-5 py-2 w-44 mx-auto rounded-md border-none text-white mt-4"
             type="submit"
           >
-            {isLoading ? <LoadingButton /> : "Upload image"}
+            {isLoading ? <LoadingButton /> : "Add course"}
           </button>
         </div>
       </form>

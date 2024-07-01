@@ -23,8 +23,8 @@ const SignOutBtn = () => {
         await signOut({ redirect: false }); // Ensure signOut does not redirect
         Cookies.remove("user-cookie");
 
+        router.replace("/login");
         toast.success("Logout is successful");
-        router.replace("/login"); // Replace the current route with the login page
       } catch (error) {
         toast.error("Failed to logout");
         console.error("Logout error:", error); // handle error if something wrong
