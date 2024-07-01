@@ -85,7 +85,7 @@ const Update_single_course = ({ params_id }) => {
                   <Input
                     {...field}
                     type="text"
-                    label="Course name"
+                    label="Title"
                     variant="bordered"
                     className="w-full mb-1"
                   />
@@ -151,29 +151,6 @@ const Update_single_course = ({ params_id }) => {
             />
             <span className="my-2 block text-red-400 font-semibold text-[13px]">
               <ErrorMessage name={"price"} errors={errors} />
-            </span>
-          </div>
-
-          {/* === authorName === */}
-          <div>
-            <div className="bg-[#FFFFFF] rounded-xl">
-              <Controller
-                name="authorName"
-                control={control}
-                defaultValue={"authorName"}
-                rules={{ required: "Author name is required" }}
-                render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="text"
-                    label="Author name"
-                    variant="bordered"
-                  />
-                )}
-              />
-            </div>
-            <span className="my-2 block text-red-400 font-semibold text-[13px]">
-              <ErrorMessage name={"authorName"} errors={errors} />
             </span>
           </div>
 

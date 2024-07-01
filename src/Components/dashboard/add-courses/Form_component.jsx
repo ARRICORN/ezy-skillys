@@ -6,9 +6,12 @@ import UPLOAD_IMAGE from "@/utility/request_data/upload_image";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
-import { Input, Textarea } from "@nextui-org/react";
+import { Textarea } from "@nextui-org/react";
+import { Input } from "@nextui-org/react";
 import { colourOptions, colourStyles } from "./data";
 import Select from "react-select";
+import Cookies from "js-cookie";
+import styles from "./index.module.css";
 
 // initial value
 let defaultValues = {
@@ -30,6 +33,7 @@ const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCou
 // === form component here === //
 const Form_component = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const token = Cookies.get("user-cookie");
 
   const {
     control,
@@ -39,41 +43,50 @@ const Form_component = () => {
     formState: { errors },
   } = useForm({ defaultValues });
 
-  // form submit handler as well as create course
   const onsubmitHandler = async (data) => {
+    // Set the loading state to true to indicate the submission process has started
     setIsLoading(true);
-    const filterCtg = [];
-    data.category.filter((element) => filterCtg.push(element.value));
 
+    // Extract and transform the categories from the form data
+    let filterCtg = data.category.map((element) => element.value);
+
+    // Upload the image and get the URL
     const imageUrl = await UPLOAD_IMAGE(data);
 
+    // Check if the image upload was successful
     if (!imageUrl) {
-      toast.error("invalid image upload");
-      setIsLoading(false);
+      toast.error("Invalid image upload");
+      setIsLoading(false); // Reset the loading state
       return;
     }
 
+    // Create the course object with the form data and the uploaded image URL
     const createCourse = {
-      title: data?.title,
-      desc: data?.description,
-      price: data?.price,
-      tag: data?.tag?.value,
-      categories: [...filterCtg],
-      addedBy: data?.email,
-      liveDemo: data?.liveDemo,
-      image: imageUrl?.url,
+      title: data.title,
+      desc: data.description,
+      price: data.price,
+      tag: data.tag?.value,
+      categories: filterCtg,
+      addedBy: data.email,
+      liveDemo: data.liveDemo,
+      image: imageUrl.url,
     };
-    // create a post with form data by admin
-    const response = await POST_REQUEST_BY_DATA(url, createCourse);
 
-    if (!response.statusText === "OK") {
-      toast.error("Course create is failed");
-      setIsLoading(false);
+    // Make a POST request to create the course
+    const response = await POST_REQUEST_BY_DATA(url, createCourse, token);
+    console.log("res ", response);
+    // Check if the response is not OK
+    if (!response.success) {
+      toast.error(response.message);
+      setIsLoading(false); // Reset the loading state
       return;
     }
 
+    // Reset the loading state and display a success message
     setIsLoading(false);
-    toast.success("Course is created successfully");
+    toast.success("Course created successfully");
+
+    // Reset the form
     reset();
   };
 
@@ -90,13 +103,18 @@ const Form_component = () => {
                 defaultValue={"title"}
                 rules={{ required: "Course name field is required" }}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="text"
-                    label="Course name"
-                    variant="bordered"
-                    className="w-full mb-1"
-                  />
+                  <div>
+                    <label className={`${styles.labels}`} htmlFor="">
+                      Title
+                    </label>
+                    <input
+                      {...field}
+                      name="title"
+                      type="text"
+                      placeholder="course title"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
@@ -117,14 +135,18 @@ const Form_component = () => {
                   maxLength: 1000,
                 }}
                 render={({ field }) => (
-                  <Textarea
-                    {...field}
-                    label="Description"
-                    variant="bordered"
-                    name="description"
-                    placeholder="Enter your description"
-                    classNames="w-full my-1 block"
-                  />
+                  <div>
+                    <label className={`${styles.labels}`} htmlFor="">
+                      Description
+                    </label>
+
+                    <textarea
+                      {...field}
+                      name="description"
+                      placeholder="Enter your description"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
@@ -143,18 +165,18 @@ const Form_component = () => {
                 required: "Price field is required",
               }}
               render={({ field }) => (
-                <Input
-                  {...field}
-                  type="number"
-                  label="Price"
-                  placeholder="0.00"
-                  className="py-2 block text-[25px]"
-                  startContent={
-                    <div className="pointer-events-none flex items-center">
-                      <span className="text-default-400 text-small">$</span>
-                    </div>
-                  }
-                />
+                <div>
+                  <label className={`${styles.labels} bg-white`} htmlFor="">
+                    Price
+                  </label>
+                  <input
+                    {...field}
+                    type="number"
+                    name="Price"
+                    placeholder="0.00"
+                    className={`${styles.inputs}`}
+                  />
+                </div>
               )}
             />
             <span className="my-2 block text-red-400 font-semibold text-[13px]">
@@ -171,12 +193,18 @@ const Form_component = () => {
                 defaultValue={"authorName"}
                 rules={{ required: "Author name is required" }}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="text"
-                    label="Author name"
-                    variant="bordered"
-                  />
+                  <div>
+                    <label className={`${styles.labels}`} htmlFor="">
+                      Author name
+                    </label>
+                    <input
+                      {...field}
+                      placeholder="name"
+                      type="text"
+                      name="author name"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
@@ -194,13 +222,18 @@ const Form_component = () => {
                 defaultValue={"email"}
                 rules={{ required: "Email field is required" }}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="email"
-                    placeholder="you@example.com"
-                    variant=""
-                    className="py-1 bg-[#FFFFFF] rounded-xl"
-                  />
+                  <div>
+                    <label className={`${styles.labels}`} htmlFor="">
+                      Enter email
+                    </label>
+
+                    <input
+                      {...field}
+                      type="email"
+                      placeholder="you@example.com"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
@@ -217,14 +250,22 @@ const Form_component = () => {
               rules={{ required: "Tag field is required" }}
               defaultValue={"tag"}
               render={({ field }) => (
-                <Select
-                  {...field}
-                  options={[
-                    { value: "opened", label: "Opened" },
-                    { value: "closed", label: "Closed" },
-                  ]}
-                  className="my-2 block"
-                />
+                <div>
+                  <label
+                    className={`${styles.labels} bg-white py-1`}
+                    htmlFor=""
+                  >
+                    Tag
+                  </label>
+
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "opened", label: "Opened" },
+                      { value: "closed", label: "Closed" },
+                    ]}
+                  />
+                </div>
               )}
             />
             <span className="block text-red-400 font-semibold text-[13px] my-1">
@@ -239,15 +280,22 @@ const Form_component = () => {
               control={control}
               rules={{ required: "Category field is required" }}
               render={({ field }) => (
-                <Select
-                  {...field}
-                  className="block pt-2"
-                  closeMenuOnSelect={false}
-                  defaultValue={[colourOptions[0], colourOptions[1]]}
-                  isMulti
-                  options={colourOptions}
-                  styles={colourStyles}
-                />
+                <div>
+                  <label
+                    className={`${styles.labels} bg-white py-1 mt-2`}
+                    htmlFor=""
+                  >
+                    Select
+                  </label>
+                  <Select
+                    {...field}
+                    closeMenuOnSelect={false}
+                    defaultValue={[colourOptions[0], colourOptions[1]]}
+                    isMulti
+                    options={colourOptions}
+                    styles={colourStyles}
+                  />
+                </div>
               )}
             />
             <span className="block text-red-400 font-semibold text-[13px] my-2">
@@ -282,12 +330,20 @@ const Form_component = () => {
                 rules={{ required: false }}
                 defaultValue={"liveDemo"}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="text"
-                    label="Live link"
-                    variant="bordered"
-                  />
+                  <div>
+                    <label
+                      className={`${styles.labels} bg-white py-1`}
+                      htmlFor=""
+                    >
+                      Live link
+                    </label>
+                    <input
+                      {...field}
+                      type="text"
+                      placeholder="Link"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
@@ -301,7 +357,7 @@ const Form_component = () => {
             className="bg-teal-500 block  px-5 py-2 w-44 mx-auto rounded-md border-none text-white mt-4"
             type="submit"
           >
-            {isLoading ? <LoadingButton /> : "Upload image"}
+            {isLoading ? <LoadingButton /> : "Add course"}
           </button>
         </div>
       </form>

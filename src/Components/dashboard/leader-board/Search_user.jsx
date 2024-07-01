@@ -27,7 +27,6 @@ const Search_user = ({ userData }) => {
       </h1>
     );
   }
-  console.log(filterData);
 
   return (
     <div>
