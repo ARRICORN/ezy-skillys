@@ -10,7 +10,7 @@ import CircleBg from "../../assets/CircleBg.png";
 
 const ThePlatform = () => {
   return (
-    <div className="w-11/12 mx-auto relative md:py-20 py-10">
+    <div className="w-11/12 mx-auto relative  md:py-20 py-10">
       <div className="md:grid md:grid-cols-9 flex flex-col-reverse gap-10 items-center">
         {/* left section  */}
         <div className="md:col-span-4 space-y-7">

@@ -4,10 +4,11 @@ import WorldsFirstAI from "@/Components/Home/WorldsFirstAI";
 import Achievement from "@/Components/pages/achievements/Achievement";
 import CertificateAchievement from "@/Components/pages/certificate-achivement/CertificateAchievement";
 import MentorsTrainer from "@/Components/pages/mentors-trainers-review/MentorsTrainer";
+import ReviewTemplate from "@/Components/pages/mentors-trainers-review/ReviewTemplate";
 import PopularCourses from "@/Components/pages/popular-courses/PopularCourses";
 import Project_planning from "@/Components/pages/project-planning/Project_planning";
 import React, { Fragment } from "react";
-
+import Review from "@/components/pages/review/review";
 const page = () => {
   return (
     <Fragment>
@@ -20,7 +21,8 @@ const page = () => {
           <Project_planning />
       <PopularCourses />
       <Achievement />
-      <MentorsTrainer />
+        <MentorsTrainer />
+        <Review/>
       <CertificateAchievement />
     
     </div>

@@ -17,7 +17,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #003F7D, #003F7D);
+  background: linear-gradient(45deg, #003f7d, #003f7d);
   border: 1px solid transparent; /* Adjust this value to change the height */
   padding: 1px 0 !important;
   border-radius: 15px;
@@ -51,8 +51,6 @@ body {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
- 
-  
 }
 
 /* === css for default loading page === */

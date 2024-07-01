@@ -116,6 +116,7 @@ import { useSession } from "next-auth/react";
 
 const NavBar = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
   const [stick, setStick] = useState(false);
   const session = useSession();
   const { status } = useSession();
@@ -124,7 +125,15 @@ const NavBar = () => {
   const pathName = usePathname();
 
   const AboutActive = pathName.toString() === "/about";
-
+  useEffect(() => {
+    if (mobileNavOpen) {
+      setIsAnimating(true);
+    } else {
+      const timer = setTimeout(() => setIsAnimating(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [mobileNavOpen]);
+  
   const navList = (
     <>
       <NavLink href={"/"}>Home</NavLink>
@@ -164,36 +173,41 @@ const NavBar = () => {
         />
         <div className="flex gap-8 items-center">
           <button
-            className="text-2xl"
+            className="text-2xl sm:block md:hidden lg:hidden"
             onClick={() => setMobileNavOpen((prev) => !prev)}
           >
             {mobileNavOpen ? <Close /> : <FaBar />}
           </button>
         </div>
       </div>
-      {mobileNavOpen && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0,
-          }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-          }}
-          transition={{
-            duration: 0.5,
-          }}
-          className="absolute lg:hidden py-4 bg-slate-200 w-full mx-20 rounded-lg  flex flex-col gap-2 text-center z-50"
-        >
-          <div className=" space-y-10">
-            <LoginProfile login={true} />
-            <div onClick={() => setMobileNavOpen(false)}>
-              <ul className=" space-y-5 ">{navList}</ul>
-            </div>
-          </div>
-        </motion.div>
-      )}
+      {isAnimating && (
+  <style>
+    {`
+      @keyframes slideDown {
+        0% { transform: translateY(-100%); opacity: 0; }
+        100% { transform: translateY(0); opacity: 1; }
+      }
+      .mobile-nav-animation {
+        animation: slideDown 1s forwards;
+      }
+    `}
+  </style>
+)}
+{isAnimating && (
+  <div
+    className={`fixed block md:hidden lg:hidden py-4 bg-slate-200 min-h-[60vh] left-0 top-[15%] w-full rounded-b-lg flex-col items-center px-5 gap-4 z-10 mobile-nav-animation ${mobileNavOpen ? 'flex' : 'hidden'}`}
+    style={{ 
+      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+    }}
+  >
+    <div className="space-y-10 w-full">
+      <LoginProfile login={true} />
+      <div onClick={() => setMobileNavOpen(false)}>
+        <ul className="space-y-5">{navList}</ul>
+      </div>
+    </div>
+  </div>
+)}
       {/* desktop  */}
       <div className="lg:flex hidden items-center justify-evenly p-6">
    

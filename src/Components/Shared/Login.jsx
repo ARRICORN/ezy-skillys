@@ -12,11 +12,14 @@ import { getSession, signIn, useSession } from 'next-auth/react';
 import Loading from '../Ui/Loading';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
+import toast from 'react-hot-toast';
 
 
 
 const Login = () => {
   const [formLoading, setFormLoading] = React.useState(false);
+  const [openPassword, setOpenPasswords] = useState(true);
+
   const [error, setError] = React.useState("");
   const router = useRouter();
   const session = useSession();
@@ -40,10 +43,22 @@ const Login = () => {
         setError("Invalid email/password");
       } else {
         const sessions = await getSession();
+        toast.success('Logged In Successful', {
+            
+          // duration: 2000,
+          position: "bottom-center",
+        
+        });
         // router.push("/blog");
+     
         console.log("pushing ");
-        location.reload();
+   
+        setTimeout(() => {
+          console.log("pushing ");
+          location.reload();
+        }, 10);
       }
+   
       setFormLoading(false);
     });
   };
@@ -93,11 +108,17 @@ const Login = () => {
                     autoComplete="off"
                     id="password"
                     name="password"
-                    type="text"
+                    type={openPassword?"password":"text"}
                     className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                     {...register("password")}
                   />
+                  {
+                     openPassword ?
+                     <FaEyeSlash className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
+                     :
+                     <FaEye className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
+                  }
                   <label
                     htmlFor="password"
                     className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs"
@@ -127,7 +148,7 @@ const Login = () => {
               <div>
                 <h5 className="text-gray-500 text-sm text-center">
                   {"Don't have account? "}
-                  <Link className="text-gray-700" href="/register">
+                  <Link className="text-[#F97316] font-bold" href="/register">
                     Register Here
                   </Link>
                 </h5>

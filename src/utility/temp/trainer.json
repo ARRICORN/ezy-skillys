@@ -7,7 +7,9 @@
     "modules": 100,
     "students": 36,
     "description": "Sandeep is a Software Developer who expertise in .NET & Azure for more than 24 years and training 100’s of students toaccompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+    "time":"26/6/2023",
+   "pra":"It was amazing experience I had learned a lot especially I loved thier guidance and the geekster teaching assistance was so friendly… just join geekster learn and enjoy coding"
   },
   {
     "name": "Sudhansu",
@@ -17,7 +19,9 @@
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+     "time":"16/3/2024",
+     "pra":"Full stack developers are the backbone of our daily websites and apps we use. Most of the time, web developers specialize in a single area, or the front end. "
   },
   {
     "name": "Sudhansu",
@@ -27,17 +31,23 @@
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+     "time":"10/2/2024",
+     "pra":"It was amazing experience I had learned a lot especially I loved thier guidance and the geekster teaching assistance was so friendly… just join geekster learn and enjoy coding"
   },
   {
-    "name": "mudhansu",
+    "name": "Mudhansu",
     "position": "",
     "profession": "Cloud & Cyber Security, Forensic",
     "review": 12,
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+    "time":"5/2/2023",
+    "pra":"A developer that can work both on front-end development,  networking, client coordination, security is generally termed as a full stack developer."
+
+
   },
   {
     "name": "Ruchika Tuteja",
@@ -47,7 +57,9 @@
     "modules": 158,
     "students": 147,
     "description": "I have 9 years of experience in Fullstack development. Have worked on multiple projects on.  I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance...",
-    "profile_url": "https://i.ibb.co/PjttV26/Group.png"
+    "profile_url": "https://i.ibb.co/PjttV26/Group.png",
+    "time":"10/2/2022",
+    "pra":"It was amazing experience I had learned a lot especially I loved thier guidance and the geekster teaching assistance was so friendly… just join geekster learn and enjoy coding"
   },
   {
     "name": "Sudhansu",
@@ -57,7 +69,9 @@
     "modules": 55,
     "students": 0,
     "description": "Sudhansu is a Software Developer who expertised in Cloud security, Cyber Security, Data Center & Forensic for more than 22 years and training 100’s of students to accompolish their goals & dreams.",
-    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png"
+    "profile_url": "https://i.ibb.co/cbTDm4g/Frame-1.png",
+    "time":"9/9/2024",
+    "pra":"I would highly recommend Thrive Internet Marketing. They are great to work with. The traffic to our website has increased thanks to their SEO program."
   },
   {
     "name": "Ruchika Tuteja",
@@ -67,6 +81,8 @@
     "modules": 158,
     "students": 147,
     "description": "I have 9 years of experience in Fullstack development. Have worked on multiple projects on.  I can provide realtime simulation of these various development languages and framework by means of multiple projects. Can provide guidance...",
-    "profile_url": "https://i.ibb.co/PjttV26/Group.png"
+    "profile_url": "https://i.ibb.co/PjttV26/Group.png",
+    "time":"3/17/2023",
+    "pra":"We at Kee Service were very impressed with the all aspects of our new website. We would highly reccomend Thrive to anyone looking to build a new website."
   }
 ]

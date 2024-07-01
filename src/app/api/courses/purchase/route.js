@@ -2,6 +2,7 @@ import { Course } from "@/Models/Course";
 import { PurchasedCourse } from "@/Models/PurchasedCourse";
 import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
+import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 const fieldsThatShouldBeWithBody = ["course"];
@@ -41,7 +42,7 @@ export async function POST(req) {
     // checking is the course already purchased or not
     const isAlreadyPurchased = await PurchasedCourse.findOne({
       userEmail: userInfo.email,
-      course,
+      course: new ObjectId(course),
     });
     if (isAlreadyPurchased) {
       throw new Error("You already purchased this course!");
