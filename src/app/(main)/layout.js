@@ -21,7 +21,7 @@ export default function MainLayout({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // 10 seconds delay
+    }, 1000); // 10 seconds delay
 
     return () => clearTimeout(timer);
   }, []);
