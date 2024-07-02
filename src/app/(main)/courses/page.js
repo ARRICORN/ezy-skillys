@@ -66,7 +66,7 @@ const AllCoursesPage = () => {
   }, [refetch, sort, search, courseStatus]);
 
   if (coursesIsSuccess) console.log(coursesData);
-
+  if (coursesIsError) console.log(coursesIsError);
   return (
     <div className="font-poppins relative">
       {/*  modal start */}
@@ -83,7 +83,7 @@ const AllCoursesPage = () => {
         setSearch={setSearch}
         setCourseStatus={setCourseStatus}
       />
-      <div class="bg-[#F3F3F3]">
+      <div className="bg-[#F3F3F3]">
         {coursesIsLoading && <Loading />}
         {coursesIsSuccess && (
           <AllCourses

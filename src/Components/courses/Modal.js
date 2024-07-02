@@ -11,9 +11,9 @@ const Modal = ({
       className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-50"
       open={modalStatus}
     >
-      <div class="w-full h-full flex flex-col items-center justify-center">
-        <div class="w-fit flex flex-col items-center justify-center gap-4 py-6 px-5 bg-gray-300 rounded-lg">
-          <p class="text-center font-semibold text-xl">{modalTitle}</p>
+      <div className="w-full h-full flex flex-col items-center justify-center">
+        <div className="w-fit flex flex-col items-center justify-center gap-4 py-6 px-5 bg-gray-300 rounded-lg">
+          <p className="text-center font-semibold text-xl">{modalTitle}</p>
           <form
             method="dialog"
             className="flex items-center justify-center gap-3 w-full"

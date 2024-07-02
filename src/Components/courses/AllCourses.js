@@ -43,7 +43,9 @@ const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
                   </div>
                   <button
                     onClick={() => {
-                      setPdfLink(each.curriculum);
+                      setPdfLink(
+                        "https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_100KB_PDF.pdf"
+                      );
                       setModalStatus(true);
                     }}
                     className="px-3 py-2 text-white text-xs bg-[#F98149] items-center gap-1 rounded-3xl flex justify-center w-full mb-[-30px] mt-3"
