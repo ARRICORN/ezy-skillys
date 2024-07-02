@@ -9,6 +9,7 @@ import Select from "react-select";
 import UPDATE_DATA_BY_ID from "@/utility/request_data/patch_request";
 import { colourOptions, colourStyles } from "../add-courses/data";
 import styles from "./style.module.css";
+import Cookies from "js-cookie";
 // initial value
 let defaultValues = {
   title: "",
@@ -26,6 +27,7 @@ let defaultValues = {
 // === form component here === //
 const Update_single_course = ({ params_id }) => {
   const [isLoading, setIsLoading] = useState();
+  const token = Cookies.get("user-cookie");
   const {
     control,
     handleSubmit,
@@ -53,9 +55,9 @@ const Update_single_course = ({ params_id }) => {
     };
 
     // === create a post with form data by admin ===
-    const response = await UPDATE_DATA_BY_ID(params_id, createCourse);
+    const response = await UPDATE_DATA_BY_ID(params_id, createCourse, token);
 
-    if (!response.statusText === "OK") {
+    if (response.success !== true) {
       toast.error("Course update is failed");
       setIsLoading(false);
       return;

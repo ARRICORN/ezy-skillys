@@ -20,10 +20,10 @@ const My_courses_main = async () => {
     <div>
       {/* course length */}
       <div>
-        <h1 className="block text-xl py-2">
+        <h1 className="block text-xl p-2">
           Total course is :
           <span className="text-orange-500 px-1 font-bold inline-block">
-            {userSort?.length || "0"}
+            {userCourse?.data?.length || "0"}
           </span>
           <hr className="block py-1" />
         </h1>

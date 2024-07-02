@@ -9,10 +9,7 @@ import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
 import Select from "react-select";
 import Cookies from "js-cookie";
 import styles from "./index.module.css";
-import {
-  colourOptions,
-  colourStyles,
-} from "@/Components/dashboard/add-courses/data";
+import { colourOptions, colourStyles } from "./data";
 
 // initial value
 let defaultValues = {

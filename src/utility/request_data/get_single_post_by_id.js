@@ -1,6 +1,11 @@
-const token = process.env.NEXT_PUBLIC_TOKEN;
+/**
+ *
+ * @param {id} id
+ * @param {token} token
+ * @returns promise
+ */
 
-const GET_SINGLE_POST_BY_DI = async (id) => {
+const GET_SINGLE_POST_BY_DI = async (id, token) => {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/${id}`;
 

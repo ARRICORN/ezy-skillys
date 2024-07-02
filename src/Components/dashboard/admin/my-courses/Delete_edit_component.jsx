@@ -1,7 +1,5 @@
 "use client";
-import Small_loading from "@/Components/Shared/Small_loading";
 import DELETE_POST_WITH_ID from "@/utility/request_data/delete_post";
-import GET_SINGLE_POST_BY_DI from "@/utility/request_data/get_single_post_by_id";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
