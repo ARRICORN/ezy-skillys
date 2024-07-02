@@ -11,6 +11,7 @@ const Top_header = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
   const response = await API_REQUEST_BY_URL(url, session?.token);
 
+  console.log("server xxxxx", session);
   return (
     <div className={`${style.shadow} flex p-4 items-center md:justify-between`}>
       <div>
@@ -33,7 +34,7 @@ const Top_header = async () => {
           />
         </div>
         <div>
-          <h4 className="font-bold">Leroy Jenkins</h4>
+          <h5 className="font-bold">{session?.user?.name}</h5>
           <span className="text-xs text-orange-500">
             {response?.data &&
               response?.data?.role.charAt(0).toUpperCase() +

@@ -48,7 +48,7 @@ const SidebarComponent = () => {
     >
       <Sidebar width="230px" collapsed={collapsed}>
         {/* === brand logo === */}
-        <div className="p-3 mt-2">
+        <Link href={"/"} className="p-3 mt-2 inline-block">
           <Image
             src={logo}
             alt="logo"
@@ -56,7 +56,7 @@ const SidebarComponent = () => {
             height={50}
             priority={true}
           />
-        </div>
+        </Link>
         <Menu>
           {/* === collapsed === */}
           <MenuItem>
@@ -191,6 +191,7 @@ const SidebarComponent = () => {
           )}
 
           {/* === all for user route start === */}
+          {/* ===  user purchase courses === */}
           {userRole === "user" && (
             <MenuItem
               className={`${
@@ -219,9 +220,9 @@ const SidebarComponent = () => {
           {userRole === "user" && (
             <MenuItem
               className={`${
-                pathName === "/dashboard/user-review" ? style.active : ""
+                pathName === "/dashboard/reviews" ? style.active : ""
               }`}
-              component={<Link href={"/dashboard/user-review"} />}
+              component={<Link href={"/dashboard/reviews"} />}
             >
               <div className="flex items-center justify-start gap-x-3">
                 <Image
@@ -232,7 +233,7 @@ const SidebarComponent = () => {
                   alt="menu"
                 />
                 <span className="inline-block font-semibold text-[#737791]">
-                  Review
+                  Reviewed
                 </span>
               </div>
             </MenuItem>

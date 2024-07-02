@@ -1,8 +1,12 @@
 import chroma from "chroma-js";
 
-
 export const colourOptions = [
-  { value: "programming", label: "Programming", color: "#00B8D9", isFixed: true },
+  {
+    value: "programming",
+    label: "Programming",
+    color: "#00B8D9",
+    isFixed: true,
+  },
   { value: "front-end", label: "Front-end", color: "#5243AA" },
   { value: "back-end", label: "Back-end", color: "#FF5630", isFixed: true },
   { value: "full-stack", label: "Full-Stack", color: "#FF8B00" },
@@ -10,7 +14,6 @@ export const colourOptions = [
   { value: "it", label: "IT", color: "#36B37E" },
   { value: "non-it", label: "Non-it", color: "#00875A" },
 ];
-
 
 export const colourStyles = {
   control: (styles) => ({ ...styles, backgroundColor: "white" }),

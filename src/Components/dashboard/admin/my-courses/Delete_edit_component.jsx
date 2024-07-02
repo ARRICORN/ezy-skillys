@@ -2,6 +2,7 @@
 import Small_loading from "@/Components/Shared/Small_loading";
 import DELETE_POST_WITH_ID from "@/utility/request_data/delete_post";
 import GET_SINGLE_POST_BY_DI from "@/utility/request_data/get_single_post_by_id";
+import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
@@ -11,23 +12,25 @@ const Delete_edit_component = ({ element }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
+  const token = Cookies.get("user-cookie");
 
   // === delete post handler by id ===
   const deleteHandler = async (id) => {
     const check = confirm("Are you sure to delete");
+
     if (!check) {
       return;
     }
-    const response = await DELETE_POST_WITH_ID(id);
+    const response = await DELETE_POST_WITH_ID(id, token);
 
-    if (!response.statusText === "OK") {
-      toast.error("Course create is failed");
+    if (!response.ok) {
+      toast.error("Course delete is failed");
       setIsLoading(false);
       return;
     }
 
     setIsLoading(false);
-    toast.success("Course is created successfully");
+    toast.success("Course is deleted successfully");
 
     // it will works for reload the window after delete operation
     startTransition(() => {

@@ -6,10 +6,13 @@ import UPLOAD_IMAGE from "@/utility/request_data/upload_image";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
-import { colourOptions, colourStyles } from "./data";
 import Select from "react-select";
 import Cookies from "js-cookie";
 import styles from "./index.module.css";
+import {
+  colourOptions,
+  colourStyles,
+} from "@/Components/dashboard/add-courses/data";
 
 // initial value
 let defaultValues = {

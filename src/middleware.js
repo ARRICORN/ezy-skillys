@@ -1,19 +1,36 @@
-const { NextResponse } = require("next/server");
+import { NextResponse } from "next/server";
 
-// This function can be marked `async` if using `await` inside
-const middleware = async (request, response) => {
-  let cookie = request.cookies.get("token");
-  // Check if the token is valid (this is a placeholder; replace with your own logic)
-  const isAuthenticated = Boolean(cookie);
+export function middleware(req) {
+  const { pathname } = req.nextUrl;
 
-  if (!isAuthenticated) {
-    return NextResponse.redirect(new URL("/login", request.url));
+  // Define your protected route
+  const protectedRoutes = [
+    "/dashboard",
+    "/dashboard/reviews",
+    "/dashboard/leaderboard",
+    "/dashboard/my-courses",
+    "/dashboard/add-course",
+    "/dashboard/my-students-board",
+    "/dashboard/view-profile",
+    "/dashboard/user-review",
+    "/dashboard/user-purchased-courses",
+  ];
+
+  // Check if the user is authenticated
+  const isAuthenticated = req.cookies.get("token");
+
+  // If the route is protected and the user is not authenticated, redirect to the login page
+  if (
+    protectedRoutes.some((route) => pathname.startsWith(route)) &&
+    !isAuthenticated
+  ) {
+    return NextResponse.redirect(new URL("/login", req.url));
   }
+
+  // Allow the request to proceed
   return NextResponse.next();
-};
+}
 
 export const config = {
   matcher: ["/dashboard/:path*"],
 };
-
-export default middleware;

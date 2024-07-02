@@ -5,13 +5,10 @@ import { useState } from "react";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import { Input, Textarea } from "@nextui-org/react";
-import {
-  colourOptions,
-  colourStyles,
-} from "@/Components/dashboard/add-courses/data";
 import Select from "react-select";
 import UPDATE_DATA_BY_ID from "@/utility/request_data/patch_request";
-
+import { colourOptions, colourStyles } from "../add-courses/data";
+import styles from "./style.module.css";
 // initial value
 let defaultValues = {
   title: "",
@@ -72,7 +69,7 @@ const Update_single_course = ({ params_id }) => {
   return (
     <div className="p-2">
       <form onSubmit={handleSubmit(onsubmitHandler)}>
-        <div className="max-w-2xl mx-auto mt-1 md:mt-3">
+        <div className="max-w-2xl mx-auto mt-1 md:mt-3 space-y-4">
           {/* === course name === */}
           <div>
             <div className="bg-[#FFFFFF] rounded-xl">
@@ -82,13 +79,18 @@ const Update_single_course = ({ params_id }) => {
                 defaultValue={"title"}
                 rules={{ required: "Course name field is required" }}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="text"
-                    label="Title"
-                    variant="bordered"
-                    className="w-full mb-1"
-                  />
+                  <div>
+                    <label className={`${styles.labels}`} htmlFor="">
+                      Title
+                    </label>
+                    <input
+                      {...field}
+                      name="title"
+                      type="text"
+                      placeholder="course title"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
@@ -109,13 +111,11 @@ const Update_single_course = ({ params_id }) => {
                   maxLength: 1000,
                 }}
                 render={({ field }) => (
-                  <Textarea
+                  <textarea
                     {...field}
-                    label="Description"
-                    variant="bordered"
                     name="description"
                     placeholder="Enter your description"
-                    classNames="w-full my-1 block"
+                    className={`${styles.inputs}`}
                   />
                 )}
               />
@@ -135,18 +135,17 @@ const Update_single_course = ({ params_id }) => {
                 required: "Price field is required",
               }}
               render={({ field }) => (
-                <Input
-                  {...field}
-                  type="number"
-                  label="Price"
-                  placeholder="0.00"
-                  className="py-2 block text-[25px]"
-                  startContent={
-                    <div className="pointer-events-none flex items-center">
-                      <span className="text-default-400 text-small">$</span>
-                    </div>
-                  }
-                />
+                <div>
+                  <label className={`${styles.labels} bg-white`} htmlFor="">
+                    Price
+                  </label>
+                  <input
+                    {...field}
+                    type="number"
+                    name="Price"
+                    className={`${styles.inputs}`}
+                  />
+                </div>
               )}
             />
             <span className="my-2 block text-red-400 font-semibold text-[13px]">
@@ -163,12 +162,20 @@ const Update_single_course = ({ params_id }) => {
                 rules={{ required: false }}
                 defaultValue={"liveDemo"}
                 render={({ field }) => (
-                  <Input
-                    {...field}
-                    type="text"
-                    label="Live link"
-                    variant="bordered"
-                  />
+                  <div>
+                    <label
+                      className={`${styles.labels} bg-white py-1`}
+                      htmlFor=""
+                    >
+                      Live link
+                    </label>
+                    <input
+                      {...field}
+                      type="text"
+                      placeholder="Link"
+                      className={`${styles.inputs}`}
+                    />
+                  </div>
                 )}
               />
             </div>
