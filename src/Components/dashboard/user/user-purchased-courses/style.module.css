@@ -1,0 +1,51 @@
+@keyframes slideIn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+.shadow {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+/* review reviews css */
+/* this reviews is inspired from this -- s://www.newline.co/pricing */
+.reviews {
+  --width: 140px;
+  --timing: 2s;
+  border: 0;
+  width: var(--width);
+  padding-block: 0.2em;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1em;
+  background: rgb(64, 192, 87);
+  transition: all 0.2s;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.reviews:hover {
+  background-image: linear-gradient(
+    to right,
+    rgb(64, 192, 87) 49.95%,
+    rgb(250, 176, 5) 66.6%,
+    rgba(250, 82, 82, 0.728) 100%
+  );
+  animation: var(--timing) linear dance6123 infinite;
+  transform: scale(1.1) translateY(-1px);
+}
+
+@keyframes dance6123 {
+  to {
+    background-position: var(--width);
+  }
+}
+.star_svg {
+  display: flex;
+}
