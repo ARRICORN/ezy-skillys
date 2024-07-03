@@ -1,6 +1,6 @@
 'use client'
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import banner from '../../assets/registerPage-img.png'
 import Link from 'next/link';
 import { FcGoogle } from "react-icons/fc";
@@ -13,6 +13,7 @@ import Loading from '../Ui/Loading';
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
 import toast from 'react-hot-toast';
+import Cookies from 'js-cookie';
 
 
 
@@ -23,8 +24,22 @@ const Login = () => {
   const [error, setError] = React.useState("");
   const router = useRouter();
   const session = useSession();
+console.log("custom token",session?.data?.user?.token)
 
-  if (session.status == "authenticated") router.push("/");
+  
+  
+
+  if (session.status == "authenticated") {
+    router.push("/");
+    toast.success('Logged In Successful');
+
+  }
+    // === set cookie after login user ===
+    useEffect(() => {
+      if (session?.data?.user?.token) {
+        Cookies.set("custom-token", session.data?.user?.token, { expires: 7 });
+      }
+    }, [session]);
 
   const {
     register,
@@ -43,23 +58,14 @@ const Login = () => {
         setError("Invalid email/password");
       } else {
         const sessions = await getSession();
-        toast.success('Logged In Successful', {
-            
-           duration: 2000,
-         
-        
-        });
+      
         // router.push("/blog");
      
         console.log("pushing ");
-   
-        setTimeout(() => {
-          console.log("pushing ");
-          location.reload();
-        }, 1000);
+        location.reload();
       }
-   
-      setFormLoading(false);
+        setFormLoading(false);
+      
     });
   };
 

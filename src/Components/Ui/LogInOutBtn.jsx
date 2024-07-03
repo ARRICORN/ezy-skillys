@@ -1,7 +1,8 @@
 'use client'
+import Cookies from 'js-cookie';
 import { useSession, signOut } from 'next-auth/react';
 import Link from 'next/link';
-import React from 'react';
+import React, { useEffect } from 'react';
 import toast from 'react-hot-toast';
 
 const LogInOutBtn = () => {
@@ -9,6 +10,13 @@ const LogInOutBtn = () => {
     console.log(status, "==status from loginbtn");
     const session = useSession();
     console.log(session, "==session from loginbtn");
+    
+
+    useEffect(() => {
+        if (session?.data?.token) {
+          Cookies.remove("custom-token");
+        }
+    }, [session]);
     
     const handleLogout = () => {
 
@@ -19,6 +27,7 @@ const LogInOutBtn = () => {
         });
         setTimeout(() => {
             signOut()
+       
           }, 1000);
      }
 

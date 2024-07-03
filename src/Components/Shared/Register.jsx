@@ -48,7 +48,7 @@ const Register = () => {
           toast.success('Account Created Successfully', {
             
             duration: 2000,
-            position: "bottom-center",
+           
           
           });
           router.push("/login");
