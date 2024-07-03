@@ -9,6 +9,7 @@ const nextConfig = {
       "upload.wikimedia.org",
       "res.cloudinary.com",
       "images.unsplash.com",
+      "lh3.googleusercontent.com",
     ],
     remotePatterns: [
       {

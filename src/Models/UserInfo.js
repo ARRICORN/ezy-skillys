@@ -7,7 +7,7 @@ const UserInfoSchema = new Schema(
     city: { type: String, default : "" },
     phone: { type: String, default : "" },
     role: { type: String, enum: ['admin', 'user'], default: 'user' },
-    seller: { type: Schema.Types.ObjectId, ref: 'User' },
+    user: { type: Schema.Types.ObjectId, ref: 'User' },
   },
   { timestamps: true }
 );

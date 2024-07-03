@@ -1,6 +1,7 @@
 import GET_GLOBAL_DATA from "@/utility/request_data/getAllCourses";
 import PopularTemplate from "./PopularTemplate";
 import styles from "./popular.module.css";
+import Link from "next/link";
 // import courseData from "../../../utility/temp/course_data.json";
 
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`;
@@ -25,7 +26,12 @@ const PopularCourses = async () => {
 
         {/* === view all courses button === */}
         <div className="max-w-[35%] md:w-[20%] text-center py-1 rounded-md text-white mx-auto bg-[#183153] md:py-2">
+         
+          <Link href="/courses">
           <button className="text-center inline-block">View all courses</button>
+          </Link>
+         
+         
         </div>
       </div>
     </div>
