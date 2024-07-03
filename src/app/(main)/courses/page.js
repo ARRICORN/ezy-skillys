@@ -65,8 +65,9 @@ const AllCoursesPage = () => {
     refetch();
   }, [refetch, sort, search, courseStatus]);
 
-  if (coursesIsSuccess) console.log(coursesData);
+  // if (coursesIsSuccess) console.log(coursesData);
   if (coursesIsError) console.log(coursesIsError);
+
   return (
     <div className="font-poppins relative">
       {/*  modal start */}

@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import monitor from "/src/assets/monitor-vector.png";
 import pin from "/src/assets/enroll-vector.png";
 import download from "/src/assets/download-vector.png";
+import Link from "next/link";
 
 const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
   return (
@@ -36,10 +37,13 @@ const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
                       <Image className="w-3" src={monitor} alt="Monitor" />{" "}
                       <span>Live Demo</span>
                     </button>
-                    <button className="px-3 py-2 text-[10px] border-[#F98149] rounded-xl border flex gap-1 items-center">
+                    <Link
+                      href={`/payment/${each._id}`}
+                      className="px-3 py-2 text-[10px] border-[#F98149] rounded-xl border flex gap-1 items-center"
+                    >
                       <Image className="w-3" src={pin} alt="Pin" />
                       <span>Enroll Now</span>
-                    </button>
+                    </Link>
                   </div>
                   <button
                     onClick={() => {

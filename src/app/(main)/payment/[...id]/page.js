@@ -4,6 +4,10 @@ import PaymentStripeForm from "@/Components/Payment/PaymentStripeForm";
 import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { useQuery } from "@tanstack/react-query";
+import axiosConfig from "/axiosConfig";
+import { useEffect } from "react";
+import axios from "axios";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY === undefined) {
   throw new Error("Missing NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY");
@@ -13,8 +17,31 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
 
-export default function PaymentPage() {
-  const amount = 49.99;
+export default function PaymentPage({ params }) {
+  const courseId = params?.id;
+  const courseName = "something";
+  const amount = 50;
+  // fetches data from all courses
+  const fetchCourses = async () => {
+    const { data } = await axiosConfig.get(`/courses/getCourse/${courseId}`);
+    return data;
+  };
+
+  // fetches data
+  const {
+    data: courseData,
+    isLoading: courseIsLoading,
+    isError: courseIsError,
+    isSuccess: courseIsSuccess,
+    refetch,
+  } = useQuery({
+    queryKey: ["payment"],
+    queryFn: () => fetchCourses(),
+  });
+  if (courseIsLoading) console.log("loading");
+  if (courseIsError) console.log("error");
+  if (courseIsSuccess) console.log("success", courseData?.data?.price);
+
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center py-20">
       <h3 className="text-secondary text-5xl font-bold px-3 mb-10 capitalize">
@@ -26,11 +53,11 @@ export default function PaymentPage() {
         </h5>
         <div className="flex justify-between items-center font-semibold text-lg">
           <p>Course Name:</p>
-          <p>react.js</p>
+          <p>{courseData?.data?.title}</p>
         </div>
         <div className="flex justify-between items-center font-semibold text-lg">
           <p>Course Price:</p>
-          <p>{amount}</p>
+          <p>{courseData?.data?.price}</p>
         </div>
         <div className="flex justify-between items-center font-semibold text-lg">
           <p>Discount:</p>
@@ -39,18 +66,23 @@ export default function PaymentPage() {
         <div className="w-full h-[2px] bg-blue-300 my-2"></div>
         <div className="flex justify-between items-center font-bold text-primary text-lg mb-6">
           <p>Total:</p>
-          <p>{amount}</p>
+          <p>{courseData?.data?.price}</p>
         </div>
-        <Elements
-          stripe={stripePromise}
-          options={{
-            mode: "payment",
-            amount: convertToSubcurrency(amount),
-            currency: "usd",
-          }}
-        >
-          <PaymentStripeForm amount={amount} />
-        </Elements>
+        {courseData?.data?.price && (
+          <Elements
+            stripe={stripePromise}
+            options={{
+              mode: "payment",
+              amount: convertToSubcurrency(courseData?.data?.price),
+              currency: "usd",
+            }}
+          >
+            <PaymentStripeForm
+              amount={courseData?.data?.price}
+              courseId={courseId}
+            />
+          </Elements>
+        )}
       </div>
     </div>
   );

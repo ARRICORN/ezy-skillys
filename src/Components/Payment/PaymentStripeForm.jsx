@@ -3,9 +3,10 @@ import convertToSubcurrency from "@/lib/convertToSubcurrency";
 import { PaymentElement } from "@stripe/react-stripe-js";
 import { useElements } from "@stripe/react-stripe-js";
 import { useStripe } from "@stripe/react-stripe-js";
+import axiosConfig from "/axiosConfig";
 import React, { useEffect, useState } from "react";
 
-const PaymentStripeForm = ({ amount }) => {
+const PaymentStripeForm = ({ amount, courseId }) => {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -16,23 +17,17 @@ const PaymentStripeForm = ({ amount }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/api/create-payment-intent", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            amount: convertToSubcurrency(amount),
-          }),
+        const { data } = await axiosConfig.post("/orders", {
+          amount: convertToSubcurrency(amount),
+          courseId: courseId,
         });
-        const data = await response.json();
-        setClientSecret(data.clientSecret);
+        setClientSecret(data?.clientSecret);
       } catch (error) {
         console.error("Error fetching client secret:", error);
       }
     };
     fetchData();
-  }, [amount]);
+  }, [amount, courseId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
