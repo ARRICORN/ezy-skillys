@@ -5,8 +5,10 @@ import { useElements } from "@stripe/react-stripe-js";
 import { useStripe } from "@stripe/react-stripe-js";
 import axiosConfig from "/axiosConfig";
 import React, { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 const PaymentStripeForm = ({ amount, courseId }) => {
+  const token = Cookies.get("user-cookie");
   const stripe = useStripe();
   const elements = useElements();
 
@@ -17,10 +19,19 @@ const PaymentStripeForm = ({ amount, courseId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const { data } = await axiosConfig.post("/orders", {
-          amount: convertToSubcurrency(amount),
-          courseId: courseId,
-        });
+        const { data } = await axiosConfig.post(
+          "/orders",
+          {
+            amount: convertToSubcurrency(amount),
+            courseId: courseId,
+          },
+          {
+            headers: {
+              Authorization: token,
+              "Content-type": "Application/json",
+            },
+          }
+        );
         setClientSecret(data?.clientSecret);
       } catch (error) {
         console.error("Error fetching client secret:", error);
