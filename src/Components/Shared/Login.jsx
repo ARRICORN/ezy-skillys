@@ -1,66 +1,62 @@
-'use client'
-import Image from 'next/image';
-import React, { useState } from 'react';
-import banner from '../../assets/registerPage-img.png'
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import banner from "../../assets/registerPage-img.png";
+import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
-import { getSession, signIn, useSession } from 'next-auth/react';
-import Loading from '../Ui/Loading';
-import { FaEye } from "react-icons/fa";
-import { FaEyeSlash } from "react-icons/fa6";
-import toast from 'react-hot-toast';
-
-
+import { signIn, useSession } from "next-auth/react";
+import Loading from "../Ui/Loading";
+import LOGIN_USER from "@/utility/request_data/loginHandler";
+import toast from "react-hot-toast";
+import Cookies from "js-cookie";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
-  const [formLoading, setFormLoading] = React.useState(false);
+  const [formLoading, setFormLoading] = useState(false);
   const [openPassword, setOpenPasswords] = useState(true);
-
-  const [error, setError] = React.useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
+  const { status } = useSession();
   const session = useSession();
 
-  if (session.status == "authenticated") router.push("/");
+  // === set cookie after login user ===
+  useEffect(() => {
+    if (session?.data?.user) {
+      Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
+    }
+  }, [session]);
 
+  // === hook-form functions ===
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  // === login handler with email & password after submitting ===
+  const onSubmit = async (form_data) => {
     setFormLoading(true);
-    signIn("credentials", {
-      email: data.email,
-      password: data.password,
-      redirect: false,
-    }).then(async (e) => {
-      if (e.error) {
-        setError("Invalid email/password");
-      } else {
-        const sessions = await getSession();
-        toast.success('Logged In Successful', {
-            
-          // duration: 2000,
-          position: "bottom-center",
-        
-        });
-        // router.push("/blog");
-     
-        console.log("pushing ");
-   
-        setTimeout(() => {
-          console.log("pushing ");
-          location.reload();
-        }, 10);
-      }
-   
+    if (status === "authenticated") {
+      router.push("/");
+      return;
+    }
+
+    const response = await LOGIN_USER(form_data.email, form_data.password);
+
+    if (!response.ok) {
+      setError("invalid credentials");
       setFormLoading(false);
-    });
+      return;
+    }
+
+    // Cookies.set("user-cookie", data.data.token, { expires: 7 });
+    toast.success("User logged in successful");
+    router.push("/");
+    setFormLoading(false);
   };
 
   return (
@@ -108,17 +104,22 @@ const Login = () => {
                     autoComplete="off"
                     id="password"
                     name="password"
-                    type={openPassword?"password":"text"}
+                    type={openPassword ? "password" : "text"}
                     className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                     {...register("password")}
                   />
-                  {
-                     openPassword ?
-                     <FaEyeSlash className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
-                     :
-                     <FaEye className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
-                  }
+                  {openPassword ? (
+                    <FaEyeSlash
+                      className="absolute top-3 right-3 cursor-pointer"
+                      onClick={() => setOpenPasswords(!openPassword)}
+                    />
+                  ) : (
+                    <FaEye
+                      className="absolute top-3 right-3 cursor-pointer"
+                      onClick={() => setOpenPasswords(!openPassword)}
+                    />
+                  )}
                   <label
                     htmlFor="password"
                     className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs"

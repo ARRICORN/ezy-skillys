@@ -1,8 +1,0 @@
-.bg_image {
-  background-image: url("../../../assets/bg-1.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  object-fit: cover;
-  background-color: rgba(0, 0, 0, 0.175);
-}

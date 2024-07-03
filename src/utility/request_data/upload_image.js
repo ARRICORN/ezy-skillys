@@ -4,7 +4,6 @@
  * @returns image url
  */
 
-
 const cloudinary_url = "https://api.cloudinary.com/v1_1/dpwtwnemi/image/upload";
 
 const UPLOAD_IMAGE = async (data) => {
