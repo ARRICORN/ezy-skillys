@@ -38,7 +38,7 @@ const PaymentStripeForm = ({ amount, courseId }) => {
       }
     };
     fetchData();
-  }, [amount, courseId]);
+  }, [amount, courseId, token]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
