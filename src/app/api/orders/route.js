@@ -22,8 +22,9 @@ export const POST = async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency: "usd",
-      payment_method_types: ["card"],
+      automatic_payment_methods: { enabled: true },
     });
+    
     const user = await UserInfo.findOne({ email: decoded.email });
 
     // Create a new order with status 'pending'
@@ -32,6 +33,7 @@ export const POST = async (req, res) => {
       user: user._id,
       status: "confirmed",
       transactionId: paymentIntent.id,
+    
     });
 
     const result = await newOrder.save();
@@ -40,6 +42,7 @@ export const POST = async (req, res) => {
       JSON.stringify({
         message: "Order placed successfully",
         data: result,
+        clientSecret: paymentIntent.client_secret
       }),
       { status: 200 }
     );

@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 'use client'
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 import banner from '../../assets/registerPage-img.png'
 import Link from 'next/link';
-=======
-"use client";
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import banner from "../../assets/registerPage-img.png";
-import Link from "next/link";
->>>>>>> 23c0afc4f6c5e73d56c651d1b3ef3935f274f26f
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -57,7 +49,7 @@ console.log("custom token",session?.data?.user?.token)
   } = useForm();
 
   // === login handler with email & password after submitting ===
-  const onSubmit = async (form_data) => {
+  const onSubmit = async (data) => {
     setFormLoading(true);
     signIn("credentials", {
       email: data.email,

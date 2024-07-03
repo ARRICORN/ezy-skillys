@@ -68,6 +68,7 @@ const PopularTemplate = ({ item }) => {
               height={10}
               alt="icon"
               src={files}
+              className="-z-10"
             />
             <span>Download Curriculam</span>
           </button>

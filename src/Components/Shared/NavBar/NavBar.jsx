@@ -162,7 +162,7 @@ const NavBar = () => {
   }, []);
 
   return (
-    <nav className={stick ? "text-white font-semibold sticky top-0 left-0 right-0 z-50 bg-[#003F7D] transition-colors  shadow-lg shadow-indigo-700/50 duration-75 ease-in-out transition-padding  px-12" : "font-semibold mx-50 px-12 "}>
+    <nav className={stick ? "text-white font-semibold sticky top-0 left-0 right-0 z-[999] bg-[#003F7D] transition-colors  shadow-lg shadow-indigo-700/50 duration-75 ease-in-out transition-padding  px-12" : "font-semibold mx-50 px-12 "}>
       <div className="flex items-center lg:hidden justify-between relative p-6 ">
         <Image
           className="md:scale-90 xl:scale-100 scale-75"

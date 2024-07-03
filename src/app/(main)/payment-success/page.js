@@ -6,7 +6,7 @@ export default function PaymentSuccess({ searchParams: { amount } }) {
         <h2 className="text-2xl">You successfully sent</h2>
 
         <div className="bg-white p-2 rounded-md text-purple-500 mt-5 text-4xl font-bold">
-          ${amount}
+          BDT {amount}
         </div>
       </div>
     </main>

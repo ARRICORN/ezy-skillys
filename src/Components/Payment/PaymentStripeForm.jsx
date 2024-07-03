@@ -30,6 +30,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
             },
           }
         );
+        
         setClientSecret(data?.clientSecret);
       } catch (error) {
         console.error("Error fetching client secret:", error);
