@@ -5,10 +5,8 @@ import { useElements } from "@stripe/react-stripe-js";
 import { useStripe } from "@stripe/react-stripe-js";
 import axiosConfig from "/axiosConfig";
 import React, { useEffect, useState } from "react";
-import Cookies from "js-cookie";
 
-const PaymentStripeForm = ({ amount, courseId }) => {
-  const token = Cookies.get("user-cookie");
+const PaymentStripeForm = ({ amount, courseId, token }) => {
   const stripe = useStripe();
   const elements = useElements();
 

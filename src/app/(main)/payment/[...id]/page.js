@@ -6,8 +6,8 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import { useQuery } from "@tanstack/react-query";
 import axiosConfig from "/axiosConfig";
-import { useEffect } from "react";
-import axios from "axios";
+import Cookies from "js-cookie";
+import { useSession } from "next-auth/react";
 
 if (process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY === undefined) {
   throw new Error("Missing NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY");
@@ -19,8 +19,9 @@ const stripePromise = loadStripe(
 
 export default function PaymentPage({ params }) {
   const courseId = params?.id;
-  const courseName = "something";
-  const amount = 50;
+  const session = useSession();
+  const token = session?.data?.user?.token;
+  // const token = Cookies.get("user-cookie");
   // fetches data from all courses
   const fetchCourses = async () => {
     const { data } = await axiosConfig.get(`/courses/getCourse/${courseId}`);
@@ -80,6 +81,7 @@ export default function PaymentPage({ params }) {
             <PaymentStripeForm
               amount={courseData?.data?.price}
               courseId={courseId}
+              token={token}
             />
           </Elements>
         )}

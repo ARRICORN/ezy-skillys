@@ -24,11 +24,11 @@ const Login = () => {
   const session = useSession();
 
   // === set cookie after login user ===
-  useEffect(() => {
-    if (session?.data?.user) {
-      Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session?.data?.user) {
+  //     Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
+  //   }
+  // }, [session]);
 
   // === hook-form functions ===
   const {
