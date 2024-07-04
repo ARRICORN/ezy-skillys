@@ -2,6 +2,7 @@ import { Inter, Montserrat, Poppins } from "next/font/google";
 import "./globals.css";
 import NextAuthSessionProvider from "@/Provider/SessionProvider";
 import { Toaster } from "react-hot-toast";
+import TanstackProvider from "../Provider/TanstackProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const poppins = Poppins({
@@ -27,11 +28,11 @@ export default function RootLayout({ children }) {
         suppressHydrationWarning={true}
         className={`${poppins.variable} ${montserrat.variable}`}
       >
-        <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
-        <Toaster position="top-right" reverseOrder={false} />
+        <TanstackProvider>
+          <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
+        </TanstackProvider>
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );
 }
-
-

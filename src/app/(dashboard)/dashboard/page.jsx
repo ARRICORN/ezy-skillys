@@ -1,4 +1,4 @@
-import Chart_component from "@/components/dashboard/chart-component/Chart_component";
+import Chart_component from "@/Components/dashboard/admin/chart-component/Chart_component";
 
 const page = () => {
   return (

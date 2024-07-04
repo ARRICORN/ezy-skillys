@@ -11,21 +11,29 @@ import Loading from "../Ui/Loading";
 import { MdErrorOutline } from "react-icons/md";
 import { signIn, useSession } from "next-auth/react";
 import axios from "axios";
-
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
+import toast from 'react-hot-toast';
 const Register = () => {
   const [formLoading, setFormLoading] = React.useState(false);
+  const [openPassword, setOpenPasswords] = useState(true);
+  const [conOpenPassword, setConOpenPasswords] = useState(true);
   const [error, setError] = React.useState("");
   const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch
   } = useForm();
+
+  const password = watch("password");
   const session = useSession();
 
   if (session.status == "authenticated") router.push("/");
 
   const onSubmit = (data) => {
+    console.log(data)
     setFormLoading(true);
     axios
       .post(process.env.NEXT_PUBLIC_SERVER_URL + "/register", {
@@ -37,7 +45,14 @@ const Register = () => {
       })
       .then((res) => {
         if (res?.data?.isOk) {
+          toast.success('Account Created Successfully', {
+            
+            duration: 2000,
+           
+          
+          });
           router.push("/login");
+        
           setError("");
         } else {
           setError(res?.data?.message);
@@ -115,13 +130,15 @@ const Register = () => {
                     autoComplete="off"
                     id="password"
                     name="password"
-                    type="text"
+                    type={openPassword?"password":"text"}
                     className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                     {...register("password", {
-                      required: true,
-                      pattern: /(?=.*?[A-Z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/,
-                      minLength: 6,
+                      required: " Password is Required",
+                      pattern: {
+                        value: /^.{6,}$/,
+                        message: "Password must be at least 6 characters long",
+                      },
                     })}
                   />
                   <label
@@ -130,12 +147,55 @@ const Register = () => {
                   >
                     Password
                   </label>
-                  {errors.password && (
-                    <p className="text-red-500 text-sm w-72">
-                      use minimum 1 capital, 1 number and 1 special character &
-                      6 length
-                    </p>
-                  )}
+                  {
+                openPassword ?
+                      <FaEyeSlash className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
+                      :
+                      <FaEye className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
+              }
+              {errors.password && (
+                <p className="text-red-600" role="alert">
+                  {errors.password?.message}
+                </p>
+              )}
+                </div>
+                <div className="relative mt-6">
+                  <input
+                    autoComplete="off"
+                    id="password"
+                    name="confirm password"
+                    type={conOpenPassword ? "password" : "text"}
+
+                    className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
+                    placeholder="confirm Password"
+                    {...register("confirmPassword", {
+                    required: "Confirm Password is Required",
+                      validate: (value) =>
+                        value === password || "Passwords do not match",
+                    })}
+                  />
+                  <label
+                    htmlFor="password"
+                    className="absolute left-0 -top-3.5 text-[#B1B1B1] peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-xs"
+                  >
+                    Password
+                  </label>
+                  {conOpenPassword ? (
+        <FaEyeSlash
+          className="absolute top-3 right-3 cursor-pointer"
+          onClick={() => setConOpenPasswords(!conOpenPassword)}
+        />
+      ) : (
+        <FaEye
+          className="absolute top-3 right-3 cursor-pointer"
+          onClick={() => setConOpenPasswords(!conOpenPassword)}
+        />
+      )}
+      {errors.confirmPassword && (
+        <p className="text-red-600" role="alert">
+          {errors.confirmPassword?.message}
+        </p>
+      )}
                 </div>
 
                 <div className="mt-2 flex items-center text-gray-500">
@@ -159,7 +219,7 @@ const Register = () => {
               <div>
                 <h5 className="text-gray-500 text-sm text-center">
                   Already Created?{" "}
-                  <Link className="text-gray-700" href="/login">
+                  <Link className="text-[#F97316] font-bold" href="/login">
                     Login Here
                   </Link>
                 </h5>

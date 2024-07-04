@@ -12,15 +12,15 @@ const PopularTemplate = ({ item }) => {
         <Image
           priority={true}
           width={100}
-          height={10}
+          height={100}
           alt="brand logo"
           src={item?.image}
-          className="mx-auto"
+          className="mx-auto aspect-auto"
         />
       </div>
 
       {/* details box */}
-      <div className={`absolute top-[64%] px-2`}>
+      <div className={`absolute top-[64%] px-2 w-full`}>
         <div className={`${styles.shadow} bg-[#FDFDFD] rounded-lg p-2 pb-4`}>
           <h3 className="text-[20px] md:text-[25px] py-2">{item?.title}</h3>
           <p className="text-[15px]">
@@ -68,6 +68,7 @@ const PopularTemplate = ({ item }) => {
               height={10}
               alt="icon"
               src={files}
+              className="-z-10"
             />
             <span>Download Curriculam</span>
           </button>

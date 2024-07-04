@@ -1,6 +1,7 @@
 import NextUi_Provider from "@/Components/Shared/NextUiProvider";
-import SidebarComponent from "@/components/dashboard/Sidebar/SidebarComponent";
-import Top_header from "@/components/dashboard/top-header/Top_header";
+import SidebarComponent from "@/Components/dashboard/both_user/Sidebar/SidebarComponent";
+import Top_header from "@/Components/dashboard/both_user/top-header/Top_header";
+import { Toaster } from "react-hot-toast";
 
 const layout = ({ children }) => {
   return (
@@ -13,6 +14,7 @@ const layout = ({ children }) => {
 
         {/* === all children will render here from dashboard === */}
         <NextUi_Provider>{children}</NextUi_Provider>
+        {/* <Toaster /> */}
       </div>
     </div>
   );

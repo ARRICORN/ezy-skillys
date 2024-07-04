@@ -6,11 +6,9 @@ import logo from "../../../assets/doted.png";
 
 const Project_planning = () => {
   return (
-    <div
-      className={`bg-[#FDFDFD] py-14 ${styles.bg_image} relative`}
-    >
+    <div className={`bg-[#FDFDFD] py-14 ${styles.bg_image} relative`}>
       <div className={``}>
-        <div className={`container bg-[#003F7D] rounded-lg py-14 relative`}>
+        <div className={`px-1 bg-[#003F7D] rounded-lg py-14 relative`}>
           <div className="max-w-[40%] md:max-w-[30%] mx-auto absolute top-[-35px] right-[20%] left-[20%] bg-orange-400 py-3 text-white font-semibold  md:px-[10px] text-center rounded-lg md:text-[22px]">
             <h2>How it works</h2>
           </div>

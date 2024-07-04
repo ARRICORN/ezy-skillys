@@ -1,13 +1,13 @@
 import toast from "react-hot-toast";
-const token = process.env.NEXT_PUBLIC_TOKEN;
+// const token = process.env.NEXT_PUBLIC_TOKEN;
 
 /**
  *
- * @param {url,data} url
+ * @param {url,data,token} url
  * @returns response
  */
 
-const POST_REQUEST_BY_DATA = async (url, data) => {
+const POST_REQUEST_BY_DATA = async (url, data, token) => {
   try {
     const response = await fetch(url, {
       method: "POST",

@@ -46,7 +46,7 @@
   color: #fff;
   font-size: 1em;
   font-weight: 400;
-  z-index: 20;
+  z-index: 1;
   transition: all 0.3s ease-in-out;
   margin-left: 10px;
 }

@@ -1,6 +1,11 @@
-const token = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiTkFaSU0iLCJlbWFpbCI6Im5hemltQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiam9objEyMyIsImlhdCI6MTcxNzI2MzMxNH0.N3RQTtduGXZEK2uw2Y_DrUDg5QwbwGw-0lp9nufIwrQ`;
+/**
+ *
+ * @param {id} id
+ * @param {token} token
+ * @returns promise
+ */
 
-const GET_SINGLE_POST_BY_DI = async (id) => {
+const GET_SINGLE_POST_BY_DI = async (id, token) => {
   try {
     const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/${id}`;
 
