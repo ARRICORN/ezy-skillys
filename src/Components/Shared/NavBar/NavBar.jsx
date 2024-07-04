@@ -106,7 +106,6 @@ import Image from "next/image";
 import NavLink from "./NavLink";
 import NavIcon from "../../../assets/ezy.png";
 
-
 import { FaBar, Close } from "@/Components/Icons/ReactIcons";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -123,6 +122,7 @@ const NavBar = () => {
   const image = session?.data?.user?.image;
 
   const pathName = usePathname();
+  console.log(session);
 
   const AboutActive = pathName.toString() === "/about";
   useEffect(() => {
@@ -133,7 +133,7 @@ const NavBar = () => {
       return () => clearTimeout(timer);
     }
   }, [mobileNavOpen]);
-  
+
   const navList = (
     <>
       <NavLink href={"/"}>Home</NavLink>
@@ -155,14 +155,20 @@ const NavBar = () => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', scrollHeader);
+    window.addEventListener("scroll", scrollHeader);
     return () => {
-      window.removeEventListener('scroll', scrollHeader);
+      window.removeEventListener("scroll", scrollHeader);
     };
   }, []);
 
   return (
-    <nav className={stick ? "text-white font-semibold sticky top-0 left-0 right-0 z-50 bg-[#003F7D] transition-colors  shadow-lg shadow-indigo-700/50 duration-75 ease-in-out transition-padding  px-12" : "font-semibold mx-50 px-12 "}>
+    <nav
+      className={
+        stick
+          ? "text-white font-semibold sticky top-0 left-0 right-0 z-[999] bg-[#003F7D] transition-colors  shadow-lg shadow-indigo-700/50 duration-75 ease-in-out transition-padding  px-12"
+          : "font-semibold mx-50 px-12 "
+      }
+    >
       <div className="flex items-center lg:hidden justify-between relative p-6 ">
         <Image
           className="md:scale-90 xl:scale-100 scale-75"
@@ -181,8 +187,8 @@ const NavBar = () => {
         </div>
       </div>
       {isAnimating && (
-  <style>
-    {`
+        <style>
+          {`
       @keyframes slideDown {
         0% { transform: translateY(-100%); opacity: 0; }
         100% { transform: translateY(0); opacity: 1; }
@@ -191,36 +197,37 @@ const NavBar = () => {
         animation: slideDown 1s forwards;
       }
     `}
-  </style>
-)}
-{isAnimating && (
-  <div
-    className={`fixed block md:hidden lg:hidden py-4 bg-slate-200 min-h-[60vh] left-0 top-[15%] w-full rounded-b-lg flex-col items-center px-5 gap-4 z-10 mobile-nav-animation ${mobileNavOpen ? 'flex' : 'hidden'}`}
-    style={{ 
-      boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-    }}
-  >
-    <div className="space-y-10 w-full">
-      <LoginProfile login={true} />
-      <div onClick={() => setMobileNavOpen(false)}>
-        <ul className="space-y-5">{navList}</ul>
-      </div>
-    </div>
-  </div>
-)}
+        </style>
+      )}
+      {isAnimating && (
+        <div
+          className={`fixed block md:hidden lg:hidden py-4 bg-slate-200 min-h-[60vh] left-0 top-[15%] w-full rounded-b-lg flex-col items-center px-5 gap-4 z-10 mobile-nav-animation ${
+            mobileNavOpen ? "flex" : "hidden"
+          }`}
+          style={{
+            boxShadow: "0 2px 10px rgba(0,0,0,0.1)",
+          }}
+        >
+          <div className="space-y-10 w-full">
+            <LoginProfile login={true} />
+            <div onClick={() => setMobileNavOpen(false)}>
+              <ul className="space-y-5">{navList}</ul>
+            </div>
+          </div>
+        </div>
+      )}
       {/* desktop  */}
       <div className="lg:flex hidden items-center justify-evenly p-6">
-   
-          <div>
-            <Image
-              className="scale-95 xl:scale-100"
-              src={NavIcon}
-              width={120}
-              height={120}
-              alt="Nav Icon"
-            />
-          </div>
-     
+        <div>
+          <Image
+            className="scale-95 xl:scale-100"
+            src={NavIcon}
+            width={120}
+            height={120}
+            alt="Nav Icon"
+          />
+        </div>
+
         <div>
           <ul className="flex items-center gap-7 ">{navList}</ul>
         </div>

@@ -30,7 +30,7 @@ const My_courses_main = async () => {
       </div>
 
       {/* === course template === */}
-      {userSort ? (
+      {userSort?.length > 0 ? (
         <div className="h-[80vh] no-scrollbar overflow-auto">
           <Course_template courses={userSort} />
         </div>

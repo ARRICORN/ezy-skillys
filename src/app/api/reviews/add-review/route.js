@@ -23,6 +23,7 @@ export async function POST(req) {
       throw new Error("You are not authorized!");
     }
     const body = await req.json();
+    console.log(body,"review body")
     const fieldsFromBody = Object.keys(body);
 
     fieldsThatShouldBeInBodyData.map((field) => {

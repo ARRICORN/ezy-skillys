@@ -17,7 +17,6 @@ import style from "./menu.module.css";
 import { usePathname } from "next/navigation";
 import SignOutBtn from "./SignOutBtn";
 import API_REQUEST_BY_URL from "@/utility/request_data/all_api_request";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 

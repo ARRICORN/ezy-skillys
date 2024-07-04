@@ -14,7 +14,7 @@ const layout = ({ children }) => {
 
         {/* === all children will render here from dashboard === */}
         <NextUi_Provider>{children}</NextUi_Provider>
-        <Toaster />
+        {/* <Toaster /> */}
       </div>
     </div>
   );

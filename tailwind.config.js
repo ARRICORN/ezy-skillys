@@ -17,18 +17,17 @@ module.exports = {
         poppins: ["var(--font-poppins)"],
         montserrat: ["var(--font-montserrat)"],
       },
+      colors: {
+        primary: "#003F7D",
+        secondary: "#f98149",
+        white: "#FFF",
+      },
+      // === if you use container it will automatically center the section
+      container: {
+        center: true,
+        padding: "1rem",
+      },
     },
-    // colors: {
-    //   primary: '#003F7D',
-    //   secondary: '#f98149',
-    //   white: '#FFF'
-    // },
-    // === if you use container it will automatically center the section
-    container: {
-      center: true,
-      padding: "1rem",
-    },
-
   },
 
   plugins: [nextui()],

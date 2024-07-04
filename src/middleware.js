@@ -14,6 +14,8 @@ export function middleware(req) {
     "/dashboard/view-profile",
     "/dashboard/user-review",
     "/dashboard/user-purchased-courses",
+    "/payment",
+    "/payment-success",
   ];
 
   // Check if the user is authenticated
@@ -32,5 +34,5 @@ export function middleware(req) {
 }
 
 export const config = {
-  matcher: ["/dashboard/:path*"],
+  matcher: ["/dashboard/:path*", "/payment/:path*", "/payment-success/:path*"],
 };

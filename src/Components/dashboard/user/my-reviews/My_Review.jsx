@@ -13,7 +13,7 @@ const My_Review = async () => {
   return (
     <div className="h-[88vh] py-5 overflow-auto no-scrollbar bg-gray-100 p-2">
       <div className={style.responsive}>
-        {reviews.data ? (
+        {reviews.data?.length > 0 ? (
           reviews?.data
             ?.reverse()
             .map((item) => <Review_template product={item} key={item._id} />)

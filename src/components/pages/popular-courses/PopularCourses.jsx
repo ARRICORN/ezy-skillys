@@ -3,12 +3,12 @@ import PopularTemplate from "./PopularTemplate";
 import styles from "./popular.module.css";
 import Link from "next/link";
 
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses?page=2&limit=20`;
+const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`;
 
 // === popular course component ===
 const PopularCourses = async () => {
   const courseData = await GET_GLOBAL_DATA(url);
-
+  console.log("data ", courseData);
   return (
     <div className="container bg-[#ffffff] py-8">
       <div className="">
@@ -18,15 +18,17 @@ const PopularCourses = async () => {
         </h1>
 
         {/* === course data will render === */}
-        <div className={`${styles.responsive} py-5`}>
-          {courseData.data.length > 0 &&
+        <div
+          className={`grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-x-8 gap-y-32 py-5`}
+        >
+          {courseData.data &&
             courseData?.data
               ?.slice(0, 8)
               .map((item) => <PopularTemplate item={item} key={item._id} />)}
         </div>
 
         {/* === view all courses button === */}
-        <div className="max-w-[35%] md:w-[20%] text-center py-1 rounded-md text-white mx-auto bg-[#183153] md:py-2">
+        <div className="max-w-[35%] md:w-[20%] text-center py-1 rounded-md text-white mx-auto bg-[#183153] md:py-2 mt-32">
           <Link href="/courses">
             <button className="text-center inline-block">
               View all courses

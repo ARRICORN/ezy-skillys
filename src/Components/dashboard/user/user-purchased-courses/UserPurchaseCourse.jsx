@@ -11,13 +11,13 @@ const UserPurchaseCourse = async () => {
   return (
     <div className="h-[85vh] overflow-auto bg-white">
       <div className="w-full md:w-[70%] mx-auto">
-        {products.data ? (
+        {products.data?.length > 0 ? (
           products?.data?.map((item) => (
             <Cart_template product={item} key={item._id} />
           ))
         ) : (
           <h1 className="mt-5 text-center text-orange-500">
-            Product information was not found!
+            Purchase information was not found!
           </h1>
         )}
       </div>
