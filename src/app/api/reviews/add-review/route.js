@@ -1,6 +1,7 @@
 import { Course } from "@/Models/Course";
 import { PurchasedCourse } from "@/Models/PurchasedCourse";
 import { Review } from "@/Models/Review";
+import { User } from "@/Models/User";
 import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import { ObjectId } from "mongodb";
@@ -15,6 +16,9 @@ export async function POST(req) {
     mongoose.connect(process.env.DATABASE_URL);
 
     const userInfo = await UserInfo.findOne({ email: decoded.email });
+    const userImage = await User.findOne({ email: decoded.email });
+    console.log("user image ", userImage);
+
     if (!userInfo) {
       throw new Error("You are not authorized!");
     }
@@ -37,8 +41,7 @@ export async function POST(req) {
       throw new Error("rating must be a number from 1-5 (including)");
     }
 
-
-    const courseId =  new ObjectId(body.courseId);
+    const courseId = new ObjectId(body.courseId);
 
     const isCoursePurchasedByYou = await PurchasedCourse.findOne({
       userEmail: decoded?.email,
@@ -50,11 +53,11 @@ export async function POST(req) {
     }
 
     const isReviewGivenAlready = await Review.findOne({
-        courseId: courseId,
-        addedBy: decoded.email
-    })
-    if(isReviewGivenAlready) {
-        throw new Error("You have reviewed this course before!");
+      courseId: courseId,
+      addedBy: decoded.email,
+    });
+    if (isReviewGivenAlready) {
+      throw new Error("You have reviewed this course before!");
     }
 
     const payload = {
@@ -62,7 +65,8 @@ export async function POST(req) {
       rating: body.rating,
       review: body.review,
       user: decoded?.name,
-      userEmail: decoded?.email
+      userEmail: decoded?.email,
+      // image:
     };
     const result = await Review.create(payload);
     return Response.json({
