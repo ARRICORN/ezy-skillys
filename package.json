@@ -11,6 +11,7 @@
   "dependencies": {
     "@next/swc-win32-x64-msvc": "^14.2.3",
     "@nextui-org/accordion": "^2.0.35",
+    "@nextui-org/avatar": "^2.0.30",
     "@nextui-org/react": "^2.4.2",
     "axios": "^1.7.2",
     "bcrypt": "^5.1.1",
@@ -28,6 +29,7 @@
     "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
     "react-pro-sidebar": "^1.1.0",
+    "react-rating-stars-component": "^2.2.0",
     "react-scroll-to-top": "^3.0.0",
     "react-select": "^5.8.0",
     "react-slick": "^0.30.2",
