@@ -30,6 +30,7 @@ export async function POST(req) {
     });
 
     const isCourseExist = await Course.findById(body?.courseId);
+   
     if (!isCourseExist) {
       throw new Error("Course not found!");
     }
@@ -47,7 +48,7 @@ export async function POST(req) {
     });
 
     if (!isCoursePurchasedByYou) {
-      throw new Error("Course not found!");
+      throw new Error("You are not eligable add review by this course");
     }
 
     const isReviewGivenAlready = await Review.findOne({

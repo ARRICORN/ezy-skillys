@@ -10,6 +10,7 @@ const nextConfig = {
       "res.cloudinary.com",
       "images.unsplash.com",
       "lh3.googleusercontent.com",
+      'zijundeng.github.io'
     ],
     remotePatterns: [
       {
