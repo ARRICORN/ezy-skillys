@@ -3,7 +3,7 @@ import logo from "../../../assets/boy.png";
 import star from "../../../assets/favorite.png";
 import downloads from "../../../assets/file.png";
 import award from "../../../assets/trophy.png";
-import styles from "./mentors.module.css";
+import styles from "./style.module.css";
 
 const MentorsTemplate = ({ user }) => {
   return (

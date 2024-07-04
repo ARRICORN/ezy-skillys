@@ -10,6 +10,7 @@ import Select from "react-select";
 import Cookies from "js-cookie";
 import styles from "./index.module.css";
 import { colourOptions, colourStyles } from "./data";
+import { useSession } from "next-auth/react";
 
 // initial value
 let defaultValues = {
@@ -31,7 +32,8 @@ const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCou
 // === form component here === //
 const Form_component = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const token = Cookies.get("user-cookie");
+  const session = useSession();
+  const token = session?.data?.user?.token;
 
   const {
     control,

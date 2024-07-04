@@ -4,12 +4,11 @@ import { ErrorMessage } from "@hookform/error-message";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
-import { Input, Textarea } from "@nextui-org/react";
 import Select from "react-select";
 import UPDATE_DATA_BY_ID from "@/utility/request_data/patch_request";
 import { colourOptions, colourStyles } from "../add-courses/data";
 import styles from "./style.module.css";
-import Cookies from "js-cookie";
+import { useSession } from "next-auth/react";
 // initial value
 let defaultValues = {
   title: "",
@@ -27,7 +26,9 @@ let defaultValues = {
 // === form component here === //
 const Update_single_course = ({ params_id }) => {
   const [isLoading, setIsLoading] = useState();
-  const token = Cookies.get("user-cookie");
+  const session = useSession();
+  const token = session?.data?.user?.token;
+
   const {
     control,
     handleSubmit,

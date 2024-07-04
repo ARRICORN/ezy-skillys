@@ -21,14 +21,14 @@ const Login = () => {
   const [error, setError] = useState("");
   const router = useRouter();
   const { status } = useSession();
-  const session = useSession();
+  // const session = useSession();
 
   // === set cookie after login user ===
-  useEffect(() => {
-    if (session?.data?.user) {
-      Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session?.data?.user) {
+  //     Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
+  //   }
+  // }, [session]);
 
   // === hook-form functions ===
   const {

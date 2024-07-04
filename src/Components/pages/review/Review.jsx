@@ -40,27 +40,28 @@ const review = () => {
   };
 
   return (
-    <div> <div className={`${styles.bgImage}`}>
-    <div className={`container py-5 md:py-10`}>
-      <div className="ml-2 md:ml-6">
-        <span className="text-[#003F7D] text-[30px] font-bold text-center md:text-[50px] block">
-         Client Review
-        </span>
-        
-      </div>
+    <div>
+      {" "}
+      <div className={`${styles.bgImage}`}>
+        <div className={`container py-5 md:py-10`}>
+          <div className="ml-2 md:ml-6">
+            <span className="text-[#003F7D] text-[30px] font-bold text-center md:text-[50px] block">
+              Client Review
+            </span>
+          </div>
 
-      {/* cart demo */}
-      <div className="my-4 ">
-        <Slider {...settings}>
-          {mentorsData &&
-            mentorsData?.map((user, index) => (
-              <ReviewTemplate key={index} user={user} />
-            ))}
-        </Slider>
+          {/* cart demo */}
+          <div className="my-4 ">
+            <Slider {...settings}>
+              {mentorsData &&
+                mentorsData?.map((user, index) => (
+                  <ReviewTemplate key={index} user={user} />
+                ))}
+            </Slider>
+          </div>
+        </div>
       </div>
     </div>
-  </div></div>
-   
   );
 };
 

@@ -11,7 +11,6 @@ const Top_header = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
   const response = await API_REQUEST_BY_URL(url, session?.token);
 
-  console.log("server xxxxx", session);
   return (
     <div className={`${style.shadow} flex p-4 items-center md:justify-between`}>
       <div>

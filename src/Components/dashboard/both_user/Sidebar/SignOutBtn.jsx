@@ -4,7 +4,6 @@ import logout from "@/assets/log-out.png";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
-import Cookies from "js-cookie";
 
 const SignOutBtn = () => {
   const { status } = useSession();
@@ -21,7 +20,6 @@ const SignOutBtn = () => {
     if (status === "authenticated") {
       try {
         await signOut({ redirect: false }); // Ensure signOut does not redirect
-        Cookies.remove("user-cookie");
 
         router.replace("/login");
         toast.success("Logout is successful");

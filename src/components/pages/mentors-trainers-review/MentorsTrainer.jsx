@@ -4,7 +4,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import mentorsData from "@/utility/temp/trainer.json";
-import styles from "./mentors.module.css";
+import styles from "./style.module.css";
 
 const MentorsTrainer = () => {
   const settings = {
