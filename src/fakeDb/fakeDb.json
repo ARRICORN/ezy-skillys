@@ -8,10 +8,9 @@
       "price": 400,
       "courseStatus": {
         "onGoing": false,
-        "completed": false,
+      
         "archived": false,
-        "comingSoon": true,
-        "deleted": false
+        "comingSoon": true
       },
       "tag": "opened",
       "categories": ["Web Development", "IT"],

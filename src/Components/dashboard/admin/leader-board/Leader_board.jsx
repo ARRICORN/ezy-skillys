@@ -10,7 +10,6 @@ const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/leaderboardData`;
 const Leader_board = async () => {
   const session = await getServerSession(authOptions);
   const userData = await API_REQUEST_BY_URL(url, session.token);
-
   return (
     <div className="h-[90vh] no-scrollbar overflow-auto">
       {/* === search user by name === */}
