@@ -40,7 +40,7 @@ const AllCoursesPage = () => {
           ? `&search_term=${search.trim().split(" ").join("+")}`
           : ""
       }${sort ? `&sort=${sort}` : ""}${
-        courseStatus != "all" ? `&courseStatus.${courseStatus}=true` : ""
+        courseStatus != "all" ? `&tag=${courseStatus}` : ""
       }`
     );
     return data;
