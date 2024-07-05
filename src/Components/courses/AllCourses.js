@@ -17,15 +17,15 @@ const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
                 className="bg-[#003F7D] h-[300px] w-full flex flex-col rounded-2xl items-center p-4 box-border cols-span-1"
               >
                 <div className="w-full h-full rounded-xl">
-                  <Link href={`/courses/${each._id}`}>
-                    <Image
-                      src={each.image}
-                      alt={`${each.title} image`}
-                      width={120}
-                      height={120}
-                      className="h-[140px] object-contain w-full rounded-xl"
-                    />
-                  </Link>
+                  {/* <Link href={`/courses/${each._id}`}> */}
+                  <Image
+                    src={each.image}
+                    alt={`${each.title} image`}
+                    width={120}
+                    height={120}
+                    className="h-[140px] object-contain w-full rounded-xl"
+                  />
+                  {/* </Link> */}
                 </div>
 
                 <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full">
