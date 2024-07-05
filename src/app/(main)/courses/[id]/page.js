@@ -24,6 +24,18 @@ const CourseDetails = ({ params }) => {
     }
   };
 
+  //fetches all reviews for the course
+  const fetchCourseReviews = async (id) => {
+    try {
+      const { data } = await axiosConfig.get(
+        `/reviews/all-reviews?course=${id}`
+      );
+      return data;
+    } catch (error) {
+      console.log("error from course details page", error);
+    }
+  };
+
   // fetches single course
   const {
     data: courseData,
@@ -35,9 +47,16 @@ const CourseDetails = ({ params }) => {
     queryFn: () => fetchCourse(params?.id),
   });
 
-  if (isCourseDataLoading) console.log("loading");
-  if (isCourseDataError) console.log("error");
-  if (isCourseDataSuccess) console.log("success", courseData);
+  //fetches all reviews
+  const {
+    data: reviewsData,
+    isLoading: isReviewsDataLoading,
+    isError: isReviewsDataError,
+    isSuccess: isReviewsDataSuccess,
+  } = useQuery({
+    queryKey: ["reviews", params.id],
+    queryFn: fetchCourseReviews(params?.id),
+  });
 
   return (
     <div className="font-poppins">
@@ -153,18 +172,19 @@ const CourseDetails = ({ params }) => {
           </Link>
         </div>
       </div>
+      {/* reviews */}
       <div className="my-5">
         <div className="">
-          {/* {reviews?.map((review) => {
+          {reviewsData?.data?.map((review) => {
             return (
               <div key={review._id}>
                 <ReviewCardDetailsPage review={review} />
               </div>
             );
-          })} */}
+          })}
         </div>
       </div>
-      <ReveiwForm courseId={params.id} />
+      {/* <ReveiwForm courseId={params.id} /> */}
     </div>
   );
 };
