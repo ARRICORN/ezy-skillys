@@ -1,6 +1,6 @@
 import GET_GLOBAL_DATA from "@/utility/request_data/getAllCourses";
 import PopularTemplate from "./PopularTemplate";
-import styles from "./popular.module.css";
+// import styles from "./popular.module.css";
 import Link from "next/link";
 
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`;
@@ -9,6 +9,7 @@ const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`;
 const PopularCourses = async () => {
   const courseData = await GET_GLOBAL_DATA(url);
   console.log("data ", courseData);
+
   return (
     <div className="container bg-[#ffffff] py-8">
       <div className="">

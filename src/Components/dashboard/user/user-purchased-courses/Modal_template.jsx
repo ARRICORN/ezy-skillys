@@ -23,9 +23,6 @@ const Modal_template = ({ onCloseModal, isModal, setOpen, productId }) => {
   const [isLoading, setIsLoading] = useState(false);
   const session = useSession();
   const token = session?.data?.user?.token;
-  const image = session?.data?.user?.image;
-
-  console.log("image ", session);
 
   // === hook form function ===
   const {
@@ -43,7 +40,6 @@ const Modal_template = ({ onCloseModal, isModal, setOpen, productId }) => {
       courseId: productId,
       rating: rating,
       review: data.review,
-      image,
     };
 
     // Make an asynchronous POST request to submit the rating details
