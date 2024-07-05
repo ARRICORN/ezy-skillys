@@ -7,7 +7,7 @@ const UserPurchaseCourse = async () => {
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myPurchasedCourses?page`;
   const session = await getServerSession(authOptions);
   const products = await API_REQUEST_BY_URL(url, session.token);
-
+  console.log(session);
   return (
     <div className="h-[85vh] overflow-auto bg-white">
       <div className="w-full md:w-[70%] mx-auto">

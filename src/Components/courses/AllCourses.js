@@ -4,30 +4,32 @@ import monitor from "/src/assets/monitor-vector.png";
 import pin from "/src/assets/enroll-vector.png";
 import download from "/src/assets/download-vector.png";
 import Link from "next/link";
+import StyCourses from "./courses.module.css";
 
 const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
   return (
     <Fragment>
       <div className="mx-auto">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center py-12 gap-y-28 lg:gap-x-10 px-6 lg:gap-y-32 sm:gap-x-8">
+        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center py-12 gap-y-28 lg:gap-x-10 px-6 lg:gap-y-32 sm:gap-x-8"> */}
+        <div className={`${StyCourses.responsive}`}>
           {data?.data?.length > 0 ? (
             data?.data?.map((each) => (
               <div
                 key={each._id}
-                className="bg-[#003F7D] h-[300px] w-full flex flex-col rounded-2xl items-center p-4 box-border cols-span-1"
+                className="bg-[#003F7D] flex flex-col rounded-2xl items-center p-4 box-border cols-span-1"
               >
-                <div className="w-full h-full object-cover rounded-xl">
+                <div className="overflow-hidden h-[18vh]">
                   <Image
                     src={each.image}
                     alt={`${each.title} image`}
-                    width={120}
-                    height={120}
-                    className="h-[140px] w-full rounded-xl"
+                    width={100}
+                    height={100}
+                    className="mx-auto rounded-xl aspect-auto"
                   />
                 </div>
                 <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full">
                   <h2 className="mb-2 font-semibold text-xl">{each.title}</h2>
-                  <p className="text-sm text-center word-wrap mb-4">
+                  <p className="text-sm text-center word-wrap mb-4 block h-[70px]">
                     {each.desc.length > 100
                       ? `${each.desc.slice(0, 100)}...`
                       : each.desc}
