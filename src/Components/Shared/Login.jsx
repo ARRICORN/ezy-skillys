@@ -1,21 +1,19 @@
-'use client'
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
-import banner from '../../assets/registerPage-img.png'
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import React, { useEffect, useState } from "react";
+import banner from "../../assets/registerPage-img.png";
+import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
-import { getSession, signIn, useSession } from 'next-auth/react';
-import Loading from '../Ui/Loading';
+import { getSession, signIn, useSession } from "next-auth/react";
+import Loading from "../Ui/Loading";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
-import toast from 'react-hot-toast';
-import Cookies from 'js-cookie';
-
-
+import toast from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const Login = () => {
   const [formLoading, setFormLoading] = useState(false);
@@ -24,22 +22,18 @@ const Login = () => {
   const router = useRouter();
   const { status } = useSession();
   const session = useSession();
-console.log("custom token",session?.data?.user?.token)
-
-  
-  
+  console.log("custom token", session?.data?.user?.token);
 
   if (session.status == "authenticated") {
     router.push("/");
-    toast.success('Logged In Successful');
-
+    toast.success("Logged In Successful");
   }
-    // === set cookie after login user ===
-    useEffect(() => {
-      if (session?.data?.user?.token) {
-        Cookies.set("custom-token", session.data?.user?.token, { expires: 7 });
-      }
-    }, [session]);
+  // === set cookie after login user ===
+  useEffect(() => {
+    if (session?.data?.user?.token) {
+      Cookies.set("custom-token", session.data?.user?.token, { expires: 7 });
+    }
+  }, [session]);
 
   // === hook-form functions ===
   const {
@@ -60,14 +54,13 @@ console.log("custom token",session?.data?.user?.token)
         setError("Invalid email/password");
       } else {
         const sessions = await getSession();
-      
+
         // router.push("/blog");
-     
+
         console.log("pushing ");
         location.reload();
       }
-        setFormLoading(false);
-      
+      setFormLoading(false);
     });
   };
 
