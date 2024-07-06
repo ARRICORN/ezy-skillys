@@ -4,10 +4,11 @@ import { authOptions } from "@/Components/Utils/AuthOptions";
 import Cart_template from "./Cart_tamplate";
 
 const UserPurchaseCourse = async () => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myPurchasedCourses?page`;
+  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/orders`;
   const session = await getServerSession(authOptions);
   const products = await API_REQUEST_BY_URL(url, session.token);
-  console.log(session);
+
+  console.log(products);
   return (
     <div className="h-[85vh] overflow-auto bg-white">
       <div className="w-full md:w-[70%] mx-auto">

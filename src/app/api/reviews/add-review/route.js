@@ -19,7 +19,7 @@ export async function POST(req) {
       throw new Error("You are not authorized!");
     }
     const body = await req.json();
-    console.log(body,"review body")
+    console.log(body, "review body");
     const fieldsFromBody = Object.keys(body);
 
     fieldsThatShouldBeInBodyData.map((field) => {
@@ -38,8 +38,7 @@ export async function POST(req) {
       throw new Error("rating must be a number from 1-5 (including)");
     }
 
-
-    const courseId =  new ObjectId(body.courseId);
+    const courseId = new ObjectId(body.courseId);
 
     const isCoursePurchasedByYou = await PurchasedCourse.findOne({
       userEmail: decoded?.email,
@@ -51,11 +50,11 @@ export async function POST(req) {
     }
 
     const isReviewGivenAlready = await Review.findOne({
-        courseId: courseId,
-        addedBy: decoded.email
-    })
-    if(isReviewGivenAlready) {
-        throw new Error("You have reviewed this course before!");
+      courseId: courseId,
+      addedBy: decoded.email,
+    });
+    if (isReviewGivenAlready) {
+      throw new Error("You have reviewed this course before!");
     }
 
     const payload = {
@@ -63,7 +62,7 @@ export async function POST(req) {
       rating: body.rating,
       review: body.review,
       user: decoded?.name,
-      userEmail: decoded?.email
+      userEmail: decoded?.email,
     };
     const result = await Review.create(payload);
     return Response.json({

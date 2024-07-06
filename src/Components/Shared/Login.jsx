@@ -22,18 +22,11 @@ const Login = () => {
   const router = useRouter();
   const { status } = useSession();
   const session = useSession();
-  console.log("custom token", session?.data?.user?.token);
 
   if (session.status == "authenticated") {
     router.push("/");
     toast.success("Logged In Successful");
   }
-  // === set cookie after login user ===
-  useEffect(() => {
-    if (session?.data?.user?.token) {
-      Cookies.set("custom-token", session.data?.user?.token, { expires: 7 });
-    }
-  }, [session]);
 
   // === hook-form functions ===
   const {
