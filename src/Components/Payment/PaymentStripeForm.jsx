@@ -30,7 +30,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
             },
           }
         );
-        
+
         setClientSecret(data?.clientSecret);
       } catch (error) {
         console.error("Error fetching client secret:", error);
@@ -93,7 +93,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
         disabled={loading || !stripe}
         className="bg-blue-700 font-semibold py-2 mt-4 w-full text-white rounded-lg"
       >
-        {!loading ? `Pay $${amount}` : "Loading..."}
+        {!loading ? `Pay $${amount}` : "Processing..."}
       </button>
     </form>
   );

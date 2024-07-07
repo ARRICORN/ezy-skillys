@@ -52,20 +52,6 @@ const ReviewTemplate = ({ user }) => {
             </div>
           </div>
         </div>
-
-        {/* trainer award */}
-        {user.position && (
-          <div className="p-1 text-center text-white bg-[#FF8B36] absolute top-[-20px] left-[29%] right-[29%] mx-auto rounded-md flex items-center justify-center gap-2">
-            <Image
-              src={award}
-              width={18}
-              height={18}
-              alt="award"
-              priority={true}
-            />
-            {user.position}
-          </div>
-        )}
       </div>
     </div>
   );
