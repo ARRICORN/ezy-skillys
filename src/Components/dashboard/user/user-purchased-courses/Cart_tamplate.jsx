@@ -2,8 +2,10 @@ import Image from "next/image";
 import style from "./style.module.css";
 import ReviewButton from "./ReviewButton";
 
-// grid md:grid-cols-2
+// === cart component ===
 const Cart_template = ({ product }) => {
+  console.log(product);
+
   return (
     <div className={`${style.shadow} p-6 md:p-5 rounded-lg my-5`}>
       <div className="grid md:grid-cols-2">
@@ -21,7 +23,9 @@ const Cart_template = ({ product }) => {
             {product.course.title}
           </h2>
           <p className="text-sm md:text-base mb-2 text-muted-foreground animate-fade-in-up">
-            {product.course.desc}
+            {product?.course?.desc.length >= 100
+              ? product?.course?.desc.slice(0, 200) + " ...."
+              : product?.course?.desc}
           </p>
 
           <div className="flex item-center gap-3">
@@ -29,7 +33,7 @@ const Cart_template = ({ product }) => {
               <span className="text-orange-500">$</span> {product.course.price}
             </h3>
 
-            <ReviewButton productId={product?.course?._id} />
+            <ReviewButton productId={product.course._id} />
           </div>
         </div>
       </div>

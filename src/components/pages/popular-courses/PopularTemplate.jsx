@@ -1,92 +1,36 @@
-"use client";
-import { useQuery } from "@tanstack/react-query";
-import axiosConfig from "/axiosConfig";
-import { useEffect, useState } from "react";
-import Heading from "@/Components/courses/Heading";
-import CourseMenu from "@/Components/courses/CourseMenu";
-import AllCourses from "@/Components/courses/AllCourses";
-import Pagination from "@/Components/courses/Pagination";
-import Loading from "@/app/loading";
-import Modal from "@/Components/courses/Modal";
+import Image from "next/image";
+import Link from "next/link";
+import crsCss from "./popular.module.css";
 
-const PopularTemplate = () => {
-  const [modalStatus, setModalStatus] = useState(false);
-  const [pdfLink, setPdfLink] = useState("");
-  const [sort, setSort] = useState(false);
-  const [courseStatus, setCourseStatus] = useState("all");
-  const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 16;
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
-  const handleCourseCurriculumDownload = () => {
-    const link = document.createElement("a");
-    link.href = pdfLink;
-    link.setAttribute("download", "");
-    link.setAttribute("target", "_blank");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
-  // fetches data from all courses
-  const fetchCourses = async () => {
-    const { data } = await axiosConfig.get(
-      `/courses?page=${currentPage}&limit=${itemsPerPage}${
-        search !== ""
-          ? `&search_term=${search.trim().split(" ").join("+")}`
-          : ""
-      }${sort ? `&sort=${sort}` : ""}${
-        courseStatus != "all" ? `&tag=${courseStatus}` : ""
-      }`
-    );
-    return data;
-  };
-
-  // fetches data
-  const {
-    data: coursesData,
-    isLoading: coursesIsLoading,
-    isError: coursesIsError,
-    isSuccess: coursesIsSuccess,
-    refetch,
-  } = useQuery({
-    queryKey: ["courses", currentPage],
-    queryFn: () => fetchCourses(),
-    onSuccess: () => {
-      refetch();
-    },
-  });
-
-  useEffect(() => {
-    refetch();
-  }, [refetch, sort, search, courseStatus]);
-
-  // if (coursesIsSuccess) console.log(coursesData);
-  if (coursesIsError) console.log(coursesIsError);
-
+const PopularTemplate = ({ course }) => {
   return (
-    <div className="font-poppins relative">
-      {/*  modal start */}
-      <Modal
-        modalTitle={"Do you want to download?"}
-        modalStatus={modalStatus}
-        setModalStatus={setModalStatus}
-        handleCourseCurriculumDownload={handleCourseCurriculumDownload}
-      />
+    <div className={`${crsCss.shadow} rounded-md pb-4`}>
+      <div className="w-full h-[128px] overflow-hidden bg-teal-50 py-4 rounded-md">
+        <Image
+          src={course.image}
+          alt={`${course.title} image`}
+          width={100}
+          height={100}
+          className="mx-auto rounded-xl aspect-auto"
+        />
+      </div>
 
-      <div className="">
-        {coursesIsLoading && <Loading />}
-        {coursesIsSuccess && (
-          <AllCourses
-            data={coursesData}
-            setModalStatus={setModalStatus}
-            setPdfLink={setPdfLink}
-          />
-        )}
+      <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full">
+        <h2 className="mb-2 font-semibold text-xl">{course.title}</h2>
+        <p className="text-sm text-center word-wrap mb-4 block h-[70px]">
+          {course.desc.length > 100
+            ? `${course.desc.slice(0, 100)}...`
+            : course.desc}
+        </p>
+      </div>
+
+      <div className="w-full mx-auto">
+        <Link
+          href={`/courses/${course._id}`}
+          className="text-[14px] block text-center w-[200px] mx-auto py-1 bg-teal-400 rounded-lg font-semibold hover:bg-slate-600 hover:text-white transition-all"
+        >
+          <span>More Details</span>
+        </Link>
       </div>
     </div>
   );
