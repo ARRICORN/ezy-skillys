@@ -31,6 +31,7 @@ const Course = () => {
   const [isIt, setIsIt] = useState(false);
   const [isNonIt, setIsNonIt] = useState(false);
   const [isUpSkill, setIsUpSkill] = useState(false);
+  const [jobType, setJobType] = useState("");
 
   const lookingJobClicked = () => {
     setIsIt(false);
@@ -55,6 +56,11 @@ const Course = () => {
     setIsNonIt(false);
     setIsIt(false);
     setIsLookingJob(false);
+  };
+
+  const handleJobType = (type) => {
+    setIsCoding(true);
+    setJobType(type);
   };
 
   return (
@@ -87,11 +93,11 @@ const Course = () => {
           className="w-36 absolute bottom-[-56px] right-[-2px] md:right-0 "
         />
         <div>
-          <h1 className="text-[#003F7D] text-5xl pb-5 font-extrabold text-center">
-            Choose The <span className="text-[#f98149]">Course</span>
+          <h1 className="text-primary text-5xl pb-5 font-extrabold text-center">
+            Choose The <span className="text-secondary">Course</span>
           </h1>
           {/* main section */}
-          <main className="bg-[#003F7D] rounded-xl p-6 lg:p-16 relative">
+          <main className="bg-primary rounded-xl p-6 lg:p-16 relative">
             <div className="grid grid-cols-8">
               <div className="col-span-8 md:col-span-5 relative">
                 {/* Welcome part */}
@@ -175,7 +181,7 @@ const Course = () => {
                             <div className="flex  justify-between md:justify-start ">
                               <button
                                 onClick={() => setIsDiscoverCourse(true)}
-                                className="px-3 md:px-8 mt-4 py-4 rounded-lg text-white bg-[#f98149]"
+                                className="px-3 md:px-8 mt-4 py-4 rounded-lg text-white bg-secondary"
                               >
                                 Discover Course
                               </button>
@@ -203,7 +209,7 @@ const Course = () => {
                             <div className="w-full flex px-3 md:px-0">
                               <button
                                 onClick={() => setIsItField(true)}
-                                className="px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-[#f98149]"
+                                className="px-4  md:px-16 mt-4 py-4 rounded-lg text-white bg-secondary"
                               >
                                 IT Field
                               </button>
@@ -244,17 +250,26 @@ const Course = () => {
                         <div className="flex justify-start ml-3 md:ml-32 gap-8 py-5">
                           <div>
                             <button
-                              onClick={() => setIsCoding(true)}
+                              onClick={() => handleJobType("coding")}
                               className="border-2 bg-white border-white p-5 rounded-3xl"
                             >
                               <Image src={it2} alt="job" />
                             </button>
+                            {/* <button
+                              onClick={() => setIsCoding(true)}
+                              className="border-2 bg-white border-white p-5 rounded-3xl"
+                            >
+                              <Image src={it2} alt="job" />
+                            </button> */}
                             <p className="text-white mt-1 text-center">
                               Coding
                             </p>
                           </div>
                           <div>
-                            <button className="border-2 border-white p-5 rounded-3xl">
+                            <button
+                              onClick={() => handleJobType("not-coding")}
+                              className="border-2 border-white p-5 rounded-3xl"
+                            >
                               <Image src={notCoding} alt="job" />
                             </button>
                             <p className="text-white mt-1 text-center">
@@ -299,7 +314,15 @@ const Course = () => {
                               </p>
                             </div>
                             <div>
-                              <button className="border-2 border-white p-5 rounded-3xl">
+                              <button
+                                onClick={() =>
+                                  setChoosedPath({
+                                    status: true,
+                                    course: "back-end",
+                                  })
+                                }
+                                className="border-2 border-white p-5 rounded-3xl"
+                              >
                                 <Image src={backend} alt="job" />
                               </button>
                               <p className="text-white mt-1 text-center">
@@ -307,7 +330,15 @@ const Course = () => {
                               </p>
                             </div>
                             <div>
-                              <button className="border-2 border-white p-5 rounded-3xl">
+                              <button
+                                onClick={() =>
+                                  setChoosedPath({
+                                    status: true,
+                                    course: "full-stack",
+                                  })
+                                }
+                                className="border-2 border-white p-5 rounded-3xl"
+                              >
                                 <Image src={fullstack} alt="job" />
                               </button>
                               <p className="text-white mt-1 text-center">
@@ -338,8 +369,10 @@ const Course = () => {
                                 </p>
                               </div>
 
-                              <Link href="/ItCourses/categories=it&categories=coding&categories=forntend">
-                                <button className="px-6 mt-4 py-2 rounded-lg text-white bg-[#f98149]">
+                              <Link
+                                href={`/ItCourses/categories=it&categories=${jobType}&categories=${choosedPath.course}`}
+                              >
+                                <button className="px-6 mt-4 py-2 rounded-lg text-white bg-secondary">
                                   Next
                                 </button>
                               </Link>
