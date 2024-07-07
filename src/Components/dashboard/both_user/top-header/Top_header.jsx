@@ -13,35 +13,41 @@ const Top_header = async () => {
   const userImage = session?.user?.image;
 
   return (
-    <div className={`${style.shadow} flex p-4 items-center md:justify-between`}>
-      <div>
-        <span className="font-semibold text-[#151D48] text-[26px] hidden md:block">
-          <span className="hidden lg:inline-block text-orange-400">
-            Welcome to
-          </span>{" "}
-          Dashboard
-        </span>
-      </div>
-      <div className="flex space-x-4 justify-end">
+    <div>
+      <div
+        className={`${style.shadow} flex p-3 items-center md:justify-between`}
+      >
         <div>
-          <Image
-            width={70}
-            height={70}
-            priority={true}
-            src={userImage || avatar}
-            alt=""
-            className="object-cover w-12 h-12 rounded-full"
-          />
-        </div>
-        <div>
-          <h5 className="font-bold">{session?.user?.name}</h5>
-          <span className="text-xs text-orange-500">
-            {response?.data &&
-              response?.data?.role.charAt(0).toUpperCase() +
-                response?.data?.role.slice(1)}
+          <span className="font-semibold text-[#151D48] text-[26px] hidden md:block">
+            <span className="hidden lg:inline-block text-orange-400">
+              Welcome to
+            </span>{" "}
+            Dashboard
           </span>
         </div>
+        <div className="flex space-x-4 justify-end">
+          <div>
+            <Image
+              width={70}
+              height={70}
+              priority={true}
+              src={userImage || avatar}
+              alt=""
+              className="object-cover w-12 h-12 rounded-full"
+            />
+          </div>
+          <div>
+            <h5 className="font-bold">{session?.user?.name}</h5>
+            <span className="text-xs text-orange-500">
+              {response?.data &&
+                response?.data?.role.charAt(0).toUpperCase() +
+                  response?.data?.role.slice(1)}
+            </span>
+          </div>
+        </div>
       </div>
+
+      <hr />
     </div>
   );
 };

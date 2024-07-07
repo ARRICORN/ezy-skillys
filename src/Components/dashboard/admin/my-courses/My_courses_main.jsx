@@ -6,6 +6,7 @@ import { authOptions } from "@/Components/Utils/AuthOptions";
 // get all course for admin url
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses`;
 
+// === my course component here ===
 const My_courses_main = async () => {
   const session = await getServerSession(authOptions);
   const userCourse = await API_REQUEST_BY_URL(url, session.token);
