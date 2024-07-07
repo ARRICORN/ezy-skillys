@@ -1,61 +1,10 @@
+import { isAdmin } from "@/middlewares/checkAdmin";
+import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import { Course } from "@/Models/Course";
 import { Order } from "@/Models/Order";
 import { UserInfo } from "@/Models/UserInfo";
-import { isAdmin } from "@/middlewares/checkAdmin";
-import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
-import Stripe from "stripe";
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
-
-export const POST = async (req, res) => {
-  try {
-    const decoded = checkIsLoggedIn();
-    // Connect to the database
-    await mongoose.connect(process.env.DATABASE_URL);
-
-    // Find the user by email
-    const { courseId, amount } = await req.json(); // Parse the request body
-
-    // Create a payment intent with Stripe
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount,
-      currency: "usd",
-      automatic_payment_methods: { enabled: true },
-    });
-    
-    const user = await UserInfo.findOne({ email: decoded.email });
-
-    // Create a new order with status 'pending'
-    const newOrder = new Order({
-      course: courseId,
-      user: user._id,
-      status: "confirmed",
-      transactionId: paymentIntent.id,
-    
-    });
-
-    const result = await newOrder.save();
-
-    return new NextResponse(
-      JSON.stringify({
-        message: "Order placed successfully",
-        data: result,
-        clientSecret: paymentIntent.client_secret
-      }),
-      { status: 200 }
-    );
-  } catch (error) {
-    return new NextResponse(
-      JSON.stringify({
-        message: "Order processing failed",
-        error: error.message,
-      }),
-      { status: 500 }
-    );
-  }
-};
 
 // get orders by user and admin
 export const GET = async (req) => {

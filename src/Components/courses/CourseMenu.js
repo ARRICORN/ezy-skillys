@@ -42,7 +42,7 @@ const CourseMenu = ({ setSort, setSearch, setCourseStatus }) => {
     {
       id: 2,
       name: "opened",
-      courseStatus: "onGoing",
+      courseStatus: "opened",
     },
     {
       id: 3,

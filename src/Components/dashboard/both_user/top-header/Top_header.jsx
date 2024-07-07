@@ -10,8 +10,8 @@ const Top_header = async () => {
   const session = await getServerSession(authOptions);
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
   const response = await API_REQUEST_BY_URL(url, session?.token);
+  const userImage = session?.user?.image;
 
-  console.log("server xxxxx", session);
   return (
     <div className={`${style.shadow} flex p-4 items-center md:justify-between`}>
       <div>
@@ -28,7 +28,7 @@ const Top_header = async () => {
             width={70}
             height={70}
             priority={true}
-            src={avatar}
+            src={userImage || avatar}
             alt=""
             className="object-cover w-12 h-12 rounded-full"
           />

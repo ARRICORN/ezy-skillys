@@ -12,7 +12,7 @@ const My_student_board = async () => {
   return (
     <section className="">
       {/* === Table body === */}
-      {student_data?.data ? (
+      {student_data?.data?.length > 0 ? (
         <Table_body studentData={student_data.data} />
       ) : (
         <h1 className="mt-5 text-center text-orange-500">

@@ -9,6 +9,7 @@ import buttons from "./style.module.css";
 import Cookies from "js-cookie";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews/add-review`;
 
 const styles = {
@@ -20,7 +21,8 @@ const styles = {
 const Modal_template = ({ onCloseModal, isModal, setOpen, productId }) => {
   const [rating, setRating] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
-  const token = Cookies.get("user-cookie");
+  const session = useSession();
+  const token = session?.data?.user?.token;
 
   // === hook form function ===
   const {
@@ -40,9 +42,11 @@ const Modal_template = ({ onCloseModal, isModal, setOpen, productId }) => {
       review: data.review,
     };
 
+    console.log("token xxxxx ", token);
     // Make an asynchronous POST request to submit the rating details
     const response = await POST_REQUEST_BY_DATA(url, rateObj, token);
 
+    console.log("response ", response);
     // Check if the response indicates failure
     // Exit the function early since the submission failed
     if (response.success !== true) {

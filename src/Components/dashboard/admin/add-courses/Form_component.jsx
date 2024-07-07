@@ -7,9 +7,9 @@ import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
 import Select from "react-select";
-import Cookies from "js-cookie";
 import styles from "./index.module.css";
 import { colourOptions, colourStyles } from "./data";
+import { useSession } from "next-auth/react";
 
 // initial value
 let defaultValues = {
@@ -31,7 +31,8 @@ const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCou
 // === form component here === //
 const Form_component = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const token = Cookies.get("user-cookie");
+  const session = useSession();
+  const token = session?.data?.user?.token;
 
   const {
     control,
@@ -72,7 +73,7 @@ const Form_component = () => {
 
     // Make a POST request to create the course
     const response = await POST_REQUEST_BY_DATA(url, createCourse, token);
-    console.log("res ", response);
+
     // Check if the response is not OK
     if (!response.success) {
       toast.error(response.message);
@@ -91,7 +92,7 @@ const Form_component = () => {
   return (
     <div className="p-2">
       <form onSubmit={handleSubmit(onsubmitHandler)}>
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto space-y-3">
           {/* === course name === */}
           <div>
             <div className="bg-[#FFFFFF] rounded-xl">
@@ -143,6 +144,7 @@ const Form_component = () => {
                       name="description"
                       placeholder="Enter your description"
                       className={`${styles.inputs}`}
+                      rows={4}
                     />
                   </div>
                 )}
@@ -249,10 +251,7 @@ const Form_component = () => {
               defaultValue={"tag"}
               render={({ field }) => (
                 <div>
-                  <label
-                    className={`${styles.labels} bg-white py-1`}
-                    htmlFor=""
-                  >
+                  <label className={`${styles.labels} bg-white`} htmlFor="">
                     Tag
                   </label>
 
@@ -260,7 +259,8 @@ const Form_component = () => {
                     {...field}
                     options={[
                       { value: "opened", label: "Opened" },
-                      { value: "closed", label: "Closed" },
+                      { value: "archived", label: "Archived" },
+                      { value: "comingSoon", label: "Coming Soon" },
                     ]}
                   />
                 </div>

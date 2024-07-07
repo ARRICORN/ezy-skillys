@@ -17,13 +17,14 @@ import style from "./menu.module.css";
 import { usePathname } from "next/navigation";
 import SignOutBtn from "./SignOutBtn";
 import API_REQUEST_BY_URL from "@/utility/request_data/all_api_request";
-import Cookies from "js-cookie";
 import toast from "react-hot-toast";
+import { useSession } from "next-auth/react";
 
 const SidebarComponent = () => {
   const [collapsed, setCollapsed] = React.useState(false);
   const [userRole, setUserRole] = useState("");
-  const token = Cookies.get("user-cookie");
+  const session = useSession();
+  const token = session?.data?.user?.token;
   const pathName = usePathname();
 
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;

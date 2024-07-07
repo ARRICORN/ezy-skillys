@@ -6,10 +6,7 @@ const GET_GLOBAL_DATA = async (url) => {
       return { message: "Server error is occurred bad request 404" };
     }
 
-    const result = await response.json({
-      message: "api request is successful",
-      status: 200,
-    });
+    const result = await response.json();
     return result;
 
     // error handle by catch

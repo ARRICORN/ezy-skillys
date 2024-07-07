@@ -1,78 +1,36 @@
 import Image from "next/image";
-import files from "../../../assets/file.png";
-import demo from "../../../assets/computer.png";
-import pin from "../../../assets/push-pin.png";
-import styles from "./popular.module.css";
+import Link from "next/link";
+import crsCss from "./popular.module.css";
 
-const PopularTemplate = ({ item }) => {
+const PopularTemplate = ({ course }) => {
   return (
-    <div className="rounded-xl bg-[#003F7D] text-center relative pb-16 mb-40">
-      <div className="h-[30%] p-10">
-        {/* image box */}
+    <div className={`${crsCss.shadow} rounded-md pb-4`}>
+      <div className="w-full h-[128px] overflow-hidden bg-teal-50 py-4 rounded-md">
         <Image
-          priority={true}
+          src={course.image}
+          alt={`${course.title} image`}
           width={100}
           height={100}
-          alt="brand logo"
-          src={item?.image}
-          className="mx-auto aspect-auto"
+          className="mx-auto rounded-xl aspect-auto"
         />
       </div>
 
-      {/* details box */}
-      <div className={`absolute top-[64%] px-2 w-full`}>
-        <div className={`${styles.shadow} bg-[#FDFDFD] rounded-lg p-2 pb-4`}>
-          <h3 className="text-[20px] md:text-[25px] py-2">{item?.title}</h3>
-          <p className="text-[15px]">
-            {item?.desc.length >= 100
-              ? `${item?.desc.slice(0, 90)} ...`
-              : item?.desc}
-          </p>
-          {/* button with icon */}
-          <div className="flex items-center justify-evenly py-4 gap-x-2">
-            <div className="flex items-center justify-between gap-x-3 border-[1px] py-[2px] border-orange-400 px-3 rounded">
-              <Image
-                priority={true}
-                width={13}
-                height={10}
-                alt="icon"
-                src={demo}
-              />
-              <a
-                href={item.liveDemo}
-                className="inline-block font-semibold text-[#575757]"
-              >
-                Live demo
-              </a>
-            </div>
+      <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full">
+        <h2 className="mb-2 font-semibold text-xl">{course.title}</h2>
+        <p className="text-sm text-center word-wrap mb-4 block h-[70px]">
+          {course.desc.length > 100
+            ? `${course.desc.slice(0, 100)}...`
+            : course.desc}
+        </p>
+      </div>
 
-            <div className="flex items-center justify-between gap-x-2 border-[1px] py-[2px] border-orange-400 px-2 rounded">
-              <Image
-                priority={true}
-                width={13}
-                height={10}
-                alt="icon"
-                src={pin}
-              />
-              <button className="inline-block font-semibold text-[#575757]">
-                Enroll Now
-              </button>
-            </div>
-          </div>
-
-          {/* Download Curriculam */}
-          <button className={`${styles.buttons}`}>
-            <Image
-              priority={true}
-              width={17}
-              height={10}
-              alt="icon"
-              src={files}
-              className="-z-10"
-            />
-            <span>Download Curriculam</span>
-          </button>
-        </div>
+      <div className="w-full mx-auto">
+        <Link
+          href={`/courses/${course._id}`}
+          className="text-[14px] block text-center w-[200px] mx-auto py-1 bg-teal-400 rounded-lg font-semibold hover:bg-slate-600 hover:text-white transition-all"
+        >
+          <span>More Details</span>
+        </Link>
       </div>
     </div>
   );

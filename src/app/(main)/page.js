@@ -12,20 +12,18 @@ import Review from "@/components/pages/review/review";
 const page = () => {
   return (
     <Fragment>
-  <div className="w-11/12 mx-auto space-y-32">
-      
-      <SkillYourWay />
-      <WorldsFirstAI />
-      <SkillDevelopment />
-          {/* How it works section */}
-          <Project_planning />
-      <PopularCourses />
-      <Achievement />
+      <div className="w-11/12 mx-auto space-y-32">
+        <SkillYourWay />
+        <WorldsFirstAI />
+        <SkillDevelopment />
+        {/* How it works section */}
+        <Project_planning />
+        <PopularCourses />
+        <Achievement />
         <MentorsTrainer />
-        <Review/>
-      <CertificateAchievement />
-    
-    </div>
+        <Review />
+        <CertificateAchievement />
+      </div>
     </Fragment>
   );
 };
