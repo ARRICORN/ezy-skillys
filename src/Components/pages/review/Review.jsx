@@ -2,12 +2,10 @@
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import mentorsData from "@/utility/temp/trainer.json";
 import styles from "./review.module.css";
-import MentorsTemplate from "../mentors-trainers-review/MentorsTemplate";
 import ReviewTemplate from "../mentors-trainers-review/ReviewTemplate";
 
-const review = ({ reviewData }) => {
+const Review = ({ reviewsData }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -50,14 +48,23 @@ const review = ({ reviewData }) => {
             </span>
           </div>
 
-          {/* cart demo */}
+          {/* all reviews */}
           <div className="my-4 ">
-            <Slider {...settings}>
-              {mentorsData &&
-                mentorsData?.map((user, index) => (
-                  <ReviewTemplate key={index} user={user} />
-                ))}
-            </Slider>
+            {reviewsData.length > 1 ? (
+              <Slider {...settings}>
+                {reviewsData &&
+                  reviewsData?.map((review) => (
+                    <ReviewTemplate key={review._id} review={review} />
+                  ))}
+              </Slider>
+            ) : (
+              <>
+                {reviewsData &&
+                  reviewsData?.map((review) => (
+                    <ReviewTemplate key={review._id} review={review} />
+                  ))}
+              </>
+            )}
           </div>
         </div>
       </div>
@@ -65,4 +72,4 @@ const review = ({ reviewData }) => {
   );
 };
 
-export default review;
+export default Review;

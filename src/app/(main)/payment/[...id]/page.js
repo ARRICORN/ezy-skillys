@@ -39,9 +39,6 @@ export default function PaymentPage({ params }) {
     queryKey: ["payment"],
     queryFn: () => fetchCourses(),
   });
-  // if (courseIsLoading) console.log("loading");
-  // if (courseIsError) console.log("error");
-  // if (courseIsSuccess) console.log("success", courseData?.data?.price);
 
   return (
     <div className="min-h-screen w-full flex flex-col justify-center items-center py-20">

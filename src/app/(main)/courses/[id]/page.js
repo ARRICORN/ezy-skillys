@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import ReveiwForm from "@/Components/Shared/ReveiwForm/ReveiwForm";
-import ReviewCardDetailsPage from "@/Components/ReviewCardDetailsPage/ReviewCardDetailsPage";
 import { useQuery } from "@tanstack/react-query";
 import axiosConfig from "/axiosConfig";
 import bgImage from "@/assets/single_course_page_hero_bg.png";
@@ -12,11 +10,12 @@ import monitor from "@/assets/monitor-vector.png";
 import enroll from "@/assets/enroll-vector.png";
 import Link from "next/link";
 import Loading from "@/Components/Ui/Loading";
-import Review from "@/components/pages/review/review";
+import Review from "@/Components/pages/Review/Review";
 
 const CourseDetails = ({ params }) => {
+  const id = params?.id;
   // fetch single course function
-  const fetchCourse = async (id) => {
+  const fetchCourse = async () => {
     try {
       const { data } = await axiosConfig.get(`/courses/getCourse/${id}`);
       return data;
@@ -26,7 +25,7 @@ const CourseDetails = ({ params }) => {
   };
 
   //fetches all reviews for the course
-  const fetchCourseReviews = async (id) => {
+  const fetchCourseReviews = async () => {
     try {
       const { data } = await axiosConfig.get(
         `/reviews/all-reviews?course=${id}`
@@ -44,8 +43,8 @@ const CourseDetails = ({ params }) => {
     isError: isCourseDataError,
     isSuccess: isCourseDataSuccess,
   } = useQuery({
-    queryKey: ["course", params.id],
-    queryFn: () => fetchCourse(params?.id),
+    queryKey: ["course", id],
+    queryFn: fetchCourse,
   });
 
   //fetches all reviews
@@ -55,13 +54,9 @@ const CourseDetails = ({ params }) => {
     isError: isReviewsDataError,
     isSuccess: isReviewsDataSuccess,
   } = useQuery({
-    queryKey: ["reviews", params.id],
-    queryFn: fetchCourseReviews(params?.id),
+    queryKey: ["reviews", id],
+    queryFn: fetchCourseReviews,
   });
-
-  if (isReviewsDataLoading) console.log("loading");
-  if (isReviewsDataError) console.log("error");
-  if (isReviewsDataSuccess) console.log("success", reviewsData);
 
   return (
     <>
@@ -191,18 +186,7 @@ const CourseDetails = ({ params }) => {
             </div>
           </div>
           {/* reviews */}
-          <div className="my-5">
-            <div className="">
-              {reviewsData?.data?.map((review) => {
-                return (
-                  <div key={review._id}>
-                    <ReviewCardDetailsPage review={review} />
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <Review />
+          {reviewsData?.data && <Review reviewsData={reviewsData?.data} />}
         </div>
       )}
     </>

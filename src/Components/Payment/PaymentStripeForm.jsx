@@ -5,6 +5,7 @@ import { useElements } from "@stripe/react-stripe-js";
 import { useStripe } from "@stripe/react-stripe-js";
 import axiosConfig from "/axiosConfig";
 import React, { useEffect, useState } from "react";
+import Link from "next/link";
 
 const PaymentStripeForm = ({ amount, courseId, token }) => {
   const stripe = useStripe();
@@ -13,6 +14,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
   const [errorMsg, setErrorMsg] = useState(null);
   const [clientSecret, setClientSecret] = useState("");
   const [loading, setLoading] = useState(false);
+  const [courseAlreadyPurchased, setCourseAlreadyPurchased] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +35,9 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
         console.log(data);
         if (data?.clientSecret) setClientSecret(data?.clientSecret);
       } catch (error) {
+        if (error?.response?.data?.message === "Course order already exists") {
+          setCourseAlreadyPurchased(true);
+        }
         console.error("Error fetching client secret:", error);
       }
     };
@@ -69,6 +74,22 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
     setLoading(false);
   };
 
+  if (courseAlreadyPurchased) {
+    return (
+      <div className="flex flex-col items-center justify-center gap-3 mt-3">
+        <p className="text-red-700 font-semibold text-lg">
+          You have already purchased this course
+        </p>
+        <Link
+          href={"/courses"}
+          className="p-3 bg-primary font-semibold text-white rounded-lg uppercase"
+        >
+          Go to Courses
+        </Link>
+      </div>
+    );
+  }
+
   if (!clientSecret || !stripe || !elements) {
     return (
       <div className="flex items-center justify-center">
@@ -87,7 +108,6 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
   return (
     <form onSubmit={handleSubmit} className="bg-gray-100 p-4 rounded-lg">
       {clientSecret && <PaymentElement />}
-
       {errorMsg && <p>{errorMsg}</p>}
       <button
         disabled={loading || !stripe}
