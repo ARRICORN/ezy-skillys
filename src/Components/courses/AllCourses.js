@@ -26,8 +26,11 @@ const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
                     height={100}
                     className="mx-auto rounded-xl aspect-auto"
                   />
+                  {/* </Link> */}
                 </div>
+
                 <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full">
+                  {/* <Link href={`/courses/${each._id}`}> */}
                   <h2 className="mb-2 font-semibold text-xl">{each.title}</h2>
                   <p className="text-sm text-center word-wrap mb-4 block h-[70px]">
                     {each.desc.length > 100
@@ -35,30 +38,34 @@ const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
                       : each.desc}
                   </p>
                   <div className="flex justify-center gap-2">
-                    <button className="px-3 py-2 text-[10px] border-[#F98149] rounded-xl border flex gap-1 items-center">
-                      <Image className="w-3" src={monitor} alt="Monitor" />{" "}
-                      <span>Live Demo</span>
-                    </button>
                     <Link
-                      href={`/payment/${each._id}`}
-                      className="px-3 py-2 text-[10px] border-[#F98149] rounded-xl border flex gap-1 items-center"
+                      href={`/courses/${each._id}`}
+                      className="px-3 py-2 w-full flex items-center justify-center text-[10px] border-primary rounded-xl border text-white text-base font-semibold mx-5 gap-1 mt-4 bg-primary hover:bg-opacity-95"
                     >
-                      <Image className="w-3" src={pin} alt="Pin" />
-                      <span>Enroll Now</span>
+                      {/* <Image className="w-3" src={monitor} alt="Monitor" />{" "} */}
+                      <span>See Details</span>
                     </Link>
+                    {/* <Link
+                        href={`/payment/${each._id}`}
+                        className="px-3 py-2 text-[10px] border-[#F98149] rounded-xl border flex gap-1 items-center"
+                      >
+                        <Image className="w-3" src={pin} alt="Pin" />
+                        <span>Enroll Now</span>
+                      </Link> */}
                   </div>
-                  <button
-                    onClick={() => {
-                      setPdfLink(
-                        "https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_100KB_PDF.pdf"
-                      );
-                      setModalStatus(true);
-                    }}
-                    className="px-3 py-2 text-white text-xs bg-[#F98149] items-center gap-1 rounded-3xl flex justify-center w-full mb-[-30px] mt-3"
-                  >
-                    <Image className="w-4" src={download} alt="Download" />
-                    <span>Download Curriculum</span>
-                  </button>
+                  {/* <button
+                      onClick={() => {
+                        setPdfLink(
+                          "https://freetestdata.com/wp-content/uploads/2021/09/Free_Test_Data_100KB_PDF.pdf"
+                        );
+                        setModalStatus(true);
+                      }}
+                      className="px-3 py-2 text-white text-xs bg-[#F98149] items-center gap-1 rounded-3xl flex justify-center w-full mb-[-30px] mt-3"
+                    >
+                      <Image className="w-4" src={download} alt="Download" />
+                      <span>Download Curriculum</span>
+                    </button> */}
+                  {/* </Link> */}
                 </div>
               </div>
             ))

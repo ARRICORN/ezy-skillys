@@ -85,14 +85,14 @@ const AllCoursesPage = () => {
         setCourseStatus={setCourseStatus}
       />
       <div className="bg-[#F3F3F3]">
-        {coursesIsLoading && <Loading />}
-        {coursesIsSuccess && (
-          <AllCourses
-            data={coursesData}
-            setModalStatus={setModalStatus}
-            setPdfLink={setPdfLink}
-          />
-        )}
+        {/* {coursesIsLoading && <Loading />} */}
+        {/* {coursesIsSuccess && ( */}
+        <AllCourses
+          data={coursesData}
+          setModalStatus={setModalStatus}
+          setPdfLink={setPdfLink}
+        />
+        {/* )} */}
         <Pagination
           currentPage={currentPage}
           totalPages={coursesData?.meta?.totalPages}

@@ -7,7 +7,7 @@ import styles from "./review.module.css";
 import MentorsTemplate from "../mentors-trainers-review/MentorsTemplate";
 import ReviewTemplate from "../mentors-trainers-review/ReviewTemplate";
 
-const review = () => {
+const review = ({ reviewData }) => {
   const settings = {
     dots: true,
     infinite: true,

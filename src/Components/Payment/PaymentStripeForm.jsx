@@ -18,7 +18,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
     const fetchData = async () => {
       try {
         const { data } = await axiosConfig.post(
-          "/orders",
+          "/orders/create-order",
           {
             amount: convertToSubcurrency(amount),
             courseId: courseId,
@@ -30,8 +30,8 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
             },
           }
         );
-        
-        setClientSecret(data?.clientSecret);
+        console.log(data);
+        if (data?.clientSecret) setClientSecret(data?.clientSecret);
       } catch (error) {
         console.error("Error fetching client secret:", error);
       }
