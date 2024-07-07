@@ -7,7 +7,7 @@ const Review_box = ({ product }) => {
   const rating = Math.round(product.rating);
 
   return (
-    <div class="flex flex-col gap-2 dark:text-white max-w-md w-full bg-white dark:bg-neutral-900 p-5 rounded-md mt-8 shadow-md">
+    <div class="flex flex-col gap-2 dark:text-white max-w-md w-full bg-white dark:bg-neutral-900 p-3 rounded-md mt-8 shadow-md">
       <div class="flex flex-row justify-between w-full">
         <div class="flex flex-row justify-between w-full">
           <p class="text-xs text-orange-300">

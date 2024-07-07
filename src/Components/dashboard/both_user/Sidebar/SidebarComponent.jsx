@@ -21,7 +21,7 @@ import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
 
 const SidebarComponent = () => {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const [collapsed, setCollapsed] = React.useState(true);
   const [userRole, setUserRole] = useState("");
   const session = useSession();
   const token = session?.data?.user?.token;
@@ -79,25 +79,23 @@ const SidebarComponent = () => {
           </MenuItem>
 
           {/* === dashboard === */}
-          {userRole === "admin" && (
-            <MenuItem
-              className={`${pathName === "/dashboard" ? style.active : ""}`}
-              component={<Link href={"/dashboard"} />}
-            >
-              <div className="flex items-center justify-start gap-x-3">
-                <Image
-                  src={chart}
-                  width={30}
-                  height={1}
-                  priority={true}
-                  alt="menu"
-                />
-                <span className="inline-block font-semibold text-[#737791]">
-                  Dashboard
-                </span>
-              </div>
-            </MenuItem>
-          )}
+          <MenuItem
+            className={`${pathName === "/dashboard" ? style.active : ""}`}
+            component={<Link href={"/dashboard"} />}
+          >
+            <div className="flex items-center justify-start gap-x-3">
+              <Image
+                src={chart}
+                width={30}
+                height={1}
+                priority={true}
+                alt="menu"
+              />
+              <span className="inline-block font-semibold text-[#737791]">
+                Dashboard
+              </span>
+            </div>
+          </MenuItem>
 
           {/* === leader board === */}
           {userRole === "admin" && (
