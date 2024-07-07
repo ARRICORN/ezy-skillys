@@ -1,5 +1,4 @@
 import { Review } from "@/Models/Review";
-import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 export async function GET(req) {
@@ -13,7 +12,6 @@ export async function GET(req) {
     if(courseId) {
         query['courseId'] = new ObjectId(courseId);
     }
-    console.log(query);
 
     const result = await Review.find(query).populate("courseId");
 
