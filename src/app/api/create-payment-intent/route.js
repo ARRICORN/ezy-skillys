@@ -56,6 +56,7 @@ export const POST = async (req, res) => {
         JSON.stringify({
           message: "Client secret retrieved successfully",
           clientSecret: paymentIntent.client_secret,
+          paymentId: paymentIntent._id,
         }),
         { status: 200 }
       );
