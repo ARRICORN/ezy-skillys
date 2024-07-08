@@ -1,6 +1,7 @@
 import { Course } from "@/Models/Course";
 import { Order } from "@/Models/Order";
 import { PurchasedCourse } from "@/Models/PurchasedCourse";
+import { User } from "@/Models/User";
 import { UserInfo } from "@/Models/UserInfo";
 import { isAdmin } from "@/middlewares/checkAdmin";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
@@ -27,9 +28,12 @@ export const POST = async (req, res) => {
     await mongoose.connect(process.env.DATABASE_URL);
 
     const { courseId, amount } = await req.json(); // Parse the request body
-
+    const user = await UserInfo.findOne({ email: decoded.email });
+    
     const isCourseOrderExist = await Order.findOne({
-      course: courseId,
+      user: user._id,
+      course:courseId,
+      
     });
 
     if (!isCourseOrderExist) {
@@ -56,27 +60,27 @@ export const POST = async (req, res) => {
       }
 
       // Create a new order with status 'confirmed'
-      const newOrder = await Order.create(
-        [
-          {
-            course: courseId,
-            user: user._id,
-            status: "confirmed",
-            transactionId: paymentIntent.id,
-          },
-        ],
-        { session }
-      );
+      // const newOrder = await Order.create(
+      //   [
+      //     {
+      //       course: courseId,
+      //       user: user._id,
+      //       status: "confirmed",
+      //       transactionId: paymentIntent.id,
+      //     },
+      //   ],
+      //   { session }
+      // );
 
-      await PurchasedCourse.create(
-        [
-          {
-            userEmail: decoded.email,
-            course: courseId,
-          },
-        ],
-        { session }
-      );
+      // await PurchasedCourse.create(
+      //   [
+      //     {
+      //       userEmail: decoded.email,
+      //       course: courseId,
+      //     },
+      //   ],
+      //   { session }
+      // );
 
       await session.commitTransaction();
       session.endSession();
