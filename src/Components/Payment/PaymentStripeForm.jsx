@@ -20,7 +20,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
     const fetchData = async () => {
       try {
         const { data } = await axiosConfig.post(
-          "/orders/create-order",
+          "/create-payment-intent",
           {
             amount: convertToSubcurrency(amount),
             courseId: courseId,
@@ -32,7 +32,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
             },
           }
         );
-        console.log(data);
+        console.log("/create-payment-intent", data);
         if (data?.clientSecret) setClientSecret(data?.clientSecret);
       } catch (error) {
         if (error?.response?.data?.message === "Course order already exists") {
@@ -64,7 +64,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://localhost:3000/payment-success?amount=${amount}`,
+        return_url: `http://localhost:3000/payment-success?amount=${amount}&courseId=${courseId}`,
       },
     });
 

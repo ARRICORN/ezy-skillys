@@ -114,13 +114,13 @@ const CourseDetails = ({ params }) => {
               categories
               <span className="w-full h-[4px] bg-secondary mx-5"></span>
             </h5>
-            <div className="flex gap-[41px] justify-start items-start mt-4">
+            <div className="flex flex-wrap gap-[41px] justify-start items-start mt-4">
               {courseData?.data?.categories?.map((category) => (
                 <div
                   key={category}
                   className="py-[8px] md:py-[20px] lg:py-[28px] xl:py-[34px] px-[12px] md:px-[28px] lg:px-[32px] xl:px-[40px] rounded-lg md:rounded-[18px] lg:rounded-[27px] bg-white drop-shadow-lg"
                 >
-                  <p className="md:text-xl xl:text-[28px] text-primary font-semibold uppercase">
+                  <p className="md:text-xl xl:text-[28px] text-primary font-semibold uppercase text-nowrap">
                     {category}
                   </p>
                 </div>
