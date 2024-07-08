@@ -27,7 +27,7 @@ const PopularTemplate = ({ course }) => {
       <div className="w-full mx-auto">
         <Link
           href={`/courses/${course._id}`}
-          className="text-[14px] block text-center w-[200px] mx-auto py-1 bg-teal-400 rounded-lg font-semibold hover:bg-slate-600 hover:text-white transition-all"
+          className="text-[14px] block text-center w-[200px] mx-auto py-2 bg-[#196aba] rounded-lg font-semibold hover:bg-orange-400 text-white transition-all"
         >
           <span>More Details</span>
         </Link>

@@ -8,7 +8,7 @@ import ReviewTemplate from "@/Components/pages/mentors-trainers-review/ReviewTem
 import PopularCourses from "@/Components/pages/popular-courses/PopularCourses";
 import Project_planning from "@/Components/pages/project-planning/Project_planning";
 import React, { Fragment } from "react";
-import Review from "@/components/pages/review/review";
+import HomeReview from "@/Components/Home/HomeReview";
 const page = () => {
   return (
     <Fragment>
@@ -21,7 +21,7 @@ const page = () => {
         <PopularCourses />
         <Achievement />
         <MentorsTrainer />
-        <Review />
+        <HomeReview />
         <CertificateAchievement />
       </div>
     </Fragment>

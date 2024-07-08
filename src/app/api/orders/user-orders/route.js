@@ -2,6 +2,7 @@ import { isAdmin } from "@/middlewares/checkAdmin";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import { Course } from "@/Models/Course";
 import { Order } from "@/Models/Order";
+import { PurchasedCourse } from "@/Models/PurchasedCourse";
 import { UserInfo } from "@/Models/UserInfo";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";

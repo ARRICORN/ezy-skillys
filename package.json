@@ -24,7 +24,7 @@
     "chroma-js": "^2.4.2",
     "cloudinary": "^2.2.0",
     "emailjs-com": "^3.2.0",
-    "framer-motion": "^11.2.10",
+    "framer-motion": "^11.2.13",
     "js-cookie": "^3.0.5",
     "json-server": "^1.0.0-beta.1",
     "jsonwebtoken": "^9.0.2",

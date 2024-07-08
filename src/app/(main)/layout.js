@@ -18,7 +18,7 @@ export default function MainLayout({ children }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500); 
+    }, 500);
 
     return () => clearTimeout(timer);
   }, []);
@@ -35,14 +35,13 @@ export default function MainLayout({ children }) {
     <main>
       <NavBar />
       <div className=" container mx-auto">
-        <NextAuthSessionProvider>
-          <div className="min-h-screen">
-            <NextUi_Provider>{children}</NextUi_Provider>
-          </div>
-        </NextAuthSessionProvider>
+        {/* <NextAuthSessionProvider> */}
+        <div className="min-h-screen">
+          <NextUi_Provider>{children}</NextUi_Provider>
+        </div>
+        {/* </NextAuthSessionProvider> */}
       </div>
       <ClientScrollToTop />
-      {/* <Toaster /> */}
       <Footer />
     </main>
   );

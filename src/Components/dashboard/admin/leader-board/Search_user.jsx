@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Display_user from "./Display_user";
-import styles from "./style.module.css";
+import searchCSS from "./style.module.css";
 import trainerData from "@/utility/temp/trainer.json";
 
 const Search_user = ({ userData }) => {
@@ -58,7 +58,7 @@ const Search_user = ({ userData }) => {
 
       {/* === display user === */}
       {filterData?.length ? (
-        <div className={`${styles.responsive}`}>
+        <div className={`${searchCSS.responsive}`}>
           {filterData &&
             filterData.map((user) => (
               <Display_user user={user} key={user._id} />
