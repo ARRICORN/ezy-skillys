@@ -49,7 +49,7 @@ const Review = ({ reviewsData }) => {
         <div className={`container py-5 md:py-10`}>
           <div className="ml-2 md:ml-6">
             <span className="text-[#003F7D] text-[30px] font-bold text-center md:text-[50px] block">
-              Client Review
+              Student Review
             </span>
           </div>
 
