@@ -1,9 +1,5 @@
-import { Course } from "@/Models/Course";
 import { Order } from "@/Models/Order";
-import { PurchasedCourse } from "@/Models/PurchasedCourse";
-import { User } from "@/Models/User";
 import { UserInfo } from "@/Models/UserInfo";
-import { isAdmin } from "@/middlewares/checkAdmin";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
@@ -29,16 +25,13 @@ export const POST = async (req, res) => {
 
     const { courseId, amount } = await req.json(); // Parse the request body
     const user = await UserInfo.findOne({ email: decoded.email });
-    
+
     const isCourseOrderExist = await Order.findOne({
       user: user._id,
-      course:courseId,
-      
+      course: courseId,
     });
 
     if (!isCourseOrderExist) {
-      session.startTransaction();
-
       // Create a payment intent with Stripe
       const paymentIntent = await stripe.paymentIntents.create({
         amount,
@@ -59,36 +52,9 @@ export const POST = async (req, res) => {
         );
       }
 
-      // Create a new order with status 'confirmed'
-      // const newOrder = await Order.create(
-      //   [
-      //     {
-      //       course: courseId,
-      //       user: user._id,
-      //       status: "confirmed",
-      //       transactionId: paymentIntent.id,
-      //     },
-      //   ],
-      //   { session }
-      // );
-
-      // await PurchasedCourse.create(
-      //   [
-      //     {
-      //       userEmail: decoded.email,
-      //       course: courseId,
-      //     },
-      //   ],
-      //   { session }
-      // );
-
-      await session.commitTransaction();
-      session.endSession();
-
       return new NextResponse(
         JSON.stringify({
-          message: "Order placed successfully",
-          data: newOrder,
+          message: "Client secret retrieved successfully",
           clientSecret: paymentIntent.client_secret,
         }),
         { status: 200 }
@@ -102,11 +68,9 @@ export const POST = async (req, res) => {
       );
     }
   } catch (error) {
-    await session.abortTransaction();
-    session.endSession();
     return new NextResponse(
       JSON.stringify({
-        message: "Order processing failed",
+        message: "client secret fetch failed",
         error: error.message,
       }),
       { status: 500 }
