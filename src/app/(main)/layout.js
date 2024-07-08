@@ -42,7 +42,7 @@ export default function MainLayout({ children }) {
         </NextAuthSessionProvider>
       </div>
       <ClientScrollToTop />
-      {/* <Toaster /> */}
+      <Toaster />
       <Footer />
     </main>
   );

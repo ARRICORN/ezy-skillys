@@ -175,13 +175,13 @@ const Login = () => {
                     <FcGoogle className="text-2xl mr-3" />
                     Google
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => signIn("github")}
                     className="flex items-center py-2 px-4 text-sm uppercase rounded bg-blue-500 hover:bg-blue-500 text-white border border-transparent hover:border-transparent shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 justify-center w-full"
                   >
                     <FaGithub className="text-2xl mr-3 text-black" />
                     Github
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>
