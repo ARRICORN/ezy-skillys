@@ -42,7 +42,6 @@ const Modal_template = ({ onCloseModal, isModal, setOpen, productId }) => {
       review: data.review,
     };
 
-    console.log("token xxxxx ", token);
     // Make an asynchronous POST request to submit the rating details
     const response = await POST_REQUEST_BY_DATA(url, rateObj, token);
 

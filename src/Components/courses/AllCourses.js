@@ -10,26 +10,27 @@ const AllCourses = ({ data, setModalStatus, setPdfLink }) => {
   return (
     <Fragment>
       <div className="mx-auto">
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center py-12 gap-y-28 lg:gap-x-10 px-6 lg:gap-y-32 sm:gap-x-8"> */}
-        <div className={`${StyCourses.responsive}`}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-center py-12 gap-y-28 lg:gap-x-10 px-6 lg:gap-y-32 sm:gap-x-8">
+          {/* <div className={`${StyCourses.responsive}`}> */}
           {data?.data?.length > 0 ? (
             data?.data?.map((each) => (
               <div
                 key={each._id}
                 className="bg-[#003F7D] flex flex-col rounded-2xl items-center p-4 box-border cols-span-1"
               >
-                <div className="overflow-hidden h-[18vh]">
+                <div className="w-full h-full rounded-xl">
+                  {/* <Link href={`/courses/${each._id}`}> */}
                   <Image
                     src={each.image}
                     alt={`${each.title} image`}
-                    width={100}
-                    height={100}
-                    className="mx-auto rounded-xl aspect-auto"
+                    width={120}
+                    height={120}
+                    className="h-[140px] object-contain w-full rounded-xl"
                   />
                   {/* </Link> */}
                 </div>
 
-                <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full">
+                <div className="bg-white text-center py-4 px-2 rounded-2xl mt-4 box-border flex flex-col w-full -mb-14">
                   {/* <Link href={`/courses/${each._id}`}> */}
                   <h2 className="mb-2 font-semibold text-xl">{each.title}</h2>
                   <p className="text-sm text-center word-wrap mb-4 block h-[70px]">

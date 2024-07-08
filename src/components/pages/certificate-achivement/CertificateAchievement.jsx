@@ -1,8 +1,8 @@
 import Image from "next/image";
-import certificate from "../../../assets/group3.png";
-import certificate2 from "../../../assets/group3.png";
-import certificate3 from "../../../assets/group3.png";
-import certificate4 from "../../../assets/group4.png";
+import certificate from "../../../assets/Home/Group-blue.png";
+import certificate2 from "../../../assets/Home/Group-pink.png";
+import certificate3 from "../../../assets/Home/Group-purple.png";
+import certificate4 from "../../../assets/group3.png";
 import brandImage from "@/assets/brand.png";
 import styles from "./certificate.module.css";
 

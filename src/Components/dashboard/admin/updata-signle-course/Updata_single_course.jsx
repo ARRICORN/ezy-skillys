@@ -7,8 +7,10 @@ import LoadingButton from "@/Components/Shared/LoadingButton";
 import Select from "react-select";
 import UPDATE_DATA_BY_ID from "@/utility/request_data/patch_request";
 import { colourOptions, colourStyles } from "../add-courses/data";
-import styles from "./style.module.css";
+import updateCss from "./style.module.css";
 import { useSession } from "next-auth/react";
+import { motion } from "framer-motion";
+
 // initial value
 let defaultValues = {
   title: "",
@@ -66,183 +68,195 @@ const Update_single_course = ({ params_id }) => {
 
     setIsLoading(false);
     toast.success("Course update is successfully");
-    // reset();
+    reset();
   };
 
   return (
-    <div className="p-2">
-      <form onSubmit={handleSubmit(onsubmitHandler)}>
-        <div className="max-w-2xl mx-auto mt-1 md:mt-3 space-y-4">
-          {/* === course name === */}
-          <div>
-            <div className="bg-[#FFFFFF] rounded-xl">
-              <Controller
-                name="title"
-                control={control}
-                defaultValue={"title"}
-                rules={{ required: "Course name field is required" }}
-                render={({ field }) => (
-                  <div>
-                    <label className={`${styles.labels}`} htmlFor="">
-                      Title
-                    </label>
-                    <input
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 1, opacity: 1 }}
+      transition={{
+        duration: 0.78,
+        ease: "easeInOut",
+      }}
+    >
+      <div className="p-2">
+        <form onSubmit={handleSubmit(onsubmitHandler)}>
+          <div className="max-w-2xl mx-auto mt-1 md:mt-3 space-y-4">
+            {/* === course name === */}
+            <div>
+              <div className="bg-[#FFFFFF] rounded-xl">
+                <Controller
+                  name="title"
+                  control={control}
+                  defaultValue={"title"}
+                  rules={{ required: "Course name field is required" }}
+                  render={({ field }) => (
+                    <div>
+                      <label className={`${updateCss.labels}`} htmlFor="">
+                        Title
+                      </label>
+                      <input
+                        {...field}
+                        name="title"
+                        type="text"
+                        placeholder="course title"
+                        className={`${updateCss.inputs}`}
+                      />
+                    </div>
+                  )}
+                />
+              </div>
+              <span className="mb-1 block text-red-400 font-semibold text-[13px]">
+                <ErrorMessage name={"title"} errors={errors} />
+              </span>
+            </div>
+
+            {/* === description === */}
+            <div>
+              <div className="bg-[#FFFFFF] rounded-xl">
+                <Controller
+                  name="description"
+                  control={control}
+                  defaultValue={"description"}
+                  rules={{
+                    required: "Description field is required",
+                    maxLength: 1000,
+                  }}
+                  render={({ field }) => (
+                    <textarea
                       {...field}
-                      name="title"
-                      type="text"
-                      placeholder="course title"
-                      className={`${styles.inputs}`}
+                      name="description"
+                      placeholder="Enter your description"
+                      className={`${updateCss.inputs}`}
                     />
-                  </div>
-                )}
-              />
+                  )}
+                />
+              </div>
+              <span className="block text-red-400 font-semibold text-[13px] my-1">
+                <ErrorMessage name={"description"} errors={errors} />
+              </span>
             </div>
-            <span className="mb-1 block text-red-400 font-semibold text-[13px]">
-              <ErrorMessage name={"title"} errors={errors} />
-            </span>
-          </div>
 
-          {/* === description === */}
-          <div>
-            <div className="bg-[#FFFFFF] rounded-xl">
+            {/* === price === */}
+            <div>
               <Controller
-                name="description"
+                name="price"
                 control={control}
-                defaultValue={"description"}
+                defaultValue={"price"}
                 rules={{
-                  required: "Description field is required",
-                  maxLength: 1000,
+                  required: "Price field is required",
                 }}
-                render={({ field }) => (
-                  <textarea
-                    {...field}
-                    name="description"
-                    placeholder="Enter your description"
-                    className={`${styles.inputs}`}
-                  />
-                )}
-              />
-            </div>
-            <span className="block text-red-400 font-semibold text-[13px] my-1">
-              <ErrorMessage name={"description"} errors={errors} />
-            </span>
-          </div>
-
-          {/* === price === */}
-          <div>
-            <Controller
-              name="price"
-              control={control}
-              defaultValue={"price"}
-              rules={{
-                required: "Price field is required",
-              }}
-              render={({ field }) => (
-                <div>
-                  <label className={`${styles.labels} bg-white`} htmlFor="">
-                    Price
-                  </label>
-                  <input
-                    {...field}
-                    type="number"
-                    name="Price"
-                    className={`${styles.inputs}`}
-                  />
-                </div>
-              )}
-            />
-            <span className="my-2 block text-red-400 font-semibold text-[13px]">
-              <ErrorMessage name={"price"} errors={errors} />
-            </span>
-          </div>
-
-          {/* === live demo === */}
-          <div>
-            <div className="bg-[#FFFFFF] rounded-xl mt-2">
-              <Controller
-                name="liveDemo"
-                control={control}
-                rules={{ required: false }}
-                defaultValue={"liveDemo"}
                 render={({ field }) => (
                   <div>
                     <label
-                      className={`${styles.labels} bg-white py-1`}
+                      className={`${updateCss.labels} bg-white`}
                       htmlFor=""
                     >
-                      Live link
+                      Price
                     </label>
                     <input
                       {...field}
-                      type="text"
-                      placeholder="Link"
-                      className={`${styles.inputs}`}
+                      type="number"
+                      name="Price"
+                      className={`${updateCss.inputs}`}
                     />
                   </div>
                 )}
               />
+              <span className="my-2 block text-red-400 font-semibold text-[13px]">
+                <ErrorMessage name={"price"} errors={errors} />
+              </span>
             </div>
-            <span className="block text-red-400 font-semibold text-[13px]">
-              <ErrorMessage name={"liveDemo"} errors={errors} />
-            </span>
-          </div>
 
-          {/* === tag === */}
-          <div>
-            <Controller
-              name="tag"
-              control={control}
-              rules={{ required: "Tag field is required" }}
-              defaultValue={"tag"}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  options={[
-                    { value: "opened", label: "Opened" },
-                    { value: "closed", label: "Closed" },
-                  ]}
-                  className="my-2 block"
+            {/* === live demo === */}
+            <div>
+              <div className="bg-[#FFFFFF] rounded-xl mt-2">
+                <Controller
+                  name="liveDemo"
+                  control={control}
+                  rules={{ required: false }}
+                  defaultValue={"liveDemo"}
+                  render={({ field }) => (
+                    <div>
+                      <label
+                        className={`${updateCss.labels} bg-white py-1`}
+                        htmlFor=""
+                      >
+                        Live link
+                      </label>
+                      <input
+                        {...field}
+                        type="text"
+                        placeholder="Link"
+                        className={`${updateCss.inputs}`}
+                      />
+                    </div>
+                  )}
                 />
-              )}
-            />
-            <span className="block text-red-400 font-semibold text-[13px] my-1">
-              <ErrorMessage name={"tag"} errors={errors} />
-            </span>
-          </div>
+              </div>
+              <span className="block text-red-400 font-semibold text-[13px]">
+                <ErrorMessage name={"liveDemo"} errors={errors} />
+              </span>
+            </div>
 
-          {/* === category === */}
-          <div>
-            <Controller
-              name="category"
-              control={control}
-              rules={{ required: "Category field is required" }}
-              render={({ field }) => (
-                <Select
-                  {...field}
-                  className="block pt-2"
-                  closeMenuOnSelect={false}
-                  defaultValue={[colourOptions[0], colourOptions[1]]}
-                  isMulti
-                  options={colourOptions}
-                  styles={colourStyles}
-                />
-              )}
-            />
-            <span className="block text-red-400 font-semibold text-[13px] my-2">
-              <ErrorMessage name={"category"} errors={errors} />
-            </span>
-          </div>
+            {/* === tag === */}
+            <div>
+              <Controller
+                name="tag"
+                control={control}
+                rules={{ required: "Tag field is required" }}
+                defaultValue={"tag"}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    options={[
+                      { value: "opened", label: "Opened" },
+                      { value: "closed", label: "Closed" },
+                    ]}
+                    className="my-2 block"
+                  />
+                )}
+              />
+              <span className="block text-red-400 font-semibold text-[13px] my-1">
+                <ErrorMessage name={"tag"} errors={errors} />
+              </span>
+            </div>
 
-          {/* === submit button === */}
-          <button
-            className="bg-teal-500 block  px-5 py-2 w-44 mx-auto rounded-md border-none text-white mt-4"
-            type="submit"
-          >
-            {isLoading ? <LoadingButton /> : "Update now"}
-          </button>
-        </div>
-      </form>
-    </div>
+            {/* === category === */}
+            <div>
+              <Controller
+                name="category"
+                control={control}
+                rules={{ required: "Category field is required" }}
+                render={({ field }) => (
+                  <Select
+                    {...field}
+                    className="block pt-2"
+                    closeMenuOnSelect={false}
+                    defaultValue={[colourOptions[0], colourOptions[1]]}
+                    isMulti
+                    options={colourOptions}
+                    styles={colourStyles}
+                  />
+                )}
+              />
+              <span className="block text-red-400 font-semibold text-[13px] my-2">
+                <ErrorMessage name={"category"} errors={errors} />
+              </span>
+            </div>
+
+            {/* === submit button === */}
+            <button
+              className="bg-teal-500 block  px-5 py-2 w-44 mx-auto rounded-md border-none text-white mt-4"
+              type="submit"
+            >
+              {isLoading ? <LoadingButton /> : "Update now"}
+            </button>
+          </div>
+        </form>
+      </div>
+    </motion.div>
   );
 };
 

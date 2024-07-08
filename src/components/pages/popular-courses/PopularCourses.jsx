@@ -31,7 +31,7 @@ const PopularCourses = async () => {
           </div>
 
           {/* === view all courses button === */}
-          <div className="max-w-[35%] md:w-[20%] text-center py-1 rounded-md text-white mx-auto bg-[#183153] md:py-2 mt-10">
+          <div className="max-w-[50%] sm:max-w-[35%] md:w-[20%] text-center py-1 rounded-md text-white mx-auto bg-[#183153] md:py-2 mt-14">
             <Link href="/courses">
               <button className="text-center inline-block">
                 View all courses

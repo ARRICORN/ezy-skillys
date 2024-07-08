@@ -8,10 +8,18 @@ import BarChartExample from "../revenue-chart/BarChart";
 import PieChart from "./PieChart";
 import { Suspense } from "react";
 import Loading from "@/app/loading";
+import { motion } from "framer-motion";
 
 const Chart_component = () => {
   return (
-    <div>
+    <motion.div
+      initial={{ y: 10, opacity: 0 }}
+      animate={{ y: 1, opacity: 1 }}
+      transition={{
+        duration: 0.78,
+        ease: "easeInOut",
+      }}
+    >
       <div className={`m-5 h-[83vh] overflow-x-scroll no-scrollbar`}>
         {/* === top bar === */}
         <div className="flex items-center justify-between py-2 mb-5 px-5">
@@ -49,7 +57,7 @@ const Chart_component = () => {
           </Suspense>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
