@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
         <TanstackProvider>
           <NextAuthSessionProvider>{children}</NextAuthSessionProvider>
         </TanstackProvider>
-        {/* <Toaster position="top-center" reverseOrder={false} /> */}
+        <Toaster position="top-center" reverseOrder={false} />
       </body>
     </html>
   );
