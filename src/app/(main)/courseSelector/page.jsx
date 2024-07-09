@@ -186,7 +186,7 @@ const Course = () => {
                                 Discover Course
                               </button>
                               <button className="px-4 md:px-8 ml-4 py-4 md:py-0 mt-4 rounded-lg text-white border-2">
-                                <Link href="/course">Suggest Course</Link>
+                                <Link href="/courses">Suggest Course</Link>
                               </button>
                             </div>
                           </div>
