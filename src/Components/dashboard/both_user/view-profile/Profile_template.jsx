@@ -151,7 +151,7 @@ const Profile_template = () => {
                     <h4 className="font-medium">Exam/Degree Title</h4>
                   </div>
                   <p className="ml-7 dark:text-gray-600">
-                    B.A ( Honour's ) Department Of Political Science ( National
+                  B.A ( Honour&#39;s ) Department Of Political Science ( National
                     University )
                   </p>
                 </li>
