@@ -19,7 +19,8 @@ import { useEffect, useState } from "react";
 import ItCourses from "@/Components/ItCourses/ItCourses";
 import Upskill from "@/Components/Upskill/Upskill";
 import Link from "next/link";
-import NonItCourses from "@/Components/ItCourses/NonItCourses/nonItCourses";
+import NonItCourses from "@/Components/ItCourses/NonItCourses/NonItCourses";
+
 
 const Course = () => {
   const [isLookingJob, setIsLookingJob] = useState(false);

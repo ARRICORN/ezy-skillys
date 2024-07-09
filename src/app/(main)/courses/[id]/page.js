@@ -10,7 +10,8 @@ import monitor from "@/assets/monitor-vector.png";
 import enroll from "@/assets/enroll-vector.png";
 import Link from "next/link";
 import Loading from "@/Components/Ui/Loading";
-import Review from "@/Components/pages/Review/Review";
+import Review from "@/Components/achivepages/review/Review";
+
 
 const CourseDetails = ({ params }) => {
   const id = params?.id;
