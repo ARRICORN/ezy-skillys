@@ -21,7 +21,7 @@ export default function PaymentPage({ params }) {
   const courseId = params?.id;
   const session = useSession();
   const token = session?.data?.user?.token;
-  // const token = Cookies.get("user-cookie");
+
   // fetches data from all courses
   const fetchCourses = async () => {
     const { data } = await axiosConfig.get(`/courses/getCourse/${courseId}`);
