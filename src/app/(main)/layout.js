@@ -34,13 +34,13 @@ export default function MainLayout({ children }) {
   return (
     <main>
       <NavBar />
-      <div className=" container mx-auto">
+      
         {/* <NextAuthSessionProvider> */}
-        <div className="min-h-screen">
+        <div className="min-h-screen container mx-auto">
           <NextUi_Provider>{children}</NextUi_Provider>
         </div>
         {/* </NextAuthSessionProvider> */}
-      </div>
+   
       <ClientScrollToTop />
       <Footer />
     </main>
