@@ -8,10 +8,6 @@ const nextConfig = {
       "seeklogo.com",
       "i.ibb.co",
       "upload.wikimedia.org",
-
-      "i.ibb.co",
-      "res.cloudinary.com",
-
       "res.cloudinary.com",
       "images.unsplash.com",
       "lh3.googleusercontent.com",
@@ -25,6 +21,10 @@ const nextConfig = {
         pathname: "img/**",
       },
     ],
+  },
+  experimental: {
+    swcLoader: true,
+    swcMinify: true,
   },
 };
 

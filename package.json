@@ -11,7 +11,6 @@
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
-    "@next/swc-win32-x64-msvc": "^14.2.3",
     "@nextui-org/accordion": "^2.0.35",
     "@nextui-org/avatar": "^2.0.30",
     "@nextui-org/input": "^2.2.2",
@@ -57,5 +56,8 @@
     "eslint-config-next": "14.2.3",
     "postcss": "^8",
     "tailwindcss": "^3.4.1"
+  },
+  "engines": {
+    "node": ">=16.0.0"
   }
 }
