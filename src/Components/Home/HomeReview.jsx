@@ -1,9 +1,10 @@
 "use client";
 import React from "react";
 import axiosConfig from "/axiosConfig";
-import Review from "@/Components/pages/Review/Review";
+
 
 import { useQuery } from "@tanstack/react-query";
+import Review from "../achivepages/review/Review";
 
 const HomeReview = () => {
   //fetches all reviews for the course
