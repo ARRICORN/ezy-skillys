@@ -17,10 +17,10 @@ const Courses = () => {
               <h2 className="text-black font-bold sm:text-2xl  text-xl ">
                 Ok, Let me help you
               </h2>
-              <div className="flex md:gap-10 gap-5 justify-center scale-90 lg:scale-100 items-center">
+              
 
                 <Link href="/courseSelector">
-                <button className="bg-[#F2831F] border-2 border-[#F2831F] px-5 py-24   rounded-3xl text-white font-bold  sm:text-xl text-lg">
+                <button className="bg-[#F2831F] border-2 border-[#F2831F] px-5 py-5 mt-5 rounded-lg  text-white font-bold  sm:text-xl text-lg">
                   Discover <br/> Course
                 </button>
                 </Link>
@@ -28,12 +28,12 @@ const Courses = () => {
 
 
                 
-                <button className="border-[#2048AB] border-2 px-5 py-24   rounded-3xl text-[#2048AB] font-bold  sm:text-xl text-lg">
+                {/* <button className="border-[#2048AB] border-2 px-5 py-24   rounded-3xl text-[#2048AB] font-bold  sm:text-xl text-lg">
                   Suggest <br/> Course
-                </button>
+                </button> */}
             
                
-              </div>
+             
             </div>
           </div>
           <div>
