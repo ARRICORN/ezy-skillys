@@ -11,7 +11,7 @@ const ReviewCardDetailsPage = ({ review }) => {
                 <div className='hidden md:block'>
                     <Image
                         className="rounded-full shadow"
-                        src='https://zijundeng.github.io/photo.min.JPG'
+                        src={review?.image || 'https://zijundeng.github.io/photo.min.JPG'}
                         width={80}
                         height={80}
                         alt="User Image"
