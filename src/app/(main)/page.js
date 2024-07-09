@@ -1,12 +1,12 @@
 import SkillDevelopment from "@/Components/Home/SkillDevelopment";
 import SkillYourWay from "@/Components/Home/SkillYourWay";
 import WorldsFirstAI from "@/Components/Home/WorldsFirstAI";
-import Achievement from "@/Components/pages/achievements/Achievement";
-import CertificateAchievement from "@/Components/pages/certificate-achivement/CertificateAchievement";
-import MentorsTrainer from "@/Components/pages/mentors-trainers-review/MentorsTrainer";
-import ReviewTemplate from "@/Components/pages/mentors-trainers-review/ReviewTemplate";
-import PopularCourses from "@/Components/pages/popular-courses/PopularCourses";
-import Project_planning from "@/Components/pages/project-planning/Project_planning";
+import Achievement from "@/Components/achivepages/achievements/Achievement";
+import CertificateAchievement from "@/Components/achivepages/certificate-achivement/CertificateAchievement";
+import MentorsTrainer from "@/Components/achivepages/mentors-trainers-review/MentorsTrainer";
+import ReviewTemplate from "@/Components/achivepages/mentors-trainers-review/ReviewTemplate";
+import PopularCourses from "@/Components/achivepages/popular-courses/PopularCourses";
+import Project_planning from "@/Components/achivepages/project-planning/Project_planning";
 import React, { Fragment } from "react";
 import HomeReview from "@/Components/Home/HomeReview";
 const page = () => {
