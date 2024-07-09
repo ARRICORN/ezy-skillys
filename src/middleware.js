@@ -29,7 +29,7 @@ export function middleware(req) {
     return NextResponse.redirect(new URL("/login", req.url));
   }
 
-  // Allow the request to proceed
+  // Allow the request to proceed to move next
   return NextResponse.next();
 }
 
