@@ -16,7 +16,7 @@ import elipse from "../../../assets/Ellipse1.png";
 import Image from "next/image";
 import styles from "./courseSelector.module.css";
 import { useEffect, useState } from "react";
-import ItCourses from "@/Components/ItCourses/ItCourses";
+
 import Upskill from "@/Components/Upskill/Upskill";
 import Link from "next/link";
 import NonItCourses from "@/Components/ItCourses/NonItCourses/nonItCourses";
