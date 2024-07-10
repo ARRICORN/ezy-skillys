@@ -5,10 +5,10 @@ import { Toaster } from "react-hot-toast";
 
 const layout = ({ children }) => {
   return (
-    <div className="flex justify-start">
+    <div className="flex justify-start ">
       <SidebarComponent />
 
-      <div className="w-full">
+      <div className="w-full mr-8">
         {/* === top header === */}
         <Top_header />
 

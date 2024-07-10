@@ -1,3 +1,6 @@
+"use client"
+
+
 import React from "react";
 
 const Table_head = () => {

@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react";
 import Heading from "../Shared/Heading";
 import Button from "../Shared/Button";
