@@ -11,7 +11,6 @@ const About = () => {
         <ThePlatform />
       </div>
       <Innovating />
-      {/* mission */}
       <div className="bg-[#003F7D]  ">
        <MissionVision/>
       </div>
