@@ -48,7 +48,7 @@ const Register = () => {
           toast.success('Account Created Successfully', {
             
             duration: 2000,
-            position: "bottom-center",
+           
           
           });
           router.push("/login");
@@ -247,13 +247,13 @@ const Register = () => {
                     <FcGoogle className="text-2xl mr-3" />
                     Google
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => signIn("github")}
                     className="flex items-center py-2 px-4 text-sm uppercase rounded bg-white hover:bg-gray-100 text-indigo-500 border border-transparent hover:border-transparent hover:text-gray-700 shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                   >
                     <FaGithub className="text-2xl mr-3 text-black" />
                     Github
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

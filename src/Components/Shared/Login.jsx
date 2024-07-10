@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import banner from "../../assets/registerPage-img.png";
 import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
@@ -8,12 +8,12 @@ import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { MdErrorOutline } from "react-icons/md";
-import { signIn, useSession } from "next-auth/react";
+import { getSession, signIn, useSession } from "next-auth/react";
 import Loading from "../Ui/Loading";
-import LOGIN_USER from "@/utility/request_data/loginHandler";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa6";
 import toast from "react-hot-toast";
 import Cookies from "js-cookie";
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 const Login = () => {
   const [formLoading, setFormLoading] = useState(false);
@@ -23,12 +23,10 @@ const Login = () => {
   const { status } = useSession();
   const session = useSession();
 
-  // === set cookie after login user ===
-  useEffect(() => {
-    if (session?.data?.user) {
-      Cookies.set("user-cookie", session.data?.user?.token, { expires: 7 });
-    }
-  }, [session]);
+  if (session.status == "authenticated") {
+    router.push("/");
+    toast.success("Logged In Successful");
+  }
 
   // === hook-form functions ===
   const {
@@ -38,25 +36,25 @@ const Login = () => {
   } = useForm();
 
   // === login handler with email & password after submitting ===
-  const onSubmit = async (form_data) => {
+  const onSubmit = async (data) => {
     setFormLoading(true);
-    if (status === "authenticated") {
-      router.push("/");
-      return;
-    }
+    signIn("credentials", {
+      email: data.email,
+      password: data.password,
+      redirect: false,
+    }).then(async (e) => {
+      if (e.error) {
+        setError("Invalid email/password");
+      } else {
+        const sessions = await getSession();
 
-    const response = await LOGIN_USER(form_data.email, form_data.password);
+        // router.push("/blog");
 
-    if (!response.ok) {
-      setError("invalid credentials");
+        console.log("pushing ");
+        location.reload();
+      }
       setFormLoading(false);
-      return;
-    }
-
-    // Cookies.set("user-cookie", data.data.token, { expires: 7 });
-    toast.success("User logged in successful");
-    router.push("/");
-    setFormLoading(false);
+    });
   };
 
   return (
@@ -177,13 +175,13 @@ const Login = () => {
                     <FcGoogle className="text-2xl mr-3" />
                     Google
                   </button>
-                  <button
+                  {/* <button
                     onClick={() => signIn("github")}
                     className="flex items-center py-2 px-4 text-sm uppercase rounded bg-blue-500 hover:bg-blue-500 text-white border border-transparent hover:border-transparent shadow-md hover:shadow-lg font-medium transition transform hover:-translate-y-0.5 justify-center w-full"
                   >
                     <FaGithub className="text-2xl mr-3 text-black" />
                     Github
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

@@ -81,7 +81,7 @@
 //         ) : (
 //           <FaUser className="cursor-pointer" onClick={() => setUserNav(!userNav)} size={30} />
 //         )}
-          
+
 //         </div>
 //         {userNav && (
 //           <div
@@ -105,14 +105,14 @@
 //               {
 //                 email ? <h2 className="mt-5 ">Email:{email}</h2> : <h2 className="mt-5 mb-5">Email:Login First</h2>
 //               }
-            
+
 //             {
 //                 email &&
 //                 <Link href="/dashboard"> <h1 className="mt-5 mb-5">
 
 //                 DashBoard
 //               </h1></Link>
-               
+
 //             }
 //               {/* <button className="md:px-5 md:py-2 px-2 py-1 text-sm md:text-base rounded-md text-white  bg-[#FF8B36] border-[#FF8B36] border-2 ">
 //                 Logout
@@ -262,11 +262,11 @@ import noImage from "../../../assets/no-image.png";
 
 const LoginProfile = ({ login }) => {
   const session = useSession();
-  console.log(session, "session from login profile");
+  // console.log(session, "session from login profile");
   const { status } = useSession();
   const image = session?.data?.user?.image;
-  const name = session?.data?.user?.name
-  const email = session?.data?.user?.email
+  const name = session?.data?.user?.name;
+  const email = session?.data?.user?.email;
   let profile;
 
   const [userNav, setUserNav] = useState(false);
@@ -278,27 +278,24 @@ const LoginProfile = ({ login }) => {
       }
     };
 
-    document.addEventListener('click', handleClickAnywhere);
+    document.addEventListener("click", handleClickAnywhere);
     return () => {
-      document.removeEventListener('click', handleClickAnywhere);
+      document.removeEventListener("click", handleClickAnywhere);
     };
   }, [userNav]);
 
   const toggleUserNav = (e) => {
-    e.stopPropagation();  // Prevent this click from immediately closing the menu
-    setUserNav(prev => !prev);
+    e.stopPropagation(); // Prevent this click from immediately closing the menu
+    setUserNav((prev) => !prev);
   };
 
   if (login) {
     profile = (
       <>
         <div className="flex justify-center items-center ">
-          {status === 'authenticated' ? (
+          {status === "authenticated" ? (
             image ? (
-              <div
-                className="cursor-pointer"
-                onClick={toggleUserNav}
-              >
+              <div className="cursor-pointer" onClick={toggleUserNav}>
                 <Image
                   className="scale-95 xl:scale-100 rounded-full border border-gray-300 shadow"
                   src={image}
@@ -308,10 +305,7 @@ const LoginProfile = ({ login }) => {
                 />
               </div>
             ) : (
-              <div
-                className="cursor-pointer"
-                onClick={toggleUserNav}
-              >
+              <div className="cursor-pointer" onClick={toggleUserNav}>
                 <Image
                   className="scale-95 xl:scale-100 rounded-full border border-gray-300 shadow"
                   src={noImage}
@@ -322,16 +316,24 @@ const LoginProfile = ({ login }) => {
               </div>
             )
           ) : (
-            <FaUser className="cursor-pointer" onClick={toggleUserNav} size={30} />
+            <FaUser
+              className="cursor-pointer"
+              onClick={toggleUserNav}
+              size={30}
+            />
           )}
         </div>
         <div
           className={`
             absolute lg:right-0 my-10 text-left text-white bg-[#003F7D] w-80 mr-60 rounded-lg flex flex-col gap-2 z-50
             transition-all duration-300 ease-in-out
-            ${userNav ? 'opacity-100 scale-100' : 'opacity-0 scale-95 pointer-events-none'}
+            ${
+              userNav
+                ? "opacity-100 scale-100"
+                : "opacity-0 scale-95 pointer-events-none"
+            }
           `}
-          onClick={(e) => e.stopPropagation()}  // Prevent clicks inside the menu from closing it
+          onClick={(e) => e.stopPropagation()} // Prevent clicks inside the menu from closing it
         >
           <div className="lg:p-4 ml-5 lg:ml-0 md:ml-0 mt-5 mb-5">
             {name ? <h2>Name: {name}</h2> : <h2>Name: Login First</h2>}

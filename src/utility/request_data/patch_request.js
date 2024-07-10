@@ -5,9 +5,7 @@
  * @returns Promise
  */
 
-const token = process.env.NEXT_PUBLIC_TOKEN;
-
-const UPDATE_DATA_BY_ID = async (params_id, data) => {
+const UPDATE_DATA_BY_ID = async (params_id, data, token) => {
   try {
     const updateUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/update-course/${params_id}`;
 

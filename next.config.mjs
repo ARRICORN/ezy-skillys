@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: false,
   images: {
     domains: [
       "s3-alpha-sig.figma.com",
@@ -7,9 +8,14 @@ const nextConfig = {
       "seeklogo.com",
       "i.ibb.co",
       "upload.wikimedia.org",
+
+      "i.ibb.co",
+      "res.cloudinary.com",
+
       "res.cloudinary.com",
       "images.unsplash.com",
       "lh3.googleusercontent.com",
+      "zijundeng.github.io",
     ],
     remotePatterns: [
       {

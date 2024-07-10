@@ -14,6 +14,7 @@ export async function GET(req) {
   const page = Number(pageValue);
   const limit = Number(limitValue);
   const skip = (page - 1) * limit;
+  console.log("pagevalue ", pageValue, limitValue);
 
   const filterConditions = { isDeleted: false };
   if (searchTerm) {
@@ -32,6 +33,7 @@ export async function GET(req) {
     .sort({ price: sort })
     .skip(skip)
     .limit(limit);
+  console.log("backend ", result);
   const totalData = (await Course.find({ isDeleted: false })).length || 0;
   const retrievedData = result.length;
   const totalPages = Math.ceil(totalData / limit);
@@ -43,7 +45,7 @@ export async function GET(req) {
       limit,
       totalData,
       retrieved: retrievedData,
-      totalPages
+      totalPages,
     },
     data: result,
   });
