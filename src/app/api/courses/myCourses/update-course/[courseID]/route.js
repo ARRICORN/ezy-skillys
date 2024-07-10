@@ -1,3 +1,8 @@
+
+
+export const dynamic = 'force-dynamic';
+
+
 import { Course } from "@/Models/Course";
 import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";

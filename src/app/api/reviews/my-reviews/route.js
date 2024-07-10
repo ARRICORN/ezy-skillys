@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Review } from "@/Models/Review";
 import { UserInfo } from "@/Models/UserInfo";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";

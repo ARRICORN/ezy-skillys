@@ -1,3 +1,10 @@
+
+
+
+export const dynamic = 'force-dynamic';
+
+
+
 import { Order } from "@/Models/Order";
 import { UserInfo } from "@/Models/UserInfo";
 import { isAdmin } from "@/middlewares/checkAdmin";

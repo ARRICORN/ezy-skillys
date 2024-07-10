@@ -1,3 +1,11 @@
+
+
+
+export const dynamic = 'force-dynamic';
+
+
+
+
 import { Order } from "@/Models/Order";
 import { PurchasedCourse } from "@/Models/PurchasedCourse";
 import { UserInfo } from "@/Models/UserInfo";

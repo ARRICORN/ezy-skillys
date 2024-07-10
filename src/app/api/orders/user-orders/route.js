@@ -1,3 +1,12 @@
+
+
+
+export const dynamic = 'force-dynamic';
+
+
+
+
+
 import { isAdmin } from "@/middlewares/checkAdmin";
 import checkIsLoggedIn from "@/middlewares/checkIsLoggedIn";
 import { Course } from "@/Models/Course";

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 
 import { User } from "@/Models/User";
 import { UserInfo } from "@/Models/UserInfo";

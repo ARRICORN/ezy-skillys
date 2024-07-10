@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { Review } from "@/Models/Review";
 import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
