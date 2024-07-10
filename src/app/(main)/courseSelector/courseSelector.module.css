@@ -1,8 +1,0 @@
-.triangle {
-    width: 0;
-    height: 0;
-    border-right: 40px solid #FFF;
-    border-bottom: 30px solid transparent;
-    border-top-left-radius: 12px;
-    margin-bottom: 50px;
-}
