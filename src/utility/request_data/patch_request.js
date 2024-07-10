@@ -7,7 +7,7 @@
 
 const UPDATE_DATA_BY_ID = async (params_id, data, token) => {
   try {
-    const updateUrl = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/update-course/${params_id}`;
+    const updateUrl = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses/myCourses/update-course/${params_id}`;
 
     const response = await fetch(updateUrl, {
       method: "PATCH",

@@ -7,7 +7,7 @@ import POST_REVIEW from "@/utility/request_data/post_review";
 import toast from "react-hot-toast";
 
 
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews/add-review`;
+const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/reviews/add-review`;
 
 const ReveiwForm = ({ courseId }) => {
     const [error, setError] = useState(null);

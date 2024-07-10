@@ -8,7 +8,7 @@ import { getServerSession } from "next-auth";
 // === top dashboard header nav ===
 const Top_header = async () => {
   const session = await getServerSession(authOptions);
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
+  const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/myRole`;
   const response = await API_REQUEST_BY_URL(url, session?.token);
   const userImage = session?.user?.image;
 

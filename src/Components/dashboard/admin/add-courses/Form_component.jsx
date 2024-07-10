@@ -27,7 +27,7 @@ let defaultValues = {
   category: [],
 };
 // create course api for admin
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCourse`;
+const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses/myCourses/createCourse`;
 
 // === form component here === //
 const Form_component = () => {

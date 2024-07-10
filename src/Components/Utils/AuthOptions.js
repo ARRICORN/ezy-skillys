@@ -192,7 +192,7 @@ export const authOptions = {
       async authorize(credentials, req) {
         try {
           const { email, password } = credentials;
-          const loginResponse = await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/login', { email, password });
+          const loginResponse = await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/api/login', { email, password });
           const user = {
             id: loginResponse.data.user.id,
             email: loginResponse.data.user.email,
@@ -225,7 +225,7 @@ export const authOptions = {
       if (account.provider === 'google') {
         try {
           const { name, email, image } = user;
-          const loginResponse = await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/providerLogin', { 
+          const loginResponse = await axios.post(process.env.NEXT_PUBLIC_SERVER_URL + '/api/providerLogin', { 
             name, 
             email, 
             image, 

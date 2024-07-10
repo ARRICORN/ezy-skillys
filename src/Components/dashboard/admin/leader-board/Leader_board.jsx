@@ -4,7 +4,7 @@ import API_REQUEST_BY_URL from "@/utility/request_data/all_api_request";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/Components/Utils/AuthOptions";
 
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/leaderboardData`;
+const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/dashboard/leaderboardData`;
 
 // === Leader board component ===
 const Leader_board = async () => {

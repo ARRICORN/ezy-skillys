@@ -10,7 +10,7 @@ import Cookies from "js-cookie";
 import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
 import toast from "react-hot-toast";
 import { useSession } from "next-auth/react";
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews/add-review`;
+const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/reviews/add-review`;
 
 const styles = {
   fontFamily: "sans-serif",

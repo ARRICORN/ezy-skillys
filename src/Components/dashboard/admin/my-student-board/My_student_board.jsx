@@ -6,7 +6,7 @@ import { getServerSession } from "next-auth";
 const My_student_board = async () => {
   const session = await getServerSession(authOptions);
 
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/myStudents`;
+  const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/dashboard/myStudents`;
   const student_data = await API_REQUEST_BY_URL(url, session.token);
 
   return (

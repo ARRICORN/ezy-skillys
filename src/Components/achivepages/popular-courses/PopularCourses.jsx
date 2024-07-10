@@ -5,7 +5,7 @@ import courseCss from "./popular.module.css";
 
 // === popular course component ===
 const PopularCourses = async () => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses`;
+  const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses`;
   const courses = await GET_GLOBAL_DATA(url);
 
   let reduceCourse = [];

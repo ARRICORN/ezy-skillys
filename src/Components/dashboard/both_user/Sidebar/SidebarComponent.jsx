@@ -27,7 +27,7 @@ const SidebarComponent = () => {
   const token = session?.data?.user?.token;
   const pathName = usePathname();
 
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
+  const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/myRole`;
 
   useEffect(() => {
     const userFn = async () => {

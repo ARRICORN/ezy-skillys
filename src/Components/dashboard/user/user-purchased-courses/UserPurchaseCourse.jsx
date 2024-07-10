@@ -4,7 +4,7 @@ import { authOptions } from "@/Components/Utils/AuthOptions";
 import Cart_template from "./Cart_tamplate";
 
 const UserPurchaseCourse = async () => {
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/orders/user-orders`;
+  const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders/user-orders`;
   const session = await getServerSession(authOptions);
   const products = await API_REQUEST_BY_URL(url, session.token);
 

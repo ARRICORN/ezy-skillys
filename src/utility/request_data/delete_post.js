@@ -7,7 +7,7 @@
 const DELETE_POST_WITH_ID = async (id, token) => {
   try {
     // Delete url with id
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/delete-course/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses/myCourses/delete-course/${id}`;
 
     const response = await fetch(url, {
       method: "DELETE",

@@ -4,7 +4,7 @@ import React from "react";
 import Review_template from "./Review_template";
 import { authOptions } from "@/Components/Utils/AuthOptions";
 import style from "./review.module.css";
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews/my-reviews`;
+const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/reviews/my-reviews`;
 
 const My_Review = async () => {
   const session = await getServerSession(authOptions);

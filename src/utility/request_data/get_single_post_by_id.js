@@ -7,7 +7,7 @@
 
 const GET_SINGLE_POST_BY_DI = async (id, token) => {
   try {
-    const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/${id}`;
+    const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses/myCourses/${id}`;
 
     const response = await fetch(url, {
       cache: "no-store",

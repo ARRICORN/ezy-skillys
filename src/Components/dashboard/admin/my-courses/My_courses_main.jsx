@@ -4,7 +4,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/Components/Utils/AuthOptions";
 
 // get all course for admin url
-const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses`;
+const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses/myCourses`;
 
 // === my course component here ===
 const My_courses_main = async () => {

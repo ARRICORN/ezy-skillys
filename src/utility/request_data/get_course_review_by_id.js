@@ -7,7 +7,7 @@
 
 const get_course_review_by_id = async(id) => {
     try {
-        const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/reviews/all-reviews?course=${id}`;
+        const url = `${process.env.NEXT_PUBLIC_SERVER_URL}/api/reviews/all-reviews?course=${id}`;
 
         const response = await fetch(url, {
             cache: "no-store",
