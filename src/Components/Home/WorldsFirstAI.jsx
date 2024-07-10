@@ -1,5 +1,3 @@
-"use client"
-
 import Image from "next/image";
 import Heading from "../Shared/Heading";
 import GroupDot from "../../assets/Home/GroupDot.png";

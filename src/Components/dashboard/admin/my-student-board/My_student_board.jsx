@@ -1,47 +1,14 @@
-"use client"
-
-;
+import API_REQUEST_BY_URL from "@/utility/request_data/all_api_request";
 import Table_body from "./Table_body";
 import { authOptions } from "@/Components/Utils/AuthOptions";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { getServerSession } from "next-auth";
 
-
-const My_student_board = () => {
-  
-const[student_data,setStudentData] = useState([])
-
-  const session = useSession();
+const My_student_board = async () => {
+  const session = await getServerSession(authOptions);
 
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/myStudents`;
+  const student_data = await API_REQUEST_BY_URL(url, session.token);
 
-
-
-  const fetchStudentData = async () => {
-    try {
-      const response = await fetch(url, {
-        cache: "no-store",
-        headers: {
-          Authorization: session?.data?.token,
-          "Content-type": "Application/json",
-        },
-      });
-      console.log(response,"response");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const res = await response.json();
-      console.log(res,"res")
-      setStudentData(res);
-    } catch (error) {
-      console.error("Error fetching studentData:", error);
-    }
-  };
-  useEffect(() => {
-    if (session?.data?.token) {
-      fetchStudentData();
-    }
-  }, [session]);
   return (
     <section className="">
       {/* === Table body === */}

@@ -5,7 +5,7 @@ import { useState } from "react";
 import UPLOAD_IMAGE from "@/utility/request_data/upload_image";
 import toast from "react-hot-toast";
 import LoadingButton from "@/Components/Shared/LoadingButton";
-
+import POST_REQUEST_BY_DATA from "@/utility/request_data/post_request";
 import Select from "react-select";
 import indexCss from "./index.module.css";
 import { colourOptions, colourStyles } from "./data";
@@ -28,26 +28,7 @@ let defaultValues = {
 };
 // create course api for admin
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/createCourse`;
-const POST_REQUEST_BY_DATA = async (url, data, token) => {
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        Authorization: token,
-        "Content-type": "Application/json",
-      },
-      body: JSON.stringify(data),
-    });
 
-    if (!response.statusText === "OK") {
-      toast.error("Network response was not ok");
-    }
-    const res = await response.json();
-    return res;
-  } catch (error) {
-    console.error("There was a problem with the fetch operation:");
-  }
-};
 // === form component here === //
 const Form_component = () => {
   const [isLoading, setIsLoading] = useState(false);

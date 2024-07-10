@@ -1,38 +1,16 @@
 "use client";
-
+import DELETE_POST_WITH_ID from "@/utility/request_data/delete_post";
 import Cookies from "js-cookie";
-import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import toast from "react-hot-toast";
-const DELETE_POST_WITH_ID = async (id, token) => {
-  // Delete url with id
-  const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses/delete-course/${id}`;
 
-  const response = await fetch(url, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: token,
-    },
-  });
-
-  if (!response.ok) {
-    return response.status(400).json({
-      message: "Server error occurred",
-    });
-  }
-
-  const res = await response;
-  return res;
-};
 //== delete the course data from database ===
 const Delete_edit_component = ({ element }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
-  const session = useSession();
- 
+  const token = Cookies.get("user-cookie");
 
   // === delete post handler by id ===
   const deleteHandler = async (id) => {
@@ -41,7 +19,7 @@ const Delete_edit_component = ({ element }) => {
     if (!check) {
       return;
     }
-    const response = await DELETE_POST_WITH_ID(id, session?.data?.token);
+    const response = await DELETE_POST_WITH_ID(id, token);
 
     if (!response.ok) {
       toast.error("Course delete is failed");

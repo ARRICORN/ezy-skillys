@@ -1,48 +1,16 @@
-"use client"
-
-
+import API_REQUEST_BY_URL from "@/utility/request_data/all_api_request";
 import Course_template from "./Course_template";
-
+import { getServerSession } from "next-auth";
 import { authOptions } from "@/Components/Utils/AuthOptions";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 
 // get all course for admin url
 const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/courses/myCourses`;
 
 // === my course component here ===
-const My_courses_main =  () => {
-  const session = useSession();
-  const [userCourse,setUserCourse]=useState([])
+const My_courses_main = async () => {
+  const session = await getServerSession(authOptions);
+  const userCourse = await API_REQUEST_BY_URL(url, session.token);
 
-  const fetchUserCourse = async () => {
-    try {
-      const response = await fetch(url, {
-        cache: "no-store",
-        headers: {
-          Authorization: session?.data?.token,
-          "Content-type": "Application/json",
-        },
-      });
-      console.log(response,"response");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const res = await response.json();
-      console.log(res,"res")
-      setUserCourse(res);
-    } catch (error) {
-      console.error("Error fetching UserCourse:", error);
-    }
-  };
-
-  useEffect(() => {
-    if (session?.data?.token) {
-      fetchUserCourse();
-    }
-  }, [session]);
-
-  console.log(session, "session from user purchase");
   // data sorting for last-in fast-out
   let userSort = [];
   userSort = userCourse?.data?.sort(

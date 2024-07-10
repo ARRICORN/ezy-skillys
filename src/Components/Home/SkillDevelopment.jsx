@@ -1,6 +1,3 @@
-
-"use client"
-
 import Image from "next/image";
 import Learn from "../../assets/Home/Learn.png";
 import Collages from "../../assets/Home/Colleges.png";

@@ -23,53 +23,24 @@ import { useSession } from "next-auth/react";
 const SidebarComponent = () => {
   const [collapsed, setCollapsed] = React.useState(true);
   const [userRole, setUserRole] = useState("");
-  console.log(userRole,"userROle");
   const session = useSession();
   const token = session?.data?.user?.token;
   const pathName = usePathname();
 
   const url = `${process.env.NEXT_PUBLIC_BASE_URL}/api/myRole`;
 
-  // useEffect(() => {
-  //   const userFn = async () => {
-  //     const res = await API_REQUEST_BY_URL(url, token);
-
-  //     if (!res.success) toast.error(res.message);
-  //     setUserRole(res.data?.role);
-  //   };
-
-  //   if (url && token) {
-  //     userFn();
-  //   }
-  // }, [url, token]);
-  const fetchUserRole = async () => {
-    try {
-      const response = await fetch(url, {
-        cache: "no-store",
-        headers: {
-          Authorization: session?.data?.token,
-          "Content-type": "Application/json",
-        },
-      });
-      console.log(response,"response");
-      if (!response.ok) {
-        throw new Error("Failed to fetch data");
-      }
-      const res = await response.json();
-      console.log(res,"res")
-      setUserRole(res?.data?.role);
-    } catch (error) {
-      console.error("Error fetching UserRole:", error);
-    }
-  };
-
   useEffect(() => {
-    if (session?.data?.token) {
-      fetchUserRole();
-    }
-  }, [session]);
+    const userFn = async () => {
+      const res = await API_REQUEST_BY_URL(url, token);
 
-  console.log(session, "session from user purchase");
+      if (!res.success) toast.error(res.message);
+      setUserRole(res.data?.role);
+    };
+
+    if (url && token) {
+      userFn();
+    }
+  }, [url, token]);
 
   return (
     <div

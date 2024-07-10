@@ -1,5 +1,3 @@
-"use client"
-
 import Profile_header from "./Profile_header";
 import Profile_template from "./Profile_template";
 

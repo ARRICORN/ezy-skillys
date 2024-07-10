@@ -82,8 +82,11 @@ const Display_user = ({ user }) => {
 
         {/* === description === */}
         <div>
-        {`${user?.instructor} is a Software Developer who expertised in .NET & Azure for
-  more than 24 years and training 100's of students to accompolish their goals & dreams.`}
+          <span className="text-balance py-1">
+            Sandeep is a Software Developer who expertised in .NET & Azure for
+            more than 24 years and training 100’s of students to accompolish
+            their goals & dreams.
+          </span>
         </div>
 
         {/* trainer award */}
