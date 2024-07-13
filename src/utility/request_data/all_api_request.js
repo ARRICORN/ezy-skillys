@@ -5,8 +5,7 @@
  *
  */
 
-// TODO: have to chang token
-// const token = process.env.NEXT_PUBLIC_TOKEN;
+
 
 const API_REQUEST_BY_URL = async (url, token) => {
   try {
