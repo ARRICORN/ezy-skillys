@@ -20,7 +20,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
     const fetchData = async () => {
       try {
         const { data } = await axiosConfig.post(
-          "/create-payment-intent",
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/create-payment-intent`,
           {
             amount: convertToSubcurrency(amount),
             courseId: courseId,
@@ -64,7 +64,7 @@ const PaymentStripeForm = ({ amount, courseId, token }) => {
       elements,
       clientSecret,
       confirmParams: {
-        return_url: `http://localhost:3000/payment-success?amount=${amount}&courseId=${courseId}`,
+        return_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/payment-success?amount=${amount}&courseId=${courseId}`,
       },
     });
 

@@ -1,8 +1,8 @@
-'use client'
-import Image from 'next/image';
-import React, { useState } from 'react';
-import banner from '../../assets/registerPage-img.png'
-import Link from 'next/link';
+"use client";
+import Image from "next/image";
+import React, { useState } from "react";
+import banner from "../../assets/registerPage-img.png";
+import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { useForm } from "react-hook-form";
@@ -13,7 +13,7 @@ import { signIn, useSession } from "next-auth/react";
 import axios from "axios";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
-import toast from 'react-hot-toast';
+import toast from "react-hot-toast";
 const Register = () => {
   const [formLoading, setFormLoading] = React.useState(false);
   const [openPassword, setOpenPasswords] = useState(true);
@@ -24,7 +24,7 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-    watch
+    watch,
   } = useForm();
 
   const password = watch("password");
@@ -33,10 +33,10 @@ const Register = () => {
   if (session.status == "authenticated") router.push("/");
 
   const onSubmit = (data) => {
-    console.log(data)
+    console.log(data);
     setFormLoading(true);
     axios
-      .post(process.env.NEXT_PUBLIC_SERVER_URL + "/register", {
+      .post(process.env.NEXT_PUBLIC_SERVER_URL + "/api/register", {
         ...data,
         phone: "",
         image: "",
@@ -45,14 +45,11 @@ const Register = () => {
       })
       .then((res) => {
         if (res?.data?.isOk) {
-          toast.success('Account Created Successfully', {
-            
+          toast.success("Account Created Successfully", {
             duration: 2000,
-           
-          
           });
           router.push("/login");
-        
+
           setError("");
         } else {
           setError(res?.data?.message);
@@ -130,7 +127,7 @@ const Register = () => {
                     autoComplete="off"
                     id="password"
                     name="password"
-                    type={openPassword?"password":"text"}
+                    type={openPassword ? "password" : "text"}
                     className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="Password"
                     {...register("password", {
@@ -147,17 +144,22 @@ const Register = () => {
                   >
                     Password
                   </label>
-                  {
-                openPassword ?
-                      <FaEyeSlash className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
-                      :
-                      <FaEye className="absolute top-3 right-3 cursor-pointer" onClick={()=>setOpenPasswords(!openPassword)}/>
-              }
-              {errors.password && (
-                <p className="text-red-600" role="alert">
-                  {errors.password?.message}
-                </p>
-              )}
+                  {openPassword ? (
+                    <FaEyeSlash
+                      className="absolute top-3 right-3 cursor-pointer"
+                      onClick={() => setOpenPasswords(!openPassword)}
+                    />
+                  ) : (
+                    <FaEye
+                      className="absolute top-3 right-3 cursor-pointer"
+                      onClick={() => setOpenPasswords(!openPassword)}
+                    />
+                  )}
+                  {errors.password && (
+                    <p className="text-red-600" role="alert">
+                      {errors.password?.message}
+                    </p>
+                  )}
                 </div>
                 <div className="relative mt-6">
                   <input
@@ -165,11 +167,10 @@ const Register = () => {
                     id="password"
                     name="confirm password"
                     type={conOpenPassword ? "password" : "text"}
-
                     className="peer placeholder-transparent h-9 w-full border-b border-gray-300 text-gray-900 focus:outline-none focus:borer-rose-600"
                     placeholder="confirm Password"
                     {...register("confirmPassword", {
-                    required: "Confirm Password is Required",
+                      required: "Confirm Password is Required",
                       validate: (value) =>
                         value === password || "Passwords do not match",
                     })}
@@ -181,21 +182,21 @@ const Register = () => {
                     Password
                   </label>
                   {conOpenPassword ? (
-        <FaEyeSlash
-          className="absolute top-3 right-3 cursor-pointer"
-          onClick={() => setConOpenPasswords(!conOpenPassword)}
-        />
-      ) : (
-        <FaEye
-          className="absolute top-3 right-3 cursor-pointer"
-          onClick={() => setConOpenPasswords(!conOpenPassword)}
-        />
-      )}
-      {errors.confirmPassword && (
-        <p className="text-red-600" role="alert">
-          {errors.confirmPassword?.message}
-        </p>
-      )}
+                    <FaEyeSlash
+                      className="absolute top-3 right-3 cursor-pointer"
+                      onClick={() => setConOpenPasswords(!conOpenPassword)}
+                    />
+                  ) : (
+                    <FaEye
+                      className="absolute top-3 right-3 cursor-pointer"
+                      onClick={() => setConOpenPasswords(!conOpenPassword)}
+                    />
+                  )}
+                  {errors.confirmPassword && (
+                    <p className="text-red-600" role="alert">
+                      {errors.confirmPassword?.message}
+                    </p>
+                  )}
                 </div>
 
                 <div className="mt-2 flex items-center text-gray-500">

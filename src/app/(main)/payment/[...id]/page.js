@@ -24,7 +24,9 @@ export default function PaymentPage({ params }) {
 
   // fetches data from all courses
   const fetchCourses = async () => {
-    const { data } = await axiosConfig.get(`/courses/getCourse/${courseId}`);
+    const { data } = await axiosConfig.get(
+      `${process.env.NEXT_PUBLIC_SERVER_URL}/api/courses/getCourse/${courseId}`
+    );
     return data;
   };
 

@@ -15,7 +15,7 @@ export default function PaymentSuccess({
     const fetchData = async () => {
       try {
         const { data } = await axiosConfig.post(
-          "/orders/create-order",
+          `${process.env.NEXT_PUBLIC_SERVER_URL}/api/orders/create-order`,
           {
             transactionId: payment_intent,
             courseId: courseId,

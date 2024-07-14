@@ -9,7 +9,7 @@ const PopularCourses = async () => {
   const courses = await GET_GLOBAL_DATA(url);
 
   let reduceCourse = [];
-  if ((courses.success = true)) {
+  if (courses && courses.success) {
     reduceCourse = courses.data.slice(0, 8);
   }
 
