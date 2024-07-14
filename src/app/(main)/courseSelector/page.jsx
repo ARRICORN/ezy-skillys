@@ -21,7 +21,6 @@ import Upskill from "@/Components/Upskill/Upskill";
 import Link from "next/link";
 import NonItCourses from "@/Components/ItCourses/NonItCourses/NonItCourses";
 
-
 const Course = () => {
   const [isLookingJob, setIsLookingJob] = useState(false);
   const [isGreet, setIsGreet] = useState(false);
